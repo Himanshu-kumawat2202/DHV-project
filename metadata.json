@@ -1,0 +1,6 @@
+{
+  "name": "NIRF Insights",
+  "description": "Interactive National Institutional Ranking Framework (NIRF) analytics platform to explore rankings, parameter trends, geographical distributions, and comparative insights from 2017 to 2025.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
