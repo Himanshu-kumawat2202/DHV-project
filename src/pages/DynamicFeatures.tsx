@@ -1786,18 +1786,25 @@ export const DynamicFeatures: React.FC = () => {
                     <h3 className="text-sm font-bold text-slate-900">
                       Feature Selection: Correlation with Overall Score
                     </h3>
-                    <div className="h-52 w-full">
+                    <div className="h-64 w-full">
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart
                           data={featureCorrelations}
                           layout="vertical"
-                          margin={{ top: 5, right: 20, left: 10, bottom: 0 }}
+                          margin={{ top: 10, right: 25, left: 15, bottom: 10 }}
+                          barCategoryGap="22%"
+                          barSize={18}
                         >
                           <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#F1F5F9" />
                           <XAxis type="number" domain={[0, 1]} tick={{ fontSize: 10 }} />
-                          <YAxis type="category" dataKey="feature" tick={{ fontSize: 10 }} />
+                          <YAxis
+                            type="category"
+                            dataKey="feature"
+                            width={65}
+                            tick={{ fontSize: 11, fontWeight: 500 }}
+                          />
                           <Tooltip
-                            formatter={(v: any, name: any, item: any) => [
+                            formatter={(v: any, _name: any, item: any) => [
                               `|r| = ${v} (r = ${item.payload.r}, R² = ${item.payload.rSquared}%)`,
                               item.payload.feature,
                             ]}

@@ -24,6 +24,7 @@ import {
 import { useApp } from '../context/AppContext';
 import { INSTITUTIONS, RANKINGS, YEARS } from '../data/nirfData';
 import { InteractiveIndiaMap } from '../components/charts/InteractiveIndiaMap';
+import { TruncatedYAxisTick } from '../utils/institutionFormatters';
 
 export const GeographicalAnalysis: React.FC = () => {
   const { filters, setInspectInstitutionId } = useApp();
@@ -209,17 +210,26 @@ export const GeographicalAnalysis: React.FC = () => {
             Total number of premier institutions by state jurisdiction
           </p>
 
-          <div className="h-72 w-full">
+          <div className="h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 layout="vertical"
                 data={stateCountList.slice(0, 8)}
-                margin={{ left: 15, right: 15, top: 5, bottom: 5 }}
+                margin={{ left: 20, right: 25, top: 10, bottom: 10 }}
+                barCategoryGap="22%"
+                barSize={18}
               >
                 <XAxis type="number" tick={{ fontSize: 10 }} />
-                <YAxis type="category" dataKey="state" width={85} tick={{ fontSize: 10 }} />
+                <YAxis
+                  type="category"
+                  dataKey="state"
+                  width={130}
+                  interval={0}
+                  tick={<TruncatedYAxisTick maxChars={18} fill="#334155" />}
+                />
                 <Tooltip
                   formatter={(val: any) => [`${val} Institutions`, `In Top ${rankBracket}`]}
+                  labelFormatter={(_label: any, payload: any) => payload?.[0]?.payload?.state || _label}
                   contentStyle={{ fontSize: 11, borderRadius: 8 }}
                 />
                 <Bar

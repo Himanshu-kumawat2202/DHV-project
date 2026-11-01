@@ -30,6 +30,7 @@ import {
   AccessibleChartTooltip,
 } from '../components/charts/InteractiveChartCard';
 import { useChartTheme } from '../context/ChartThemeContext';
+import { getShortInstitutionName, TruncatedYAxisTick } from '../utils/institutionFormatters';
 
 export const RankingTrends: React.FC = () => {
   const { filters, setInspectInstitutionId } = useApp();
@@ -78,9 +79,13 @@ export const RankingTrends: React.FC = () => {
     const delta = rStart.rank - rEnd.rank; // positive = climbed
     const scoreDelta = Number((rEnd.overall_score - rStart.overall_score).toFixed(2));
 
+    const fullName = inst.institution_name;
+    const shortName = getShortInstitutionName(fullName);
+
     return {
       id: inst.institution_id,
-      name: inst.short_name,
+      name: shortName,
+      fullName,
       state: inst.state,
       startRank: rStart.rank,
       endRank: rEnd.rank,
@@ -408,13 +413,26 @@ export const RankingTrends: React.FC = () => {
             </div>
           </div>
 
-          <div className="h-56 w-full">
+          <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart layout="vertical" data={topImprovers} margin={{ left: 10, right: 20 }}>
+              <BarChart
+                layout="vertical"
+                data={topImprovers}
+                margin={{ left: 20, right: 25, top: 10, bottom: 10 }}
+                barCategoryGap="22%"
+                barSize={18}
+              >
                 <XAxis type="number" tick={{ fontSize: 10 }} />
-                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10 }} />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  width={130}
+                  interval={0}
+                  tick={<TruncatedYAxisTick maxChars={18} fill="#334155" />}
+                />
                 <Tooltip
                   formatter={(val: any) => [`+${val} positions`, 'Rank Climbed']}
+                  labelFormatter={(_label: any, payload: any) => payload?.[0]?.payload?.fullName || _label}
                   contentStyle={{ fontSize: 11, borderRadius: 8 }}
                 />
                 <Bar
@@ -446,13 +464,26 @@ export const RankingTrends: React.FC = () => {
             </div>
           </div>
 
-          <div className="h-56 w-full">
+          <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart layout="vertical" data={topDecliners} margin={{ left: 10, right: 20 }}>
+              <BarChart
+                layout="vertical"
+                data={topDecliners}
+                margin={{ left: 20, right: 25, top: 10, bottom: 10 }}
+                barCategoryGap="22%"
+                barSize={18}
+              >
                 <XAxis type="number" tick={{ fontSize: 10 }} />
-                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10 }} />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  width={130}
+                  interval={0}
+                  tick={<TruncatedYAxisTick maxChars={18} fill="#334155" />}
+                />
                 <Tooltip
                   formatter={(val: any) => [`${val} positions`, 'Rank Dropped']}
+                  labelFormatter={(_label: any, payload: any) => payload?.[0]?.payload?.fullName || _label}
                   contentStyle={{ fontSize: 11, borderRadius: 8 }}
                 />
                 <Bar

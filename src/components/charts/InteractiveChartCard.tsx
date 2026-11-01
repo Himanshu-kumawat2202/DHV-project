@@ -339,7 +339,8 @@ export const AccessibleChartTooltip: React.FC<any> = ({
         style={{ borderColor: activeTheme.isDark ? '#334155' : '#475569' }}
       >
         <span>
-          {titlePrefix} {label}
+          {titlePrefix ? `${titlePrefix} ` : ''}
+          {payload[0]?.payload?.fullName || payload[0]?.payload?.name || label}
         </span>
         <span
           className="text-[10px] font-normal"
