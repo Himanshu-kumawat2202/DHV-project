@@ -1,0 +1,101 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2017,Overall,IR17-I-2-18243,Indian Institute of Science Bangalore,83.11,87.59,87.97,61.48,83.33,Bengaluru,Karnataka,83.28,1,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-77,Indian Institute of Technology Madras,69.49,72.60,84.02,76.75,68.70,Chennai,Tamil Nadu,73.97,2,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18633,Indian Institute of Technology Bombay,64.68,78.14,70.07,65.80,83.44,Mumbai,Maharashtra,71.78,3,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18630,Indian Institute of Technology Kharagpur,55.07,70.46,85.11,72.85,64.72,Kharagpur,West Bengal,68.43,4,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-79,Indian Institute of Technology Delhi,55.45,68.48,65.92,68.69,69.53,New Delhi,Delhi,64.18,5,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-319,Jawaharlal Nehru University,62.11,33.96,98.71,82.40,47.27,New Delhi,Delhi,61.53,6,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18248,Indian Institute of Technology Kanpur,60.07,62.14,58.34,60.01,63.62,Kanpur,Uttar Pradesh,60.69,7,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-251,Indian Institute of Technology Guwahati,65.53,47.46,78.28,79.28,28.79,Guwahati,Assam,60.37,8,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18677,Indian Institute of Technology Roorkee,52.24,56.60,83.38,72.70,32.38,Roorkee,Uttarakhand,59.84,9,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18500,Banaras Hindu University,47.85,49.96,94.36,62.97,44.01,Varanasi,Uttar Pradesh,58.92,10,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-30673,Jawaharlal Nehru Centre for Advanced Scientific Research,78.28,51.93,68.79,47.44,6.92,Bengaluru,Karnataka,58.25,11,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-10326,Jadavpur University,48.64,54.09,91.42,53.37,28.81,Kolkata,West Bengal,57.32,12,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18292,Anna University,46.25,54.58,79.31,60.01,43.94,Chennai,Tamil Nadu,56.50,13,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-2813521158,University of Hyderabad,57.30,42.77,78.79,78.13,27.06,Hyderabad,Telangana,56.30,14,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18552,University of Delhi,43.48,56.61,82.06,58.60,30.76,Delhi,Delhi,55.37,15,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18267,Amrita Vishwa Vidyapeetham,62.90,39.49,65.77,82.17,26.12,Coimbatore,Tamil Nadu,54.70,16,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18698,Indian Institute of Management Ahmedabad,78.14,13.85,62.91,80.97,59.91,Ahmedabad,Gujarat,54.27,17,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-618,Savitribai Phule Pune University,56.39,35.03,85.13,72.26,11.20,Pune,Maharashtra,52.81,18,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18189,Aligarh Muslim University,58.56,36.20,87.43,51.55,16.62,Aligarh,Uttar Pradesh,52.74,19,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-2814289415,Jamia Millia Islamia,58.98,27.99,81.63,83.55,9.73,New Delhi,Delhi,51.75,20,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18599,Birla Institute of Technology & Science -Pilani,54.83,31.26,73.88,58.50,49.96,Pilani,Rajasthan,51.46,21,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18572,Vellore Institute of Technology,41.65,42.87,75.57,75.99,32.95,Vellore,Tamil Nadu,51.36,22,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-243,Indian Agricultural Research Institute,58.22,33.60,74.11,76.79,11.52,New Delhi,Delhi,51.20,23,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-346,Indian Institute of Technology Indore,65.42,32.43,63.50,74.58,7.17,Indore,Madhya Pradesh,50.23,24,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-217,Indian Institute of Management Bangalore,68.62,12.47,63.57,83.53,38.72,Bengaluru,Karnataka,49.26,25,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-345,Indian Institute of Technology Hyderabad,63.51,28.02,62.91,72.21,18.06,Hyderabad,Telangana,49.07,26,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18606,Calcutta University,36.34,44.10,95.76,39.02,17.15,Kolkata,West Bengal,48.90,27,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-15598,Tamil Nadu Agricultural University,77.67,12.56,75.33,63.48,3.53,Coimbatore,Tamil Nadu,48.84,28,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18637,"Indian Institute of Science Education & Research, Pune",63.94,28.43,52.74,76.10,24.13,Pune,Maharashtra,48.28,29,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18364,Manipal Academy of Higher Education-Manipal,64.76,29.31,58.66,55.51,27.67,Manipal,Karnataka,48.27,30,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18581,Visva Bharati,53.56,25.23,86.74,67.26,4.71,Kolkata,West Bengal,48.19,31,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-340,Indian Institute of Technology Ropar,66.25,24.68,62.91,75.73,4.07,Rupnagar,Punjab,47.84,32,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-624,Siksha`O` Anusandhan University,63.31,17.17,66.02,78.18,15.57,Bhubaneswar,Odisha,46.72,33,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-370,National Institute of Technology Tiruchirappalli,44.43,31.32,71.92,73.68,20.92,Tiruchirappalli,Tamil Nadu,46.57,34,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18230,Homi Bhabha National Institute,79.17,8.75,66.98,58.08,8.70,Mumbai,Maharashtra,46.45,35,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18559,Bharath Institute of Higher Education & Research,59.33,23.12,63.42,86.49,3.79,Chennai,Tamil Nadu,46.45,35,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18639,Indian Institute of Technology Mandi,68.77,16.43,61.11,74.31,4.06,Mandi,Himachal Pradesh,45.62,37,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18414,Osmania University,46.63,20.56,91.98,58.41,11.16,Hyderabad,Telangana,45.52,38,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18700,Indian Institute of Management Calcutta,70.17,6.04,62.15,74.17,24.61,Kolkata,West Bengal,45.17,39,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-30713,"Punjab Agricultural University, Ludhiana",77.94,16.51,57.20,48.44,3.83,Ludhiana,Punjab,44.99,40,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18261,Institute of Chemical Technology,41.33,36.82,69.31,55.73,20.69,Mumbai,Maharashtra,44.95,41,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-17784,Jamia Hamdard,52.44,27.86,73.99,57.57,1.87,New Delhi,Delhi,44.84,42,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-30702,Gauhati University,50.65,16.84,89.89,59.41,2.48,Guwahati,Assam,44.42,43,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18635,"Indian Institute of Science Education & Research, Kolkata",56.68,27.13,57.82,70.00,6.79,Mohanpur,West Bengal,44.38,44,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18567,Bharathiar University,45.67,35.58,63.73,62.60,9.11,Coimbatore,Tamil Nadu,44.29,45,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-140,National Institute of Technology Rourkela,43.93,34.18,67.94,65.97,4.00,Rourkela,Odisha,44.02,46,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18317,Kerala University,50.61,14.62,89.18,64.47,0.89,Thiruvananthapuram,Kerala,43.95,47,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-10563,Tezpur University,51.89,28.83,62.76,63.05,7.09,Tezpur,Assam,43.78,48,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-700,TATA Institute of Social Sciences,51.92,6.59,76.50,85.16,23.31,Mumbai,Maharashtra,43.71,49,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18477,Shanmugha Arts Science Technology & Research Academy (SASTRA),43.10,31.09,68.04,65.18,11.10,Thanjavur,Tamil Nadu,43.50,50,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18704,Indian Institute of Management Lucknow,63.94,6.94,62.69,82.57,12.92,Lucknow,Uttar Pradesh,43.35,51,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-333,"Indian Institute of Science Education & Research, Mohali",55.38,17.55,62.99,80.48,7.52,Mohali,Punjab,43.27,52,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18632,Indian Institute of Technology (Indian School of Mines),40.04,34.27,67.12,67.08,7.88,Dhanbad,Jharkhand,43.21,53,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-2814248400,Panjab University,36.70,40.79,66.18,47.40,18.99,Chandigarh,Chandigarh,43.13,54,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-596,S.R.M Institute of Science and Technology,45.80,25.07,64.33,78.65,10.80,Chennai,Tamil Nadu,43.07,55,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-249,Indian Institute of Space Science and Technology,69.46,11.63,51.78,70.33,13.45,Thiruvananthapuram,Kerala,43.06,56,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-457,Mysore University,41.59,20.10,93.17,53.51,3.44,Mysore,Karnataka,42.83,57,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18693,"National Institute of Pharmaceutical Education and Research, Hyderabad",61.28,14.30,60.78,75.15,3.90,Hyderabad,Telangana,42.74,58,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18424,Pondicherry University,44.07,26.33,72.73,65.61,4.67,Puducherry,Pondicherry,42.70,59,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-697,Tamil Nadu Veterinary & Animal Sciences University,75.08,6.36,61.11,57.50,0.67,Chennai,Tamil Nadu,42.48,60,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-661,Sri Ramachandra University,68.16,14.10,47.94,73.02,8.86,Chennai,Tamil Nadu,42.46,61,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18276,Anand Agricultural University,72.99,5.89,70.24,42.67,2.75,Anand,Gujarat,42.26,62,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18709,Indian Institute of Management Udaipur,68.76,1.38,60.00,86.05,5.04,Udaipur,Rajasthan,42.15,63,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18341,University of Madras,44.22,29.26,62.26,62.75,10.82,Chennai,Tamil Nadu,41.85,64,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-493,National Institute of Technology Surathkal,42.31,21.43,71.88,62.86,20.13,Surathkal,Karnataka,41.80,65,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18627,Indian Institute of Technology Bhubaneswar,57.89,20.92,51.73,74.82,2.66,Bhubaneswar,Odisha,41.75,66,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-18708,Indian Institute of Management Tiruchirappalli,71.34,1.09,60.00,77.67,2.31,Tiruchirappalli,Tamil Nadu,41.73,67,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-668,Sri Venkateswara University,45.88,24.43,68.72,64.57,1.94,Tirupati,Andhra Pradesh,41.48,68,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-31,Andhra University,40.32,18.59,80.31,55.75,20.72,Visakhapatnam,Andhra Pradesh,41.38,69,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18672,"Indian Institute of Technology (Banaras Hindu University), Varanasi",42.85,19.35,72.56,57.89,23.96,Varanasi,Uttar Pradesh,41.37,70,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-347,Indian Institute of Management Kashipur,72.76,1.47,60.00,70.17,0.72,Kashipur,Uttarakhand,41.36,71,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18472,Sathyabama Institute of Science and Technology,42.32,22.17,65.64,77.13,11.08,Chennai,Tamil Nadu,41.30,72,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18690,"Indian Institute of Engineering Science and Technology, Shibpur",45.50,27.57,64.98,54.35,9.29,Howrah,West Bengal,41.28,73,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-299,Jagadguru Sri Shivarathreeshwara University,55.34,10.32,61.55,76.67,14.99,Mysore,Karnataka,41.18,74,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-2813959492,Thapar University,39.35,29.05,70.16,49.10,13.17,Patiala,Punjab,40.78,75,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-30671,Dr. D. Y. Patil Vidyapeeth Pune,64.52,4.90,60.27,65.47,11.61,Pune,Maharashtra,40.59,76,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18409,North Eastern Hill University,53.99,11.83,71.52,61.35,3.24,Shillong,Meghalaya,40.51,77,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18628,Indian Institute of Technology Gandhinagar,59.15,17.34,51.27,63.65,9.24,Ahmedabad,Gujarat,40.48,78,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-336,Kalinga Institute of Industrial Technology,46.39,12.75,68.53,69.17,20.95,Bhubaneswar,Odisha,40.47,79,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-1-2811256746,Sri Sivasubrmaniya Nadar College of Engineering,52.45,14.02,64.06,61.58,13.86,Kalavakkam,Tamil Nadu,40.31,80,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18214,Guru Angad Dev Veterinary & Animal Sciences University,71.99,10.08,56.99,40.19,0.59,Ludhiana,Punjab,40.10,81,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18622,National Institute of Technology Warangal,46.02,17.53,68.74,64.94,7.43,Warangal,Telangana,40.05,82,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-344,Indian Institute of Technology Patna,52.27,19.13,55.08,71.52,2.80,Patna,Bihar,39.87,83,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-178,Dr. Y.S.Parmar University of Horticulture & Forestry,68.64,4.39,65.58,44.54,0.64,Solan,Himachal Pradesh,39.54,84,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18703,Indian Institute of Management Kozhikode,58.19,6.11,60.86,71.74,5.73,Kozhikode,Kerala,39.20,85,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18259,AMITY University,38.50,23.36,63.06,61.86,18.06,Gautam Budh Nagar,Uttar Pradesh,39.17,86,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-12080,Indian Institute of Crop Processing Technology,62.29,1.56,60.86,76.83,1.42,Thanjavur,Tamil Nadu,39.15,87,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-2811179135,PSG College of Technology,45.79,14.34,61.11,62.60,25.48,Coimbatore,Tamil Nadu,39.07,88,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18508,Banasthali Vidyapith,37.11,9.99,82.16,74.26,7.46,Banasthali,Rajasthan,38.74,89,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18580,Bharati Vidyapeeth,48.43,12.95,55.18,62.17,30.64,Pune,Maharashtra,38.73,90,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18474,Saveetha Institute of Medical and Technical Sciences,51.11,11.81,57.85,76.63,5.81,Chennai,Tamil Nadu,38.68,91,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-33,Annamalai University,39.03,26.87,68.64,47.19,3.67,Annamalainagar,Tamil Nadu,38.59,92,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18607,Calicut University,50.30,8.81,72.68,57.08,4.74,Calicut,Kerala,38.45,93,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-448,Mizoram University,52.31,5.27,70.52,69.93,0.03,Aizwal,Mizoram,38.36,94,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-373,Kurukshetra University,43.43,13.44,79.64,50.37,2.33,Kurushetra,Haryana,38.26,95,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-10933,Shiv Nadar University,59.15,9.43,47.70,73.23,5.24,Chithera,Uttar Pradesh,37.95,96,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-21078,Symbiosis International University,44.80,8.92,60.44,80.33,14.31,Pune,Maharashtra,37.67,97,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-18634,"Indian Institute of Science Education & Research, Bhopal",46.13,18.21,53.21,70.78,3.00,Bhopal,Madhya Pradesh,37.32,98,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-1-18710,Rajiv Gandhi Indian Institute of Management,61.42,1.89,60.00,62.21,0.57,Shillong,Meghalaya,37.28,99,https://www.nirfindia.org/Rankings/2017/OverallRanking.html
+2017,Overall,IR17-I-2-1-N002,KLE Academy of Higher Education and Research,64.13,4.90,49.61,65.54,0.69,Belagavi,Karnataka,37.25,100,https://www.nirfindia.org/Rankings/2017/OverallRanking.html

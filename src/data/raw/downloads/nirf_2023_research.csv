@@ -1,0 +1,51 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2023,Research,IR-R-U-0220,Indian Institute of Science,,,,59.23,100.00,Bengaluru,Karnataka,86.22,1,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0456,Indian Institute of Technology Madras,,,,63.59,91.39,Chennai,Tamil Nadu,84.01,2,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-I-1074,Indian Institute of Technology Delhi,,,,70.32,82.14,New Delhi,Delhi,82.07,3,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0306,Indian Institute of Technology Bombay,,,,58.76,74.85,Mumbai,Maharashtra,79.19,4,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0573,Indian Institute of Technology Kharagpur,,,,57.44,62.74,Kharagpur,West Bengal,71.63,5,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-I-1075,Indian Institute of Technology Kanpur,,,,60.24,64.04,Kanpur,Uttar Pradesh,71.33,6,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0560,Indian Institute of Technology Roorkee,,,,62.80,46.32,Roorkee,Uttarakhand,66.52,7,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-N-15,"All India Institute of Medical Sciences, Delhi",,,,72.72,75.52,New Delhi,Delhi,66.13,8,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0053,Indian Institute of Technology Guwahati,,,,58.30,40.92,Guwahati,Assam,64.68,9,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0330,Tata Institute of Fundamental Research,,,,66.40,50.34,Mumbai,Maharashtra,62.66,10,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0490,Vellore Institute of Technology,,,,62.55,45.27,Vellore,Tamil Nadu,62.41,11,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0713,Academy of Scientific & Innovative Research,,,,48.06,3.89,Ghaziabad,Uttar Pradesh,59.85,12,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0439,Anna University,,,,50.29,70.35,Chennai,Tamil Nadu,59.65,13,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0013,Indian Institute of Technology Hyderabad,,,,59.03,53.50,Hyderabad,Telangana,59.41,14,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0304,Homi Bhabha National Institute,,,,54.35,28.42,Mumbai,Maharashtra,58.88,15,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0500,Banaras Hindu University,,,,61.50,43.87,Varanasi,Uttar Pradesh,58.14,16,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0120,University of Delhi,,,,63.98,34.60,Delhi,Delhi,57.45,17,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0109,Jawaharlal Nehru University,,,,73.64,44.41,New Delhi,Delhi,57.33,18,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0575,Jadavpur University,,,,56.79,32.78,Kolkata,West Bengal,56.69,19,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0108,"Jamia Millia Islamia,New Delhi",,,,83.41,21.17,New Delhi,Delhi,55.86,20,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0273,Indian Institute of Technology Indore,,,,60.81,23.55,Indore,Madhya Pradesh,53.71,21,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0467,National Institute of Technology Tiruchirappalli,,,,68.33,56.19,Tiruchirappalli,Tamil Nadu,53.63,22,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0496,Aligarh Muslim University,,,,60.04,27.29,Aligarh,Uttar Pradesh,53.58,23,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0205,Indian Institute of Technology (Indian School of Mines),,,,58.02,30.88,Dhanbad,Jharkhand,52.80,24,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0234,Manipal Academy of Higher Education-Manipal,,,,66.10,24.95,Manipal,Karnataka,52.48,25,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0391,Birla Institute of Technology & Science -Pilani,,,,59.16,32.49,Pilani,Rajasthan,52.32,26,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0305,Indian Institute of Science Education & Research Pune,,,,63.57,41.97,Pune,Maharashtra,52.22,27,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0042,University of Hyderabad,,,,66.58,26.30,Hyderabad,Telangana,51.85,28,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0357,National Institute of Technology Rourkela,,,,60.11,20.21,Rourkela,Odisha,51.32,29,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0224,Jawaharlal Nehru Centre for Advanced Scientific Research,,,,59.31,35.81,Bengaluru,Karnataka,51.08,30,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0139,Indian Institute of Technology Gandhinagar,,,,69.14,32.20,Gandhinagar,Gujarat,50.84,31,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0436,Amrita Vishwa Vidyapeetham,,,,72.47,50.90,Coimbatore,Tamil Nadu,50.83,32,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0078,Panjab University,,,,59.92,30.58,Chandigarh,Chandigarh,50.65,33,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-I-1480,Thapar Institute of Engineering and Technology (Deemed-to-be-university),,,,64.05,9.49,Patiala,Punjab,50.06,34,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0570,Calcutta University,,,,53.01,31.62,Kolkata,West Bengal,49.76,35,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-I-1441,Saveetha Institute of Medical and Technical Sciences,,,,67.38,9.24,Chennai,Tamil Nadu,49.54,36,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0308,Institute of Chemical Technology,,,,55.88,27.13,Mumbai,Maharashtra,48.82,37,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0447,Bharathiar University,,,,51.98,35.67,Coimbatore,Tamil Nadu,48.72,38,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0473,S.R.M. Institute of Science and Technology,,,,64.61,22.65,Chennai,Tamil Nadu,48.58,39,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0572,Indian Institute of Science Education & Research Kolkata,,,,55.58,29.51,Mohanpur,West Bengal,46.95,40,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0237,"National Institute of Technology Karnataka, Surathkal",,,,59.23,35.67,Surathkal,Karnataka,46.89,41,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0379,Lovely Professional University,,,,68.34,16.80,Phagwara,Punjab,44.87,42,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0435,Alagappa University,,,,52.13,32.92,Karaikudi,Tamil Nadu,44.06,43,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0356,Kalinga Institute of Industrial Technology,,,,80.13,11.44,Bhubaneswar,Odisha,43.98,44,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0497,Amity University,,,,64.65,9.74,Gautam Budh Nagar,Uttar Pradesh,43.89,45,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0378,Indian Institute of Technology Ropar,,,,66.44,27.94,Rupnagar,Punjab,43.65,46,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0410,Malaviya National Institute of Technology,,,,60.93,7.70,Jaipur,Rajasthan,43.37,47,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0236,"National Institute of Mental Health & Neuro Sciences, Bangalore",,,,66.64,36.33,Bangalore,Karnataka,43.35,48,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0363,Siksha `O` Anusandhan,,,,73.35,14.86,Bhubaneswar,Odisha,43.21,49,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html
+2023,Research,IR-R-U-0377,"Indian Institute of Science Education & Research, Mohali",,,,72.34,35.27,Mohali,Punjab,43.15,50,https://www.nirfindia.org/Rankings/2023/ResearchRanking.html

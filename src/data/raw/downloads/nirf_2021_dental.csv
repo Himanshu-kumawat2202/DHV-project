@@ -1,0 +1,41 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2021,Dental,IR-N-C-7254,Manipal College of Dental Sciences,78.02,86.31,77.02,77.15,88.85,Udupi,Karnataka,81.30,1,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-I-1110,Dr. D. Y. Patil Vidyapeeth,78.35,82.06,90.62,57.55,87.22,Pune,Maharashtra,80.72,2,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-I-1441,Saveetha Institute of Medical and Technical Sciences,84.46,82.21,74.94,67.36,66.03,Chennai,Tamil Nadu,78.33,3,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-28507,Maulana Azad Institute of Dental Sciences,91.09,58.62,84.14,58.18,100.00,Delhi,Delhi,77.57,4,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0523,King George`s Medical University,86.29,57.15,80.31,66.67,60.10,Lucknow,Uttar Pradesh,71.78,5,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-19320,A.B.Shetty Memorial Institute of Dental Sciences,77.95,44.70,85.70,72.75,97.48,Mangaluru,Karnataka,70.95,6,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-7240,"Manipal College of Dental Sciences, Mangalore",74.61,60.73,81.39,74.38,60.10,Mangalore,Karnataka,70.33,7,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-I-1486,Sri Ramachandra Institute of Higher Education and Research,74.43,40.70,84.97,59.28,68.70,Chennai,Tamil Nadu,64.33,8,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-N-238,SDM College of Dental Sciences & Hospital,71.36,33.94,93.30,63.16,71.22,Dharwad,Karnataka,63.69,9,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-N-352,SRM Dental College,68.87,48.49,96.32,56.38,34.56,Chennai,Tamil Nadu,63.57,10,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-N-153,Nair Hospital Dental College,68.82,46.75,86.64,50.36,56.79,Mumbai,Maharashtra,62.73,11,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-35008,JSS Dental College and Hospital,73.12,31.73,81.11,71.54,73.59,Mysuru,Karnataka,62.19,12,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0436,Amrita Vishwa Vidyapeetham,67.46,30.54,87.77,76.17,68.70,Coimbatore,Tamil Nadu,61.44,13,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0363,Siksha `O` Anusandhan,79.70,30.37,91.50,63.55,34.56,Bhubaneswar,Odisha,61.14,14,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0724,M.S. Ramaiah University of Applied Sciences,74.22,34.20,89.60,61.33,44.91,Bangalore,Karnataka,61.06,15,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-30756,Postgraduate Institute of Dental Sciences,83.71,40.56,69.48,49.38,44.91,Rohtak,Haryana,60.61,16,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0356,Kalinga Institute of Industrial Technology,74.46,44.16,71.65,66.25,40.05,Bhubaneswar,Odisha,60.56,17,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-40193,Bapuji Dental College & Hospital,70.70,31.21,78.52,61.89,66.03,Davangere,Karnataka,59.06,18,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0295,Datta Meghe Institute of Medical Sciences,70.91,41.02,73.80,55.52,44.91,Wardha,Maharashtra,58.38,19,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0108,Jamia Millia Islamia,74.65,33.84,58.47,72.22,68.70,New Delhi,Delhi,58.32,20,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-8528,Yenepoya Dental College,77.85,24.41,76.83,67.22,49.26,Mangaluru,Karnataka,57.69,21,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-N-91,Sree Balaji Dental College & Hospital,76.94,16.93,85.06,57.21,56.79,Chennai,Tamil Nadu,56.57,22,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-N-342,Vishnu Dental College,70.71,21.31,71.20,55.87,71.22,West Godavari,Andhra Pradesh,54.55,23,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0465,Meenakshi Academy of Higher Education and Research,70.19,36.06,64.80,55.23,40.05,Chennai,Tamil Nadu,54.37,24,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-N-71,"Faculty of Dental Sciences, Institute of Medical Sciences",64.21,18.25,74.10,63.17,73.59,Varanasi,Uttar Pradesh,53.23,25,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0496,Aligarh Muslim University,73.26,22.93,77.67,50.05,34.56,Aligarh,Uttar Pradesh,52.85,26,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-49744,Saraswati Dental College & Hospital,70.77,19.42,91.21,58.96,11.66,Lucknow,Uttar Pradesh,52.37,27,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-40192,College of Dental Sciences,70.41,20.12,81.72,59.57,28.23,Davangere,Karnataka,52.28,28,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-14028,"MGV's Karmaveer Bhausaheb Hiray Dental College, Panchavati, Nashik",68.90,21.83,94.63,40.16,20.76,Nashik,Maharashtra,52.25,29,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-N-73,Army College of Dental Sciences,68.21,10.25,82.11,67.19,53.19,Secunderabd,Telangana,51.99,30,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-40175,Coorg Institute of Dental Sciences,68.70,17.23,75.92,57.96,49.26,Virajpet,Karnataka,51.69,31,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-29701,"Govt. Dental College, Indore",74.08,14.39,92.42,54.71,11.66,Indore,Madhya Pradesh,51.66,32,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-24504,KLE Vishwanath Katti Institute of Dental Sciences,71.47,12.86,75.91,71.24,40.05,Belgaum,Karnataka,51.61,33,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0168,Maharishi Markandeshwar,64.65,23.90,79.21,62.32,28.23,Ambala,Haryana,51.46,34,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0461,M. G. R. Educational and Research Institute,61.50,21.64,92.98,50.84,28.23,Chennai,Tamil Nadu,51.44,35,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-29150,Christian Dental College,70.22,10.14,84.22,64.65,40.05,Ludhiana,Punjab,51.43,36,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-40140,Raja Rajeswari Dental College & Hospital,67.03,20.62,92.33,65.42,0.00,Bengaluru,Karnataka,51.31,37,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0311,Krishna Institute of Medical Sciences Deemed University,65.67,16.89,82.57,53.19,44.91,Karad,Maharashtra,51.09,38,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-U-0169,Manav Rachna International Institute of Research & Studies,67.32,11.13,85.99,68.16,34.56,Faridabad,Haryana,51.02,39,https://www.nirfindia.org/Rankings/2021/DentalRanking.html
+2021,Dental,IR-N-C-28550,I.T.S. Dental College Hospital & Research Center,68.97,13.85,82.75,66.45,28.23,Greater Noida,Uttar Pradesh,50.87,40,https://www.nirfindia.org/Rankings/2021/DentalRanking.html

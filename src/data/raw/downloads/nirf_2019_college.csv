@@ -1,0 +1,101 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2019,College,IR-C-C-6355,Miranda House,77.45,39.24,88.35,75.90,71.74,Delhi,Delhi,73.72,1,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6377,Hindu College,73.74,26.63,89.78,74.77,71.46,Delhi,Delhi,70.57,2,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43921,Presidency College,77.49,98.02,46.40,50.56,56.50,Chennai,Tamil Nadu,68.01,3,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-22470,St. Stephen`s College,75.11,14.06,76.98,68.71,92.87,Delhi,Delhi,67.55,4,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6415,Lady Shri Ram College for Women,70.51,5.19,93.81,61.55,81.24,New Delhi,Delhi,66.71,5,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-44006,Loyola College,64.83,83.36,52.89,46.65,100.00,Chennai,Tamil Nadu,66.31,6,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6419,Shri Ram College of Commerce,70.16,0.98,90.07,74.62,67.46,Delhi,Delhi,64.94,7,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-I-1317,Rama Krishna Mission Vivekananda Centenary College,77.04,24.31,98.51,26.97,29.61,Rahara,West Bengal,64.76,8,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6425,Hans Raj College,69.76,17.40,83.27,77.13,56.09,Delhi,Delhi,64.65,9,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11881,St. Xavier`s College,62.63,35.32,79.59,55.31,87.17,Calcutta,West Bengal,64.50,10,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11926,Ramakrishna Mission Vidyamandira,81.04,13.99,92.26,17.29,50.41,Howrah,West Bengal,64.35,11,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6429,Gargi College,77.54,9.94,87.16,70.14,28.04,Delhi,Delhi,64.11,12,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43965,Madras Christian College,73.79,33.19,64.73,57.11,75.88,Chennai,Tamil Nadu,63.98,13,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-22462,Atma Ram Sanatan Dharm College,78.20,29.19,77.30,69.58,16.06,New Delhi,Delhi,63.55,14,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-42814,Ramakrishna Mission Residential College,73.31,25.81,88.62,28.82,53.13,Kolkata,West Bengal,63.53,15,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6361,Deen Dayal Upadhyaya College,77.20,37.75,66.25,66.83,28.83,New Delhi,Delhi,62.66,16,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41124,PSG College of Arts and Science,61.75,39.44,74.99,52.46,77.99,Coimbatore,Tamil Nadu,62.42,17,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6385,Kirori Mal College,77.38,27.81,64.60,69.98,33.99,Delhi,Delhi,61.67,18,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6369,Sri Venkateswara College,74.16,31.67,69.41,64.52,30.75,Delhi,Delhi,61.28,19,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6432,Dyal Singh College,78.17,25.65,71.39,63.04,14.98,New Delhi,Delhi,60.77,20,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-27608,Lady Irwin College,75.46,18.77,72.35,62.90,31.49,Delhi,Delhi,60.53,21,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41046,PSGR Krishnammal College for Women,62.37,27.11,80.72,59.52,46.23,Coimbatore,Tamil Nadu,59.77,22,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43671,University College,73.60,20.35,79.06,53.62,17.63,Thiruvananthapuram,Kerala,59.37,23,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6380,Acharya Narendra Dev College,77.94,12.73,65.48,69.46,20.13,New Delhi,Delhi,58.42,24,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6420,Jesus & Mary College,67.03,0.49,91.03,63.90,23.38,New Delhi,Delhi,58.37,25,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-16178,P. D. Patel Institute of Applied Sciences,70.13,55.09,71.19,40.26,1.54,Changa,Gujarat,58.29,26,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-I-1385,Fergusson College,57.53,16.36,90.72,39.19,60.36,Pune,Maharashtra,58.10,27,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6353,Sri Guru Tegh Bahadur Khalsa College,76.54,36.07,58.04,65.47,8.48,Delhi,Delhi,57.94,28,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43767,Mar Ivanios College,68.27,46.18,71.23,47.71,10.36,Thiruvananthapuram,Kerala,57.86,29,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41189,Scott Christian College,73.96,22.50,73.61,54.74,8.48,Nagercoil,Tamil Nadu,57.69,30,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6426,Shaheed Rajguru College of Applied Sciences for Women,73.55,18.94,70.68,72.68,3.75,Delhi,Delhi,57.57,31,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43946,Women`s Christian College,69.16,11.75,82.39,42.72,31.49,Chennai,Tamil Nadu,57.44,32,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41035,Government Arts College,76.18,35.78,54.15,44.46,33.64,Coimbatore,Tamil Nadu,57.19,33,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-36513,Thiagarajar College,60.63,55.71,66.30,48.48,30.75,Madurai,Tamil Nadu,57.11,34,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11691,Rajagiri College of Social Sciences,75.56,1.35,77.28,51.93,4.46,Ernakulam,Kerala,55.38,35,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43902,Ethiraj College for Women,60.58,9.66,77.91,53.86,47.51,Chennai,Tamil Nadu,55.30,36,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6367,Daulat Ram College,63.11,5.27,87.45,49.32,24.70,Delhi,Delhi,55.29,37,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6391,Maitreyi College,71.06,14.62,67.15,67.32,7.19,New Delhi,Delhi,54.85,38,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-35860,St. Joseph's College,61.85,36.07,61.43,42.01,49.94,Tiruchirappalli,Tamil Nadu,54.70,39,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-N-6,Queen Mary`s College,65.19,18.79,83.95,30.03,17.63,Chennai,Tamil Nadu,54.65,40,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6357,Shyam Lal College,63.97,11.82,81.73,60.09,7.19,Delhi,Delhi,54.52,41,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-35416,Rajiv Gandhi Institute of Information Technology and Biotechnology,63.37,18.22,72.36,63.65,16.06,Pune,Maharashtra,54.14,42,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6417,Kamala Nehru College,70.19,1.64,78.53,52.55,7.84,South,Delhi,54.00,43,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-35825,Bishop Heber College,55.09,43.21,59.60,49.61,55.06,Tiruchirappalli,Tamil Nadu,53.89,44,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-25376,Andhra Loyola College,57.51,33.36,68.80,52.42,33.29,Vijayawada,Andhra Pradesh,53.77,45,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6365,Indraprastha College for Women,65.10,0.42,71.35,70.05,22.48,Delhi,Delhi,53.19,46,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43705,Govt. College for Women,69.78,12.42,67.49,52.87,10.97,Thiruvananthapuram,Kerala,53.03,47,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6412,Maharaja Agrasen College,74.61,6.68,63.58,59.86,3.02,Delhi,Delhi,53.03,47,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6502,Kanchi Mamunivar Centre for Post Graduate Studies,68.38,34.06,65.97,35.27,4.46,Puducherry,Pondicherry,52.93,49,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11991,Bethune College,65.96,9.61,71.02,35.13,38.28,Kolkata,West Bengal,52.91,50,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-36579,Ayya Nadar Janaki Ammal College,59.09,19.75,69.75,47.89,39.81,Sivakasi,Tamil Nadu,52.81,51,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41106,Kongunadu Arts & Science College,58.42,31.70,66.89,53.28,26.40,Coimbatore,Tamil Nadu,52.81,51,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41126,Sri Krishna Arts and Science College,57.24,4.75,86.50,59.60,15.53,Coimbatore,Tamil Nadu,52.73,53,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6366,Shivaji College,72.02,8.20,64.94,59.01,5.16,Delhi,Delhi,52.70,54,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-8169,St. Thomas College,66.92,9.61,72.68,55.35,7.84,Thrissur,Kerala,52.70,54,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-5855,St. Xavier's College,51.52,39.74,74.73,52.21,21.55,Ahmedabad,Gujarat,52.63,56,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11708,Sacred Heart College,69.40,16.08,68.78,47.33,5.16,Ernakulam,Kerala,52.62,57,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43931,Stella Maris College for Women,54.98,13.10,71.95,50.40,55.89,Chennai,Tamil Nadu,52.57,58,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-35832,Jamal Mohamed College,62.46,34.70,60.59,47.45,22.02,Tiruchirappalli,Tamil Nadu,52.27,59,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-I-1293,Sri Ramakrishna Mission Vidyalaya College of Arts and Science,60.57,69.22,59.46,9.37,18.65,Coimbatore,Tamil Nadu,52.27,59,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-20830,St. Joseph`s College of Commerce,60.97,0.00,78.14,61.66,21.55,Bengaluru,Karnataka,52.26,61,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11831,S. B. College,66.05,20.16,70.44,47.03,4.46,Kottayam,Kerala,52.20,62,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-36502,Virudhunagar Hindu Nadars Senthikumara Nadar College,59.13,49.25,60.17,47.33,13.31,Virudhunagar,Tamil Nadu,52.14,63,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11582,St. Teresa's College,68.56,4.37,70.66,52.94,9.12,Ernakulam,Kerala,51.94,64,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43964,Madras School of Social Work,65.30,0.34,75.71,53.07,13.87,Chennai,Tamil Nadu,51.80,65,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-26356,Silver Jubilee Degree College,66.35,0.70,74.38,61.48,3.75,Kurnool,Andhra Pradesh,51.76,66,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41054,Dr. N. G. P. Arts and Science College,60.65,15.27,73.68,50.12,16.06,Coimbatore,Tamil Nadu,51.59,67,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43760,Mahatma Gandhi College,67.97,21.84,58.16,55.82,9.74,Thiruvananthapuram,Kerala,51.56,68,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43600,Govt. Arts College,72.74,1.52,65.54,52.05,5.84,Thiruvananthapuram,Kerala,51.50,69,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6411,Shaheed Sukhdev College of Business Studies,59.30,3.79,82.79,57.56,5.84,New Delhi,Delhi,51.33,70,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-8023,Farook College,64.38,5.45,74.73,55.92,4.46,Kozhikode,Kerala,51.29,71,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-29284,"Govt Home Science College, Sector-10",71.80,0.74,69.77,43.52,6.52,Chandigarh,Chandigarh,51.27,72,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41068,Vellalar College for Women,61.79,4.55,73.40,52.42,22.93,Erode,Tamil Nadu,51.27,72,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41173,St. Xavier`s College,63.35,33.53,56.55,48.89,18.65,Palayamkottai,Tamil Nadu,51.26,74,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6381,Keshav Mahavidyalya,71.22,12.22,58.95,57.27,4.46,Delhi,Delhi,51.24,75,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11986,Loreto College,52.68,0.00,82.88,52.43,41.58,Calcutta,West Bengal,51.19,76,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41157,V. O. Chidambaram College,71.05,22.71,54.68,53.24,3.02,Tuticorin,Tamil Nadu,51.12,77,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11733,Newman College,58.52,11.78,81.89,52.87,1.54,Idukki,Kerala,51.09,78,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-36578,Lady Doak College,64.17,17.09,61.92,44.54,29.22,Madurai,Tamil Nadu,51.08,79,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43738,T. K. M. College of Arts and Science,54.58,34.85,73.40,51.84,4.46,Kollam,Kerala,51.04,80,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41184,Women's Christian College,68.96,10.65,64.73,51.44,5.16,Nagercoil,Tamil Nadu,51.02,81,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-I-1323,St. Joseph`s College,67.91,8.61,69.93,42.32,7.84,Kozhikode,Kerala,50.94,82,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43649,Fatima Mata National College,59.66,34.07,63.07,54.92,4.46,Kollam,Kerala,50.68,83,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-28526,Alagappa Government Arts College,58.85,29.95,62.29,37.67,30.37,Karaikudi,Tamil Nadu,50.41,84,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-35787,Holy Cross College,61.41,10.84,61.47,53.93,32.22,Tiruchirappalli,Tamil Nadu,50.17,85,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-41096,CMS College of Science and Commerce,61.35,7.09,71.84,59.15,6.52,Coimbatore,Tamil Nadu,50.13,86,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6413,Sri Guru Gobind Singh College of Commerce,59.22,2.31,80.07,56.66,3.75,Delhi,Delhi,50.10,87,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-8213,Christ College,62.43,9.18,66.32,49.40,21.08,Thrissur,Kerala,49.98,88,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6402,Kalindi College,65.84,13.25,62.96,57.10,1.54,Delhi,Delhi,49.92,89,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43911,Anna Adarsh College for Women,59.49,2.71,77.15,51.34,12.73,Chennai,Tamil Nadu,49.90,90,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43975,Justice Basher Ahmed Sayeed College for Women,61.24,7.08,74.11,53.51,3.75,Chennai,Tamil Nadu,49.81,91,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-11615,Mar Thoma College,57.39,5.72,82.33,53.10,0.78,Thiruvalla,Kerala,49.79,92,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-43783,Nirmalagiri College,61.89,14.98,70.71,50.74,0.00,Kannur,Kerala,49.76,93,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-36529,Fatima College,58.07,7.26,68.84,51.80,30.37,Madurai,Tamil Nadu,49.75,94,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-25990,St. Francis College for Women,55.58,1.50,81.80,54.04,13.87,Hyderabad,Telangana,49.70,95,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-33555,St. Xavier`s College,51.79,9.31,64.98,56.16,53.57,Mumbai,Maharashtra,49.34,96,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-36575,Sri Meenakshi Government College for Women,63.13,3.35,67.48,57.79,8.48,Madurai,Tamil Nadu,49.25,97,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-36425,Muthurangam Govt. Arts College,59.95,13.03,78.74,33.95,1.54,Vellore,Tamil Nadu,49.16,98,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-I-1373,Goswami Ganesh Dutta Sanatan Dharma College,48.54,13.04,80.73,65.27,10.36,Chandigarh,Chandigarh,49.13,99,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html
+2019,College,IR-C-C-6431,Ramanujan College,58.93,0.04,75.65,60.24,5.16,New Delhi,Delhi,49.03,100,https://www.nirfindia.org/Rankings/2019/CollegeRanking.html

@@ -1,0 +1,76 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2021,Pharmacy,IR-P-U-0107,Jamia Hamdard,75.03,82.33,82.36,57.63,90.75,New Delhi,Delhi,78.52,1,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0078,Panjab University,76.44,80.63,77.42,73.07,80.78,Chandigarh,Chandigarh,77.99,2,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0391,Birla Institute of Technology & Science -Pilani,90.02,61.69,81.75,70.71,66.33,Pilani,Rajasthan,75.57,3,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0380,National Institute of Pharmaceutical Education and Research Mohali,77.38,61.47,81.56,65.54,100.00,Mohali,Punjab,74.52,4,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0308,Institute of Chemical Technology,80.79,66.10,84.00,52.33,80.78,Mumbai,Maharashtra,74.18,5,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1077,National Institute of Pharmaceutical Education and Research Hyderabad,79.55,58.82,89.96,71.06,74.72,Hyderabad,Telangana,74.08,6,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-35006,JSS College of Pharmacy,83.34,33.64,90.34,73.91,84.38,Ooty,Tamil Nadu,68.99,7,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-7249,"Manipal College of Pharmaceutical Sciences, Manipal",75.73,50.20,74.53,67.90,81.71,Udupi,Karnataka,67.65,8,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-35007,JSS College of Pharmacy,78.93,30.30,89.70,66.85,77.86,Mysore,Karnataka,65.18,9,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-N-14,National Institute of Pharmaceutical Education and Research Ahmedabad,73.18,51.41,73.85,65.41,46.25,Gandhinagar,Gujarat,63.30,10,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0497,Amity University,73.61,61.77,57.72,59.54,33.82,Gautam Budh Nagar,Uttar Pradesh,61.48,11,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0436,Amrita Vishwa Vidyapeetham,68.19,57.78,68.21,77.63,20.25,Coimbatore,Tamil Nadu,61.21,12,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-N-26,National Institute of Pharmaceutical Education and Research Raebareli,86.81,36.87,63.82,63.00,41.71,Lucknow,Uttar Pradesh,60.33,13,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-N-10,SVKM`s Narsee Monjee Institute of Management Studies,80.16,43.19,76.17,61.49,16.03,Mumbai,Maharashtra,59.99,14,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0473,S.R.M. Institute of Science and Technology,67.92,52.18,69.42,50.86,33.82,Chennai,Tamil Nadu,58.39,15,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0443,Annamalai University,72.47,48.32,71.64,36.35,36.62,Annamalainagar,Tamil Nadu,57.86,16,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-35430,"Poona College of Pharmacy, Pune",70.91,29.91,73.26,54.99,55.81,Pune,Maharashtra,55.97,17,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0383,"Punjabi University, Patiala",61.26,46.44,68.14,42.20,55.81,Patiala,Punjab,55.74,18,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1073,National Institute of Pharmaceutical Education and Research Guwahati,67.16,31.60,74.58,57.70,54.07,Guwahati,Assam,55.73,19,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0146,Nirma University,64.13,42.21,72.53,52.68,33.82,Ahmedabad,Gujarat,55.06,20,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1486,Sri Ramachandra Institute of Higher Education and Research,67.44,34.67,70.81,52.00,48.34,Chennai,Tamil Nadu,54.82,21,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0389,Banasthali Vidyapith,72.21,24.12,85.50,76.05,6.06,Banasthali,Rajasthan,54.21,22,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0379,Lovely Professional University,66.22,54.64,51.34,56.46,20.25,Phagwara,Punjab,54.20,23,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0143,Maharaja Sayajirao University of Baroda,52.80,44.53,74.79,57.91,33.82,Vadodara,Gujarat,53.33,24,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-33873,Bombay College of Pharmacy,74.55,20.72,63.30,53.68,66.33,Mumbai,Maharashtra,53.24,25,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0202,Birla Institute of Technology,64.33,31.69,60.37,60.46,54.07,Ranchi,Jharkhand,52.34,26,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0162,Guru Jambheshwar University of Science and Technology,71.14,31.40,56.51,45.96,46.25,Hisar,Haryana,51.28,27,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-33877,SVKM's Dr. Bhanuben Nanavati College of Pharmacy,72.88,28.04,70.64,52.04,16.03,Mumbai,Maharashtra,51.20,28,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-10398,I. S. F. College of Pharmacy,60.99,31.41,65.18,60.86,39.24,Moga,Punjab,50.77,29,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1450,AU College of Pharmaceutical Sciences,52.78,27.59,83.00,42.26,55.81,Visakhapatnam,Andhra Pradesh,50.52,30,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1280,Maharshi Dayanand University,59.64,38.87,56.72,49.00,44.04,Rohtak,Haryana,50.19,31,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0853,Delhi Pharmaceutical Sciences and Research University,55.89,18.16,75.54,58.62,68.91,Delhi,Delhi,50.08,32,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1072,National Institute of Pharmaceutical Education and Research Kolkata,80.14,13.74,57.25,63.71,39.24,Kolkata,West Bengal,49.90,33,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0168,Maharishi Markandeshwar,59.93,32.19,63.51,53.02,41.71,Ambala,Haryana,49.81,34,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0373,Chitkara University,71.61,17.33,62.38,63.48,41.71,Rajpura,Punjab,49.68,35,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0190,Shoolini University of Biotechnology and Management Sciences,67.81,31.94,65.22,52.90,11.34,Solan,Himachal Pradesh,49.38,36,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0491,"Vels Institute of Science, Technology & Advanced Studies (VISTAS)",65.26,40.73,49.66,49.20,24.08,Chennai,Tamil Nadu,49.06,37,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0051,Dibrugarh University,67.35,29.80,61.27,41.07,33.82,Dibrugarh,Assam,48.89,38,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1335,Dr. D. Y. Patil Institute of Pharmaceutical Sciences and Research,70.16,8.18,73.74,53.97,46.25,Pune,Maharashtra,48.27,39,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-24505,"KLE College of Pharmacy, Belgaum",68.30,11.36,69.61,60.31,24.08,Belgaum,Karnataka,46.26,40,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0519,Integral University,62.12,34.65,46.30,43.33,30.82,Lucknow,Uttar Pradesh,45.70,41,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0085,Guru Ghasidas Vishwavidyalaya,70.01,32.45,53.71,41.62,0.00,Bilaspur,Chhattisgarh,45.64,42,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1256,Noida Institute of Engineering and Technology (Pharmacy Institute),63.12,3.19,70.28,56.28,59.10,Greater Noida,Uttar Pradesh,45.50,43,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0034,Sri Padmavathi Mahila Visvavidyalayam,68.76,24.16,55.53,52.82,11.34,Tirupathi,Andhra Pradesh,45.40,44,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-19322,Nitte Gulabi Shetty Memorial Institute of Pharmaceutical Sciences,68.30,16.74,67.04,58.59,6.06,Mangaluru,Karnataka,45.39,45,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-18900,Smt. Kishoritai Bhoyar College of Pharmacy,66.36,6.38,70.44,53.43,36.62,Nagpur,Maharashtra,44.91,46,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-409,L. M. College of Pharmacy,69.91,9.39,56.96,51.91,44.04,Ahmedabad,Gujarat,44.77,47,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0019,Kakatiya University,43.20,31.10,64.19,50.97,41.71,Hanamkonda,Telangana,44.40,48,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-11091,"Bharati Vidyapeeth College of Pharmacy, Kolhapur",62.61,16.51,60.25,52.00,27.58,Kolhapur,Maharashtra,43.74,49,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-I-1045,R. C. Patel Institute of Pharmaceutical Education & Research,71.18,11.08,65.57,55.60,0.00,Shirpur,Maharashtra,43.34,50,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0747,Chandigarh University,69.64,6.86,53.89,75.79,20.25,Mohali,Punjab,43.33,51,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0724,M.S. Ramaiah University of Applied Sciences,65.15,16.04,50.25,59.62,27.58,Bangalore,Karnataka,43.12,52,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-34531,Y. B. Chavan College of Pharmacy,64.52,13.57,54.11,51.20,36.62,Aurangabad,Maharashtra,43.03,53,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0037,Sri Venkateswara University,48.39,32.37,56.81,51.65,16.03,Tirupati,Andhra Pradesh,42.36,54,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-26907,Raghavendra Institute of Pharmaceuatical Education & Research,62.66,5.15,67.30,56.04,27.58,Anantapur,Andhra Pradesh,42.16,55,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-30858,Goa College of Pharmacy,66.76,4.22,61.09,52.28,33.82,Panaji,Goa,42.13,56,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-10250,Amar Shaheed Baba Ajit Singh Jujhar Singh Memorial College of Pharmacy,60.03,8.18,71.48,62.25,11.34,Bela,Punjab,42.11,57,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0562,"Kumaun University, Nainital",61.06,21.79,56.90,50.41,6.06,Nainital,Uttarakhand,41.89,58,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0513,G. L. A. University,64.29,20.05,51.10,46.50,16.03,Mathura,Uttar Pradesh,41.78,59,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-40354,Acharya & B M Reddy College of Pharmacy,63.50,6.89,67.13,55.05,16.03,Bengaluru,Karnataka,41.66,60,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-19747,Anurag University,61.03,4.95,47.64,63.77,55.81,Hyderabad,Telangana,41.28,61,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-26904,Sri Venkateswara College of Pharmacy,66.16,2.56,70.09,65.60,0.00,Chittoor,Andhra Pradesh,41.20,62,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-10283,"Chandigarh College of Pharmacy, Landran",63.61,13.54,51.26,62.01,11.34,Landran,Punjab,40.72,63,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-45540,PSG College of Pharmacy,57.28,9.66,51.26,52.31,48.34,Coimbatore,Tamil Nadu,40.40,64,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-33814,Bharati Vidyapeeth's College of Pharmacy,65.95,11.13,44.32,51.86,30.82,Navi Mumbai,Maharashtra,40.26,65,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-44200,C.U. Shah College of Pharmacy,64.43,5.13,55.98,52.96,27.58,Mumbai,Maharashtra,40.13,66,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0413,Mohan Lal Sukhadia University,64.44,14.95,53.91,52.13,0.00,Udaipur,Rajasthan,39.80,67,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0502,Bundelkhand University,65.24,11.09,60.24,46.61,0.00,Jhansi,Uttar Pradesh,39.61,68,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-S-10906,Guru Nanak Institute of Pharmaceutical Science & Technology,63.11,2.72,68.60,48.65,11.34,Kolkata,West Bengal,39.47,69,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-39486,Chalapathi Institute of Pharmaceutical Sciences,64.14,5.47,67.04,51.81,0.00,Guntur,Andhra Pradesh,39.47,69,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0093,Pt. Ravishankar Shukla University,46.84,23.24,65.17,46.66,6.06,Raipur,Chhattisgarh,39.33,71,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-U-0401,Jaipur National University,50.72,27.44,51.75,49.04,0.00,Jaipur,Rajasthan,38.70,72,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-19613,Vishnu Institute of Pharmaceutical Education and Research,60.18,1.64,46.90,53.74,54.07,Narsapur,Telangana,38.70,72,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-45528,KMCH College of Pharmacy,65.27,2.43,52.81,57.84,20.25,Coimbatore,Tamil Nadu,38.67,74,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html
+2021,Pharmacy,IR-P-C-40080,Sri Adichunchanagiri College of Pharmacy,64.78,1.03,59.18,58.66,11.34,B.G Nagara,Karnataka,38.58,75,https://www.nirfindia.org/Rankings/2021/PharmacyRanking.html

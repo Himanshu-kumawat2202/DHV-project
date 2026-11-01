@@ -1,0 +1,51 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2022,Medical,IR-D-N-15,"All India Institute of Medical Sciences, Delhi",86.49,95.39,99.32,71.73,100.00,New Delhi,Delhi,91.60,1,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0079,Post Graduate Institute of Medical Education and Research,78.62,83.18,85.34,62.15,71.78,Chandigarh,Chandigarh,79.00,2,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-45654,Christian Medical College,82.87,49.63,89.24,61.11,91.28,Vellore,Tamil Nadu,72.84,3,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0236,"National Institute of Mental Health & Neuro Sciences, Bangalore",80.24,58.42,82.08,68.31,67.07,Bangalore,Karnataka,71.56,4,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0500,Banaras Hindu University,76.26,56.26,85.92,66.23,45.55,Varanasi,Uttar Pradesh,68.12,5,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0368,Jawaharlal Institute of Post Graduate Medical Education & Research,74.03,43.78,87.94,67.75,79.27,Puducherry,Pondicherry,67.64,6,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-N-33,Sanjay Gandhi Postgraduate Institute of Medical Sciences,80.93,56.03,82.39,53.73,42.35,Lucknow,Uttar Pradesh,67.18,7,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0436,Amrita Vishwa Vidyapeetham,73.68,49.16,85.71,74.87,50.13,Coimbatore,Tamil Nadu,66.49,8,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0266,"Sree Chitra Tirunal Institute for Medical Sciences and Technology, Thiruvananthapuram",74.58,53.01,79.08,59.46,51.30,Thiruvananthapuram,Kerala,65.17,9,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-7242,"Kasturba Medical College, Manipal",70.89,44.86,77.73,72.26,63.79,Manipal,Karnataka,63.89,10,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0523,King George`s Medical University,73.70,43.36,81.01,55.52,48.11,Lucknow,Uttar Pradesh,61.68,11,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-49008,"Madras Medical College & Government General Hospital, Chennai",77.56,16.32,95.21,61.45,73.62,Chennai,Tamil Nadu,60.71,12,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0106,Institute of Liver and Biliary Sciences,82.83,36.37,68.72,61.27,31.57,New Delhi,Delhi,58.79,13,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-40453,St. John's Medical College,74.15,32.14,78.99,66.73,41.39,Bengaluru,Karnataka,58.49,14,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-I-1486,Sri Ramachandra Institute of Higher Education and Research,72.41,28.47,81.89,68.64,44.21,Chennai,Tamil Nadu,57.92,15,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0689,All India Institute of Medical Sciences Jodhpur,75.05,43.52,69.28,60.75,19.54,Jodhpur,Rajasthan,57.47,16,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-I-1110,Dr. D. Y. Patil Vidyapeeth,72.02,34.64,77.56,69.43,29.69,Pune,Maharashtra,57.41,17,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0363,Siksha `O` Anusandhan,71.50,35.39,75.31,68.58,32.18,Bhubaneswar,Odisha,57.21,18,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-32922,Vardhman Mahavir Medical College & Safdarjung Hospital,78.21,29.50,84.67,57.23,21.93,New Delhi,Delhi,57.15,19,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0473,S.R.M. Institute of Science and Technology,72.43,37.27,72.06,65.14,32.18,Chennai,Tamil Nadu,57.05,20,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-16428,Institute of Post Graduate Medical Education & Research,72.52,27.51,86.61,53.73,43.29,Kolkata,West Bengal,57.02,21,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0496,Aligarh Muslim University,70.15,36.49,81.64,59.97,18.71,Aligarh,Uttar Pradesh,56.19,22,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-6414,Maulana Azad Medical College,69.28,27.71,84.53,54.59,44.66,Delhi,Delhi,55.94,23,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0295,Datta Meghe Institute of Medical Sciences,72.33,37.29,73.86,71.70,3.76,Wardha,Maharashtra,55.21,24,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-I-1441,Saveetha Institute of Medical and Technical Sciences,70.74,46.82,56.89,64.77,16.12,Chennai,Tamil Nadu,54.73,25,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0688,All India Institute of Medical Sciences Bhubaneswar,71.39,27.80,68.46,66.25,46.42,Khordha,Odisha,54.71,26,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-29442,Govt. Medical College & Hospital,71.92,28.64,76.17,57.87,28.38,Chandigarh,Chandigarh,54.02,27,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-I-1409,University College of Medical Sciences,70.52,31.36,69.72,55.45,35.67,Delhi,Delhi,53.62,28,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-22461,Lady Hardinge Medical College,74.77,23.61,71.12,54.30,42.83,New Delhi,Delhi,53.44,29,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0356,Kalinga Institute of Industrial Technology,72.57,24.98,70.50,72.68,24.19,Bhubaneswar,Odisha,53.05,30,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-7251,"Kasturba Medical College, Mangalore",70.73,23.27,70.63,71.59,33.38,Mangaluru,Karnataka,52.83,31,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0168,Maharishi Markandeshwar,71.10,27.73,76.63,65.91,12.39,Ambala,Haryana,52.81,32,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0107,Jamia Hamdard,64.28,45.80,55.44,58.42,25.64,New Delhi,Delhi,52.51,33,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-35009,"JSS Medical College, Mysore",71.42,15.07,77.96,70.93,38.37,Mysore,Karnataka,52.47,34,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-45515,"PSG Institute of Medical Sciences & Research, Coimbatore",72.89,13.89,73.67,59.27,57.35,Coimbatore,Tamil Nadu,52.44,35,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-29209,"Christian Medical College, Ludhiana",71.78,18.80,75.58,64.37,31.57,Ludhiana,Punjab,51.89,36,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-5838,Gujarat Cancer & Research Institute,82.54,14.49,76.57,57.29,7.21,Ahmadabad,Gujarat,50.87,37,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-40345,M. S. Ramaiah Medical College,74.38,12.46,75.78,59.18,35.67,Bengaluru,Karnataka,50.70,38,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0451,Chettinad Academy of Research and Education,72.41,16.67,72.98,63.28,27.03,"Kelambakkam, Chengalpattu District",Tamil Nadu,50.35,39,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-29255,Dayanand Medical College,75.77,18.45,77.99,52.13,12.39,Ludhiana,Punjab,50.32,40,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-N-17,Sawai Man Singh Medical College,71.58,15.42,88.28,52.32,9.36,Jaipur,Rajasthan,49.93,41,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0311,"Krishna Institute of Medical Sciences Deemed University, Karad",71.35,27.23,67.09,62.66,4.94,Karad,Maharashtra,49.76,42,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-16424,Medical College,62.99,16.10,84.80,45.74,44.66,Kolkata,West Bengal,49.73,43,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-N-0158,SCB Medical College and Hospital,69.52,11.63,87.22,46.66,25.64,Cuttack,Odisha,49.02,44,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0321,"Padmashree Dr. D. Y. Patil Vidyapeeth, Mumbai",73.55,10.20,77.14,69.86,10.39,Mumbai,Maharashtra,48.59,45,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-9435,Regional Institute of Medical Sciences,71.27,9.15,76.26,68.91,19.54,Imphal West,Manipur,48.21,46,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-47762,Mahatma Gandhi Medical College and Research Institute,70.94,14.10,65.17,80.78,14.29,Puducherry,Pondicherry,48.05,47,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0691,"All India Institute of Medical Sciences, Rishikesh",69.61,30.21,52.47,49.17,26.34,Rishikesh,Uttarakhand,47.98,48,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-U-0690,"All India Institute of Medical Sciences, Raipur",74.76,20.99,50.79,71.22,14.29,Raipur,Chhattisgarh,47.44,49,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
+2022,Medical,IR-D-C-6051,B. J. Medical College,68.69,6.07,89.26,46.39,16.12,Ahmadabad,Gujarat,46.53,50,https://www.nirfindia.org/Rankings/2022/MedicalRanking.html
