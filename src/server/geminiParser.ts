@@ -95,7 +95,7 @@ export async function parseQueryWithGemini(
     const promptText = `${formattedHistory ? `Recent conversation context:\n${formattedHistory}\n\n` : ''}User Question: "${query}"\n\nConvert into JSON:`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.8-flash',
       contents: promptText,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
