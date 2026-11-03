@@ -23,10 +23,10 @@ function aiQueryPlugin(): Plugin {
           try {
             const { query, history } = JSON.parse(body || '{}');
             const { parseQueryWithGemini } = await import('./src/server/geminiParser.ts');
-            const parsedQuery = await parseQueryWithGemini(query, history);
+            const result = await parseQueryWithGemini(query, history);
             res.setHeader('Content-Type', 'application/json');
             res.statusCode = 200;
-            res.end(JSON.stringify({ parsedQuery }));
+            res.end(JSON.stringify(result));
           } catch (err: unknown) {
             res.setHeader('Content-Type', 'application/json');
             res.statusCode = 500;

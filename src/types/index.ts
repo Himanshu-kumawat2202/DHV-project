@@ -131,8 +131,8 @@ export interface CalculationDetails {
 
 export interface AIQueryResponse {
   answer: string;
-  explanation: string;
-  dataSummary: Record<string, any>;
+  explanation?: string;
+  dataSummary?: Record<string, any>;
   chartType?: 'bar' | 'line' | 'scatter' | 'radar';
   chartData?: any[];
   chartConfig?: {
@@ -142,6 +142,8 @@ export interface AIQueryResponse {
   };
   calculationDetails?: CalculationDetails;
   isOutOfScope?: boolean;
+  isDatasetQuery?: boolean;
+  isError?: boolean;
   targetPage?: PageId;
   targetFilters?: Partial<FilterState>;
 }

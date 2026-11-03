@@ -11,10 +11,16 @@ import {
   BarChart,
   HelpCircle,
   ExternalLink,
+  Calculator,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import {
   BarChart as RechartsBarChart,
   Bar,
+  LineChart,
+  Line,
+  CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
@@ -44,6 +50,7 @@ export const AIAssistantPanel: React.FC = () => {
   } = useApp();
 
   const [inputVal, setInputVal] = useState('');
+  const [expandedCalcId, setExpandedCalcId] = useState<string | null>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -144,8 +151,8 @@ export const AIAssistantPanel: React.FC = () => {
                       >
                         <p className="font-medium leading-relaxed">{msg.text}</p>
 
-                        {/* Structured AI Payload */}
-                        {msg.responsePayload && (
+                        {/* Structured AI Payload - Only render if not out-of-scope */}
+                        {msg.responsePayload && !msg.responsePayload.isOutOfScope && (
                           <div className="pt-2 border-t border-slate-100 space-y-3">
                             {/* Explanation */}
                             {msg.responsePayload.explanation && (
@@ -154,8 +161,8 @@ export const AIAssistantPanel: React.FC = () => {
                               </p>
                             )}
 
-                            {/* Data Summary Grid */}
-                            {msg.responsePayload.dataSummary && (
+                            {/* Data Summary Grid - only shown if user explicitly asked about the dataset */}
+                            {msg.responsePayload.isDatasetQuery && msg.responsePayload.dataSummary && (
                               <div className="grid grid-cols-2 gap-1.5 bg-blue-50/50 p-2 rounded-xl border border-blue-100">
                                 {Object.entries(msg.responsePayload.dataSummary).map(([key, val]) => (
                                   <div key={key} className="text-[10px]">
@@ -166,7 +173,7 @@ export const AIAssistantPanel: React.FC = () => {
                               </div>
                             )}
 
-                            {/* Mini Embedded Visualization */}
+                            {/* Mini Embedded Visualization - only shown when question needs one */}
                             {msg.responsePayload.chartType && msg.responsePayload.chartData && (
                               <div className="bg-white p-2.5 rounded-xl border border-slate-200">
                                 <span className="text-[10px] font-bold text-slate-700 block mb-1.5">
@@ -179,8 +186,28 @@ export const AIAssistantPanel: React.FC = () => {
                                         <XAxis dataKey="name" tick={{ fontSize: 9 }} interval={0} />
                                         <YAxis tick={{ fontSize: 9 }} width={25} />
                                         <Tooltip contentStyle={{ fontSize: 10, borderRadius: 8 }} />
-                                        <Bar dataKey={msg.responsePayload.chartConfig?.yKeys[0] || 'Rank Improvement'} fill="#2459D3" radius={[4, 4, 0, 0]} />
+                                        <Bar dataKey={msg.responsePayload.chartConfig?.yKeys[0] || 'Score'} fill="#2459D3" radius={[4, 4, 0, 0]} />
                                       </RechartsBarChart>
+                                    </ResponsiveContainer>
+                                  )}
+                                  {msg.responsePayload.chartType === 'line' && (
+                                    <ResponsiveContainer width="100%" height="100%">
+                                      <LineChart data={msg.responsePayload.chartData}>
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                                        <XAxis dataKey="year" tick={{ fontSize: 9 }} />
+                                        <YAxis tick={{ fontSize: 9 }} domain={['auto', 'auto']} width={30} />
+                                        <Tooltip contentStyle={{ fontSize: 10, borderRadius: 8 }} />
+                                        {(msg.responsePayload.chartConfig?.yKeys || ['Score']).map((key, kIdx) => (
+                                          <Line
+                                            key={key}
+                                            type="monotone"
+                                            dataKey={key}
+                                            stroke={kIdx === 0 ? '#2459D3' : '#F59E0B'}
+                                            strokeWidth={2}
+                                            dot={{ r: 3 }}
+                                          />
+                                        ))}
+                                      </LineChart>
                                     </ResponsiveContainer>
                                   )}
                                   {msg.responsePayload.chartType === 'radar' && (
@@ -189,8 +216,16 @@ export const AIAssistantPanel: React.FC = () => {
                                         <PolarGrid />
                                         <PolarAngleAxis dataKey="parameter" tick={{ fontSize: 9 }} />
                                         <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fontSize: 8 }} />
-                                        <Radar name="IIT Bombay" dataKey="IIT Bombay" stroke="#2459D3" fill="#2459D3" fillOpacity={0.4} />
-                                        <Radar name="IIT Delhi" dataKey="IIT Delhi" stroke="#6475D9" fill="#6475D9" fillOpacity={0.4} />
+                                        {(msg.responsePayload.chartConfig?.yKeys || ['Score']).map((k, idx) => (
+                                          <Radar
+                                            key={k}
+                                            name={k}
+                                            dataKey={k}
+                                            stroke={idx === 0 ? '#2459D3' : '#6475D9'}
+                                            fill={idx === 0 ? '#2459D3' : '#6475D9'}
+                                            fillOpacity={0.3}
+                                          />
+                                        ))}
                                         <Tooltip contentStyle={{ fontSize: 10, borderRadius: 8 }} />
                                       </RadarChart>
                                     </ResponsiveContainer>
@@ -198,7 +233,7 @@ export const AIAssistantPanel: React.FC = () => {
                                   {msg.responsePayload.chartType === 'scatter' && (
                                     <ResponsiveContainer width="100%" height="100%">
                                       <ScatterChart margin={{ top: 5, right: 5, bottom: 5, left: -10 }}>
-                                        <XAxis dataKey="RPC" name="RPC" tick={{ fontSize: 9 }} />
+                                        <XAxis dataKey={msg.responsePayload.chartConfig?.xKey || 'TLR'} name={msg.responsePayload.chartConfig?.xKey || 'TLR'} tick={{ fontSize: 9 }} />
                                         <YAxis dataKey="Overall Score" name="Score" tick={{ fontSize: 9 }} domain={[40, 100]} />
                                         <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ fontSize: 10, borderRadius: 8 }} />
                                         <Scatter name="Institutions" data={msg.responsePayload.chartData} fill="#2459D3" />
@@ -209,25 +244,49 @@ export const AIAssistantPanel: React.FC = () => {
                               </div>
                             )}
 
-                            {/* Direct Navigation Button to analytical page */}
-                            {msg.responsePayload.targetPage && (
-                              <button
-                                onClick={() => {
-                                  if (msg.responsePayload?.targetPage) {
-                                    setCurrentPage(msg.responsePayload.targetPage);
-                                  }
-                                  if (msg.responsePayload?.targetFilters) {
-                                    Object.entries(msg.responsePayload.targetFilters).forEach(([k, v]) => {
-                                      updateFilter(k as any, v);
-                                    });
-                                  }
-                                  setIsAIPanelOpen(false);
-                                }}
-                                className="w-full py-1.5 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition-colors border border-blue-200/60"
-                              >
-                                <span>Explore in {msg.responsePayload.targetPage.replace('-', ' ')}</span>
-                                <ExternalLink className="w-3.5 h-3.5" />
-                              </button>
+                            {/* Show how this was calculated Toggle */}
+                            {msg.responsePayload.calculationDetails && (
+                              <div className="border border-slate-200/90 rounded-xl overflow-hidden bg-slate-50/50">
+                                <button
+                                  type="button"
+                                  onClick={() => setExpandedCalcId(expandedCalcId === msg.id ? null : msg.id)}
+                                  className="w-full flex items-center justify-between px-2.5 py-1.5 text-[10px] font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 transition-colors"
+                                >
+                                  <span className="flex items-center gap-1.5">
+                                    <Calculator className="w-3 h-3 text-blue-600" />
+                                    Show how this was calculated
+                                  </span>
+                                  {expandedCalcId === msg.id ? (
+                                    <ChevronUp className="w-3.5 h-3.5" />
+                                  ) : (
+                                    <ChevronDown className="w-3.5 h-3.5" />
+                                  )}
+                                </button>
+                                {expandedCalcId === msg.id && (
+                                  <div className="p-2.5 text-[10px] space-y-2 bg-white border-t border-slate-200">
+                                    <div>
+                                      <span className="text-slate-400 font-bold block uppercase tracking-wider text-[9px]">
+                                        Formula / Method:
+                                      </span>
+                                      <p className="font-mono text-slate-800 bg-slate-50 p-1.5 rounded border border-slate-100 mt-0.5 break-words">
+                                        {msg.responsePayload.calculationDetails.formula}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <span className="text-slate-400 font-bold block uppercase tracking-wider text-[9px]">
+                                        Filters Applied:
+                                      </span>
+                                      <p className="text-slate-700 mt-0.5">
+                                        {msg.responsePayload.calculationDetails.filtersApplied}
+                                      </p>
+                                    </div>
+                                    <div className="flex items-center justify-between text-slate-500 pt-1 border-t border-slate-100 text-[9px]">
+                                      <span>Sample Size: <strong className="text-slate-700">{msg.responsePayload.calculationDetails.sampleSize}</strong></span>
+                                      <span>Source: <strong className="text-slate-700">{msg.responsePayload.calculationDetails.sourceDataset}</strong></span>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
                             )}
                           </div>
                         )}

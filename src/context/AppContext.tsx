@@ -235,7 +235,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setIsAILoading(true);
 
     try {
-      const responsePayload = await processAIQuery(query);
+      const responsePayload = await processAIQuery(query, chatMessages);
       const aiMsg: ChatMessage = {
         id: `ai-${Date.now()}`,
         sender: 'ai',
