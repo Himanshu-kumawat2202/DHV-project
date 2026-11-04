@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   AlertTriangle,
   Sliders,
   Sparkles,
   HelpCircle,
   TrendingUp,
+  TrendingDown,
   BarChart2,
   Info,
   CheckCircle,
@@ -94,31 +95,72 @@ export const OutlierDetection: React.FC = () => {
     .filter((d) => d.zScore >= zThreshold || d.diff > 20)
     .sort((a, b) => b.diff - a.diff);
 
-  // Q3: Unusually large year-to-year score change (Score Delta spike from 2024 to 2025)
-  const scoreChangeList = records.map((r) => {
-    const inst = INSTITUTIONS.find((i) => i.institution_id === r.institution_id);
-    const prevRec = RANKINGS.find((p) => p.institution_id === r.institution_id && p.year === activeYear - 1);
-    if (!prevRec) return null;
-    const delta = Number((r.overall_score - prevRec.overall_score).toFixed(2));
-    return {
-      id: r.institution_id,
-      name: inst?.short_name || r.institution_id,
-      state: inst?.state,
-      prevScore: prevRec.overall_score,
-      currScore: r.overall_score,
-      delta,
-      absDelta: Math.abs(delta),
-    };
-  }).filter((x): x is NonNullable<typeof x> => x !== null);
+  // Q3: Unusually large year-to-year score change (Score Delta Transitions)
+  const allScoreTransitions = useMemo(() => {
+    const rankMap = new Map<string, (typeof RANKINGS)[0]>();
+    for (const r of RANKINGS) {
+      rankMap.set(`${r.institution_id}_${r.category}_${r.year}`, r);
+    }
 
-  const deltaStats = calculateStatsSummary(scoreChangeList.map((d) => d.delta));
-  const q3DeltaOutliers = scoreChangeList
-    .map((d) => ({
-      ...d,
-      zScore: calculateZScore(d.delta, deltaStats.mean, deltaStats.stdDev),
-    }))
-    .filter((d) => Math.abs(d.zScore) >= zThreshold || d.absDelta >= 3.5)
-    .sort((a, b) => b.absDelta - a.absDelta);
+    const list: Array<{
+      id: string;
+      name: string;
+      fullName: string;
+      category: string;
+      years: string;
+      year: number;
+      rank: number;
+      prevScore: number;
+      currScore: number;
+      delta: number;
+    }> = [];
+
+    for (const r of RANKINGS) {
+      if (filters.category !== 'All' && r.category !== filters.category) {
+        continue;
+      }
+      const prev = rankMap.get(`${r.institution_id}_${r.category}_${r.year - 1}`);
+      if (!prev) continue;
+
+      const inst = INSTITUTIONS.find((i) => i.institution_id === r.institution_id);
+      const fullName = inst?.institution_name || r.institution_id;
+      const shortName = inst?.short_name || fullName;
+      const delta = Number((r.overall_score - prev.overall_score).toFixed(2));
+
+      list.push({
+        id: r.institution_id,
+        name: shortName,
+        fullName,
+        category: r.category,
+        years: `${r.year - 1} → ${r.year}`,
+        year: r.year,
+        rank: r.rank,
+        prevScore: prev.overall_score,
+        currScore: r.overall_score,
+        delta,
+      });
+    }
+
+    return list;
+  }, [filters.category]);
+
+  const [cycleView, setCycleView] = useState<'all' | 'active'>('all');
+
+  const filteredTransitions = cycleView === 'active'
+    ? allScoreTransitions.filter((t) => t.year === activeYear)
+    : allScoreTransitions;
+
+  const largestIncreases = useMemo(() => {
+    return [...filteredTransitions]
+      .filter((d) => d.delta > 0)
+      .sort((a, b) => b.delta - a.delta);
+  }, [filteredTransitions]);
+
+  const largestDecreases = useMemo(() => {
+    return [...filteredTransitions]
+      .filter((d) => d.delta < 0)
+      .sort((a, b) => a.delta - b.delta);
+  }, [filteredTransitions]);
 
   // Q4: Strong Parameter Score but Relatively Poor Overall Rank
   // e.g. RPC >= 65 or TLR >= 65, but Overall Rank >= 25
@@ -276,95 +318,276 @@ export const OutlierDetection: React.FC = () => {
         </div>
       </div>
 
-      {/* QUESTION 2 & 3: Research vs Teaching Disparity & Annual Change Spikes */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Q2: Research vs Teaching Disparity */}
-        <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-3">
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 text-[10px] font-bold">
-              Question 2
-            </span>
-            <h3 className="text-sm font-bold text-slate-900">
-              Substantially Higher Research than Teaching (RPC - TLR &gt; 20)
-            </h3>
-          </div>
-          <p className="text-xs text-slate-500">
-            Institutions heavily prioritized on laboratory research, scientific patents, and doctoral output
-          </p>
+      {/* QUESTION 2: Research vs Teaching Disparity */}
+      <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-3">
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 text-[10px] font-bold">
+            Question 2
+          </span>
+          <h3 className="text-sm font-bold text-slate-900">
+            Substantially Higher Research than Teaching (RPC - TLR &gt; 20)
+          </h3>
+        </div>
+        <p className="text-xs text-slate-500">
+          Institutions heavily prioritized on laboratory research, scientific patents, and doctoral output
+        </p>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs text-left">
-              <thead>
-                <tr className="border-b border-slate-100 text-[11px] font-semibold text-slate-400">
-                  <th className="pb-2">Institution</th>
-                  <th className="pb-2 text-center">Rank</th>
-                  <th className="pb-2 text-center font-bold text-purple-700">RPC</th>
-                  <th className="pb-2 text-center font-bold text-emerald-700">TLR</th>
-                  <th className="pb-2 text-right">Disparity Gap</th>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs text-left">
+            <thead>
+              <tr className="border-b border-slate-100 text-[11px] font-semibold text-slate-400">
+                <th className="pb-2">Institution</th>
+                <th className="pb-2 text-center">Rank</th>
+                <th className="pb-2 text-center font-bold text-purple-700">RPC</th>
+                <th className="pb-2 text-center font-bold text-emerald-700">TLR</th>
+                <th className="pb-2 text-right">Disparity Gap</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {q2DisparityOutliers.map((item) => (
+                <tr
+                  key={item.id}
+                  onClick={() => setInspectInstitutionId(item.id)}
+                  className="hover:bg-slate-50 cursor-pointer"
+                >
+                  <td className="py-2.5 font-bold text-slate-800">{item.name}</td>
+                  <td className="py-2.5 text-center text-slate-500">#{item.rank}</td>
+                  <td className="py-2.5 text-center font-black text-purple-700">{item.RPC}</td>
+                  <td className="py-2.5 text-center text-slate-600">{item.TLR}</td>
+                  <td className="py-2.5 text-right font-extrabold text-blue-700">
+                    +{item.diff} pts
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {q2DisparityOutliers.map((item) => (
-                  <tr
-                    key={item.id}
-                    onClick={() => setInspectInstitutionId(item.id)}
-                    className="hover:bg-slate-50 cursor-pointer"
-                  >
-                    <td className="py-2.5 font-bold text-slate-800">{item.name}</td>
-                    <td className="py-2.5 text-center text-slate-500">#{item.rank}</td>
-                    <td className="py-2.5 text-center font-black text-purple-700">{item.RPC}</td>
-                    <td className="py-2.5 text-center text-slate-600">{item.TLR}</td>
-                    <td className="py-2.5 text-right font-extrabold text-blue-700">
-                      +{item.diff} pts
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* QUESTION 3: Year-to-Year Score Variations (Largest Increases and Decreases) */}
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-5 rounded-3xl border border-slate-200 shadow-2xs">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 rounded-md bg-rose-100 text-rose-800 text-[10px] font-bold">
+                Question 3
+              </span>
+              <h3 className="text-sm font-bold text-slate-900">
+                Unusually Large Year-to-Year Score Variations (Score Delta Outliers)
+              </h3>
+            </div>
+            <p className="text-xs text-slate-500 mt-1">
+              Institutions experiencing sudden performance leaps or contractions exceeding typical cohort drift.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 self-start sm:self-auto text-xs">
+            <span className="text-[11px] font-semibold text-slate-500">Cycles:</span>
+            <div className="inline-flex rounded-xl bg-slate-100 p-0.5 border border-slate-200">
+              <button
+                type="button"
+                onClick={() => setCycleView('all')}
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all ${
+                  cycleView === 'all'
+                    ? 'bg-white text-slate-900 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                All Cycles (2017–2025)
+              </button>
+              <button
+                type="button"
+                onClick={() => setCycleView('active')}
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all ${
+                  cycleView === 'active'
+                    ? 'bg-white text-slate-900 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                {activeYear - 1} → {activeYear} Only
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Q3: Year-to-Year Score Variation Outliers */}
-        <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-3">
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-md bg-rose-100 text-rose-800 text-[10px] font-bold">
-              Question 3
-            </span>
-            <h3 className="text-sm font-bold text-slate-900">
-              Unusually Large Year-to-Year Score Variations ({activeYear - 1} → {activeYear})
-            </h3>
-          </div>
-          <p className="text-xs text-slate-500">
-            Institutions experiencing sudden performance leaps or contractions exceeding typical cohort drift
-          </p>
+        {/* Two Ranked Lists: Largest Increases & Largest Decreases */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          {/* List 1: Largest Increases */}
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-3 flex flex-col">
+            <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900">Largest Score Increases</h4>
+                  <p className="text-[11px] text-slate-500">Top positive year-to-year performance accelerations</p>
+                </div>
+              </div>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                {largestIncreases.length} records
+              </span>
+            </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs text-left">
-              <thead>
-                <tr className="border-b border-slate-100 text-[11px] font-semibold text-slate-400">
-                  <th className="pb-2">Institution</th>
-                  <th className="pb-2 text-center">{activeYear - 1}</th>
-                  <th className="pb-2 text-center">{activeYear}</th>
-                  <th className="pb-2 text-right">1-Yr Delta</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {q3DeltaOutliers.map((item) => (
-                  <tr
-                    key={item.id}
-                    onClick={() => setInspectInstitutionId(item.id)}
-                    className="hover:bg-slate-50 cursor-pointer"
-                  >
-                    <td className="py-2.5 font-bold text-slate-800">{item.name}</td>
-                    <td className="py-2.5 text-center text-slate-500">{item.prevScore}</td>
-                    <td className="py-2.5 text-center font-bold text-slate-800">{item.currScore}</td>
-                    <td className="py-2.5 text-right font-black text-blue-700">
-                      {item.delta > 0 ? `+${item.delta}` : item.delta} pts
-                    </td>
+            <div className="overflow-x-auto overflow-y-auto max-h-[440px] rounded-2xl border border-slate-200/80 scrollbar-thin flex-1">
+              <table className="w-full text-xs text-left border-collapse min-w-[680px]">
+                <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-xs z-10 shadow-2xs">
+                  <tr className="border-b border-slate-200 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                    <th className="py-2.5 px-3 text-left min-w-[190px]">Institution</th>
+                    <th className="py-2.5 px-3 text-left w-24 min-w-[85px]">Category</th>
+                    <th className="py-2.5 px-3 text-center w-28 min-w-[100px]">Year(s)</th>
+                    <th className="py-2.5 px-3 text-right w-16 min-w-[60px]">Rank</th>
+                    <th className="py-2.5 px-3 text-right w-24 min-w-[90px]">Previous Score</th>
+                    <th className="py-2.5 px-3 text-right w-24 min-w-[90px]">Current Score</th>
+                    <th className="py-2.5 px-3 text-right w-28 min-w-[105px]">Change</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-slate-100 bg-white">
+                  {largestIncreases.map((item) => (
+                    <tr
+                      key={`${item.id}-${item.category}-${item.years}-${item.rank}`}
+                      onClick={() => setInspectInstitutionId(item.id)}
+                      className="h-14 hover:bg-emerald-50/40 cursor-pointer transition-colors"
+                    >
+                      <td className="py-2 px-3 align-middle min-w-[190px]">
+                        <div className="flex flex-col min-w-0 pr-2">
+                          <span
+                            className="font-bold text-slate-900 text-xs line-clamp-2 leading-snug cursor-pointer hover:text-emerald-700 transition-colors"
+                            style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+                            title={item.fullName}
+                          >
+                            {item.fullName}
+                          </span>
+                          <span className="text-[10px] text-slate-400 font-medium flex items-center gap-1.5 mt-0.5">
+                            <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 font-semibold">{item.category}</span>
+                            <span>•</span>
+                            <span className="text-slate-500 font-mono">{item.years}</span>
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-2 px-3 align-middle w-24 min-w-[85px]">
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 text-slate-700 whitespace-nowrap">
+                          {item.category}
+                        </span>
+                      </td>
+                      <td className="py-2 px-3 align-middle text-center w-28 min-w-[100px]">
+                        <span className="font-mono text-[11px] text-slate-600 whitespace-nowrap">
+                          {item.years}
+                        </span>
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-16 min-w-[60px] font-medium text-slate-500 tabular-nums">
+                        #{item.rank}
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-24 min-w-[90px] font-mono text-slate-600 tabular-nums">
+                        {item.prevScore.toFixed(2)}
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-24 min-w-[90px] font-mono font-semibold text-slate-900 tabular-nums">
+                        {item.currScore.toFixed(2)}
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-28 min-w-[105px] font-mono font-bold whitespace-nowrap tabular-nums text-emerald-600">
+                        +{item.delta.toFixed(2)} pts
+                      </td>
+                    </tr>
+                  ))}
+                  {largestIncreases.length === 0 && (
+                    <tr>
+                      <td colSpan={7} className="text-center py-8 text-xs text-slate-400 italic">
+                        No positive score deltas recorded for the active filters.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* List 2: Largest Decreases */}
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-3 flex flex-col">
+            <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0">
+                  <TrendingDown className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900">Largest Score Decreases</h4>
+                  <p className="text-[11px] text-slate-500">Top negative year-to-year score contractions</p>
+                </div>
+              </div>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-50 text-rose-700 border border-rose-200/60">
+                {largestDecreases.length} records
+              </span>
+            </div>
+
+            <div className="overflow-x-auto overflow-y-auto max-h-[440px] rounded-2xl border border-slate-200/80 scrollbar-thin flex-1">
+              <table className="w-full text-xs text-left border-collapse min-w-[680px]">
+                <thead className="sticky top-0 bg-slate-50/95 backdrop-blur-xs z-10 shadow-2xs">
+                  <tr className="border-b border-slate-200 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                    <th className="py-2.5 px-3 text-left min-w-[190px]">Institution</th>
+                    <th className="py-2.5 px-3 text-left w-24 min-w-[85px]">Category</th>
+                    <th className="py-2.5 px-3 text-center w-28 min-w-[100px]">Year(s)</th>
+                    <th className="py-2.5 px-3 text-right w-16 min-w-[60px]">Rank</th>
+                    <th className="py-2.5 px-3 text-right w-24 min-w-[90px]">Previous Score</th>
+                    <th className="py-2.5 px-3 text-right w-24 min-w-[90px]">Current Score</th>
+                    <th className="py-2.5 px-3 text-right w-28 min-w-[105px]">Change</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 bg-white">
+                  {largestDecreases.map((item) => (
+                    <tr
+                      key={`${item.id}-${item.category}-${item.years}-${item.rank}`}
+                      onClick={() => setInspectInstitutionId(item.id)}
+                      className="h-14 hover:bg-rose-50/40 cursor-pointer transition-colors"
+                    >
+                      <td className="py-2 px-3 align-middle min-w-[190px]">
+                        <div className="flex flex-col min-w-0 pr-2">
+                          <span
+                            className="font-bold text-slate-900 text-xs line-clamp-2 leading-snug cursor-pointer hover:text-rose-700 transition-colors"
+                            style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+                            title={item.fullName}
+                          >
+                            {item.fullName}
+                          </span>
+                          <span className="text-[10px] text-slate-400 font-medium flex items-center gap-1.5 mt-0.5">
+                            <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 font-semibold">{item.category}</span>
+                            <span>•</span>
+                            <span className="text-slate-500 font-mono">{item.years}</span>
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-2 px-3 align-middle w-24 min-w-[85px]">
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 text-slate-700 whitespace-nowrap">
+                          {item.category}
+                        </span>
+                      </td>
+                      <td className="py-2 px-3 align-middle text-center w-28 min-w-[100px]">
+                        <span className="font-mono text-[11px] text-slate-600 whitespace-nowrap">
+                          {item.years}
+                        </span>
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-16 min-w-[60px] font-medium text-slate-500 tabular-nums">
+                        #{item.rank}
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-24 min-w-[90px] font-mono text-slate-600 tabular-nums">
+                        {item.prevScore.toFixed(2)}
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-24 min-w-[90px] font-mono font-semibold text-slate-900 tabular-nums">
+                        {item.currScore.toFixed(2)}
+                      </td>
+                      <td className="py-2 px-3 align-middle text-right w-28 min-w-[105px] font-mono font-bold whitespace-nowrap tabular-nums text-rose-600">
+                        {item.delta.toFixed(2)} pts
+                      </td>
+                    </tr>
+                  ))}
+                  {largestDecreases.length === 0 && (
+                    <tr>
+                      <td colSpan={7} className="text-center py-8 text-xs text-slate-400 italic">
+                        No negative score deltas recorded for the active filters.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

@@ -103,41 +103,66 @@ export const InteractiveIndiaMap: React.FC<InteractiveIndiaMapProps> = ({
         className="w-full h-full max-h-[440px] drop-shadow-sm transition-all"
       >
         <g>
-          {INDIA_STATES.map((state) => {
-            const data = stateDataMap[state.name];
-            const isHovered = hoveredState === state.name;
-            const isSelected =
-              selectedState === state.name ||
-              (filters.state !== 'All' && filters.state === state.name);
+          {/* Render states sorted so hovered / selected state appears on top */}
+          {[...INDIA_STATES]
+            .sort((a, b) => {
+              const aActive =
+                hoveredState === a.name ||
+                selectedState === a.name ||
+                filters.state === a.name;
+              const bActive =
+                hoveredState === b.name ||
+                selectedState === b.name ||
+                filters.state === b.name;
+              if (aActive && !bActive) return 1;
+              if (!aActive && bActive) return -1;
+              return 0;
+            })
+            .map((state) => {
+              const isHovered = hoveredState === state.name;
+              const isSelected =
+                selectedState === state.name ||
+                (filters.state !== 'All' && filters.state === state.name);
 
-            return (
-              <path
-                key={state.id}
-                d={state.path}
-                fill={getColor(state.name)}
-                stroke={isSelected ? '#172554' : '#FFFFFF'}
-                strokeWidth={isSelected ? 3 : isHovered ? 2.5 : 1.2}
-                className="cursor-pointer transition-colors duration-150 ease-out"
-                onMouseEnter={() => setHoveredState(state.name)}
-                onClick={() => handleStateClick(state.name)}
-              />
-            );
-          })}
+              return (
+                <path
+                  key={state.id}
+                  d={state.path}
+                  fill={getColor(state.name)}
+                  stroke={isSelected ? '#172554' : isHovered ? '#1E3A8A' : '#FFFFFF'}
+                  strokeWidth={isSelected ? 2.5 : isHovered ? 2 : 0.8}
+                  className="cursor-pointer transition-colors duration-150 ease-out"
+                  onMouseEnter={() => setHoveredState(state.name)}
+                  onClick={() => handleStateClick(state.name)}
+                />
+              );
+            })}
 
-          {/* State centroid labels for high density states */}
+          {/* State centroid badge labels for high density states */}
           {INDIA_STATES.map((state) => {
             const data = stateDataMap[state.name];
             if (!data || data.count < 3) return null;
             return (
-              <text
+              <g
                 key={`lbl-${state.id}`}
-                x={state.center[0]}
-                y={state.center[1]}
-                textAnchor="middle"
-                className="text-[10px] font-bold fill-white pointer-events-none drop-shadow-xs"
+                className="pointer-events-none select-none drop-shadow-sm"
               >
-                {data.count}
-              </text>
+                <circle
+                  cx={state.center[0]}
+                  cy={state.center[1]}
+                  r={8.5}
+                  className="fill-slate-900/80 stroke-white/90"
+                  strokeWidth={1.2}
+                />
+                <text
+                  x={state.center[0]}
+                  y={state.center[1] + 3.5}
+                  textAnchor="middle"
+                  className="text-[9.5px] font-bold fill-white"
+                >
+                  {data.count}
+                </text>
+              </g>
             );
           })}
         </g>
@@ -146,7 +171,7 @@ export const InteractiveIndiaMap: React.FC<InteractiveIndiaMapProps> = ({
       {/* Hover Floating Tooltip */}
       {hoveredState && (
         <div
-          className="absolute pointer-events-none z-30 bg-slate-900/95 text-white p-3 rounded-xl shadow-xl text-xs max-w-xs border border-slate-700 backdrop-blur-xs animate-in fade-in duration-100"
+          className="absolute pointer-events-none z-30 bg-slate-900/95 text-white p-3 rounded-xl shadow-xl text-xs max-w-xs border border-slate-700 backdrop-blur-sm transition-opacity duration-100"
           style={{
             left: `${Math.min(mousePos.x + 12, 340)}px`,
             top: `${Math.max(mousePos.y - 60, 10)}px`,
@@ -182,22 +207,22 @@ export const InteractiveIndiaMap: React.FC<InteractiveIndiaMapProps> = ({
       )}
 
       {/* Color Legend */}
-      <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-xs p-2.5 rounded-xl border border-slate-200 shadow-sm text-[10px] space-y-1.5">
+      <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-sm p-2.5 rounded-xl border border-slate-200 shadow-sm text-[10px] space-y-1.5">
         <span className="font-bold text-slate-700 block">Top {rankLimit} Density</span>
         <div className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-xs bg-[#2459D3]" />
+          <span className="w-3 h-3 rounded-sm bg-[#2459D3]" />
           <span className="text-slate-600">High (&gt;10 insts)</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-xs bg-[#3B82F6]" />
+          <span className="w-3 h-3 rounded-sm bg-[#3B82F6]" />
           <span className="text-slate-600">Moderate (5–10 insts)</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-xs bg-[#93C5FD]" />
+          <span className="w-3 h-3 rounded-sm bg-[#93C5FD]" />
           <span className="text-slate-600">Developing (1–4 insts)</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-xs bg-[#E2E8F0]" />
+          <span className="w-3 h-3 rounded-sm bg-[#E2E8F0]" />
           <span className="text-slate-600">None in Cohort</span>
         </div>
       </div>

@@ -83,6 +83,7 @@ export type PageId =
   | 'transitions'
   | 'outliers'
   | 'explore'
+  | 'dynamic-features'
   | 'ai-assistant';
 
 export interface StatSummary {
@@ -121,10 +122,17 @@ export interface TransitionItem {
   status: 'improved' | 'declined' | 'retained' | 'new_entrant' | 'exited';
 }
 
+export interface CalculationDetails {
+  formula: string;
+  filtersApplied: string;
+  sampleSize: string;
+  sourceDataset: string;
+}
+
 export interface AIQueryResponse {
   answer: string;
-  explanation: string;
-  dataSummary: Record<string, any>;
+  explanation?: string;
+  dataSummary?: Record<string, any>;
   chartType?: 'bar' | 'line' | 'scatter' | 'radar';
   chartData?: any[];
   chartConfig?: {
@@ -132,6 +140,10 @@ export interface AIQueryResponse {
     yKeys: string[];
     title: string;
   };
+  calculationDetails?: CalculationDetails;
+  isOutOfScope?: boolean;
+  isDatasetQuery?: boolean;
+  isError?: boolean;
   targetPage?: PageId;
   targetFilters?: Partial<FilterState>;
 }

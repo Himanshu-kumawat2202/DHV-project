@@ -23,13 +23,14 @@ import {
   CartesianGrid,
 } from 'recharts';
 import { useApp } from '../context/AppContext';
-import { INSTITUTIONS, RANKINGS, YEARS } from '../data/nirfData';
+import { INSTITUTIONS, RANKINGS, YEARS, CATEGORIES } from '../data/nirfData';
 import { calculateRankMovement } from '../utils/statistics';
 import {
   InteractiveChartCard,
   AccessibleChartTooltip,
 } from '../components/charts/InteractiveChartCard';
 import { useChartTheme } from '../context/ChartThemeContext';
+import { getShortInstitutionName, TruncatedYAxisTick } from '../utils/institutionFormatters';
 
 export const RankingTrends: React.FC = () => {
   const { filters, setInspectInstitutionId } = useApp();
@@ -38,7 +39,7 @@ export const RankingTrends: React.FC = () => {
   const [selectedInstId, setSelectedInstId] = useState<string>('jamia-millia');
   const [startYear, setStartYear] = useState<number>(2017);
   const [endYear, setEndYear] = useState<number>(2025);
-  const [selectedCategory, setSelectedCategory] = useState<string>('Overall');
+  const [selectedCategory, setSelectedCategory] = useState<string>(filters.category || 'Overall');
 
   const selectedInst = INSTITUTIONS.find((i) => i.institution_id === selectedInstId);
 
@@ -46,6 +47,7 @@ export const RankingTrends: React.FC = () => {
   const instHistory = RANKINGS.filter(
     (r) =>
       r.institution_id === selectedInstId &&
+      (selectedCategory === 'All' || r.category === selectedCategory) &&
       r.year >= startYear &&
       r.year <= endYear
   ).sort((a, b) => a.year - b.year);
@@ -77,9 +79,13 @@ export const RankingTrends: React.FC = () => {
     const delta = rStart.rank - rEnd.rank; // positive = climbed
     const scoreDelta = Number((rEnd.overall_score - rStart.overall_score).toFixed(2));
 
+    const fullName = inst.institution_name;
+    const shortName = getShortInstitutionName(fullName);
+
     return {
       id: inst.institution_id,
-      name: inst.short_name,
+      name: shortName,
+      fullName,
       state: inst.state,
       startRank: rStart.rank,
       endRank: rEnd.rank,
@@ -119,17 +125,58 @@ export const RankingTrends: React.FC = () => {
     };
   });
 
-  // Q5: Top 10 Consistency Analysis
-  const top10Consistent = [
-    { name: 'IIT Madras', state: 'Tamil Nadu', yearsInTop10: 9, avgRank: 1.1, streak: '2017–2025 (#1 Dominance)', id: 'iit-madras' },
-    { name: 'IISc Bengaluru', state: 'Karnataka', yearsInTop10: 9, avgRank: 1.9, streak: '2017–2025 (Always Top 2)', id: 'iisc-bangalore' },
-    { name: 'IIT Bombay', state: 'Maharashtra', yearsInTop10: 9, avgRank: 3.1, streak: '2017–2025 (Always Top 4)', id: 'iit-bombay' },
-    { name: 'IIT Delhi', state: 'Delhi', yearsInTop10: 9, avgRank: 3.9, streak: '2017–2025 (Always Top 4)', id: 'iit-delhi' },
-    { name: 'IIT Kanpur', state: 'Uttar Pradesh', yearsInTop10: 9, avgRank: 5.2, streak: '2017–2025 (Always Top 6)', id: 'iit-kanpur' },
-    { name: 'IIT Kharagpur', state: 'West Bengal', yearsInTop10: 9, avgRank: 6.1, streak: '2017–2025 (Always Top 7)', id: 'iit-kharagpur' },
-    { name: 'IIT Roorkee', state: 'Uttarakhand', yearsInTop10: 9, avgRank: 7.9, streak: '2017–2025 (Always Top 9)', id: 'iit-roorkee' },
-    { name: 'IIT Guwahati', state: 'Assam', yearsInTop10: 8, avgRank: 8.8, streak: '8 of 9 years in Top 10', id: 'iit-guwahati' },
-  ];
+  // Q5: Top 10 Consistency Analysis (dynamically derived from NIRF dataset respecting category & year filters)
+  const validYears = YEARS.filter((y) => y >= startYear && y <= endYear);
+  const totalYears = validYears.length;
+
+  const top10Rankings = RANKINGS.filter(
+    (r) =>
+      r.year >= startYear &&
+      r.year <= endYear &&
+      (selectedCategory === 'All' || r.category === selectedCategory) &&
+      r.rank > 0 &&
+      r.rank <= 10
+  );
+
+  const instRankMap = new Map<string, typeof RANKINGS>();
+  top10Rankings.forEach((r) => {
+    const list = instRankMap.get(r.institution_id) || [];
+    list.push(r);
+    instRankMap.set(r.institution_id, list);
+  });
+
+  const top10Consistent = Array.from(instRankMap.entries())
+    .map(([id, ranks]) => {
+      const inst = INSTITUTIONS.find((i) => i.institution_id === id);
+      const yearsInTop10 = ranks.length;
+      const avgRank = Number(
+        (ranks.reduce((s, r) => s + r.rank, 0) / yearsInTop10).toFixed(1)
+      );
+      const maxRank = Math.max(...ranks.map((r) => r.rank));
+      const minRank = Math.min(...ranks.map((r) => r.rank));
+
+      let streak = '';
+      if (yearsInTop10 === totalYears && totalYears > 1) {
+        if (minRank === 1 && avgRank <= 1.5) {
+          streak = `${startYear}–${endYear} (#1 Dominance)`;
+        } else {
+          streak = `${startYear}–${endYear} (Always Top ${maxRank})`;
+        }
+      } else {
+        streak = `${yearsInTop10} of ${totalYears} years in Top 10`;
+      }
+
+      return {
+        id,
+        name: inst ? inst.short_name : id,
+        state: inst ? inst.state : '',
+        yearsInTop10,
+        avgRank,
+        streak,
+      };
+    })
+    .sort((a, b) => b.yearsInTop10 - a.yearsInTop10 || a.avgRank - b.avgRank)
+    .slice(0, 10);
 
   return (
     <div className="space-y-6">
@@ -172,6 +219,23 @@ export const RankingTrends: React.FC = () => {
               {YEARS.map((y) => (
                 <option key={y} value={y} disabled={y <= startYear}>
                   {y}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 shadow-2xs">
+            <label htmlFor="trend-category" className="text-slate-500 font-semibold text-[11px]">Category:</label>
+            <select
+              id="trend-category"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="font-bold text-slate-800 outline-none cursor-pointer"
+            >
+              <option value="All">All Categories</option>
+              {CATEGORIES.map((c) => (
+                <option key={c.value} value={c.value}>
+                  {c.label}
                 </option>
               ))}
             </select>
@@ -349,13 +413,26 @@ export const RankingTrends: React.FC = () => {
             </div>
           </div>
 
-          <div className="h-56 w-full">
+          <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart layout="vertical" data={topImprovers} margin={{ left: 10, right: 20 }}>
+              <BarChart
+                layout="vertical"
+                data={topImprovers}
+                margin={{ left: 20, right: 25, top: 10, bottom: 10 }}
+                barCategoryGap="22%"
+                barSize={18}
+              >
                 <XAxis type="number" tick={{ fontSize: 10 }} />
-                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10 }} />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  width={130}
+                  interval={0}
+                  tick={<TruncatedYAxisTick maxChars={18} fill="#334155" />}
+                />
                 <Tooltip
                   formatter={(val: any) => [`+${val} positions`, 'Rank Climbed']}
+                  labelFormatter={(_label: any, payload: any) => payload?.[0]?.payload?.fullName || _label}
                   contentStyle={{ fontSize: 11, borderRadius: 8 }}
                 />
                 <Bar
@@ -387,13 +464,26 @@ export const RankingTrends: React.FC = () => {
             </div>
           </div>
 
-          <div className="h-56 w-full">
+          <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart layout="vertical" data={topDecliners} margin={{ left: 10, right: 20 }}>
+              <BarChart
+                layout="vertical"
+                data={topDecliners}
+                margin={{ left: 20, right: 25, top: 10, bottom: 10 }}
+                barCategoryGap="22%"
+                barSize={18}
+              >
                 <XAxis type="number" tick={{ fontSize: 10 }} />
-                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10 }} />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  width={130}
+                  interval={0}
+                  tick={<TruncatedYAxisTick maxChars={18} fill="#334155" />}
+                />
                 <Tooltip
                   formatter={(val: any) => [`${val} positions`, 'Rank Dropped']}
+                  labelFormatter={(_label: any, payload: any) => payload?.[0]?.payload?.fullName || _label}
                   contentStyle={{ fontSize: 11, borderRadius: 8 }}
                 />
                 <Bar
@@ -532,22 +622,32 @@ export const RankingTrends: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {top10Consistent.map((c) => (
-                <tr
-                  key={c.id}
-                  onClick={() => setInspectInstitutionId(c.id)}
-                  className="hover:bg-blue-50/50 cursor-pointer transition-colors"
-                >
-                  <td className="py-3 font-bold text-slate-800 flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                    <span>{c.name}</span>
+              {top10Consistent.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="py-6 text-center text-slate-400">
+                    No top-10 ranking records found for the selected category and year range.
                   </td>
-                  <td className="py-3 text-slate-500">{c.state}</td>
-                  <td className="py-3 text-center font-bold text-blue-700">{c.yearsInTop10} of 9 Years</td>
-                  <td className="py-3 text-center text-slate-700">#{c.avgRank}</td>
-                  <td className="py-3 text-right font-medium text-emerald-700">{c.streak}</td>
                 </tr>
-              ))}
+              ) : (
+                top10Consistent.map((c) => (
+                  <tr
+                    key={c.id}
+                    onClick={() => setInspectInstitutionId(c.id)}
+                    className="hover:bg-blue-50/50 cursor-pointer transition-colors"
+                  >
+                    <td className="py-3 font-bold text-slate-800 flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>{c.name}</span>
+                    </td>
+                    <td className="py-3 text-slate-500">{c.state}</td>
+                    <td className="py-3 text-center font-bold text-blue-700">
+                      {c.yearsInTop10} of {totalYears} Year{totalYears > 1 ? 's' : ''}
+                    </td>
+                    <td className="py-3 text-center text-slate-700">#{c.avgRank}</td>
+                    <td className="py-3 text-right font-medium text-emerald-700">{c.streak}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

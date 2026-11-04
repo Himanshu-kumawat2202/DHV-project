@@ -29,7 +29,7 @@ export const ScoreDistribution: React.FC = () => {
 
   const [activeYear, setActiveYear] = useState<number>(filters.year || 2025);
   const [activeCategory, setActiveCategory] = useState<string>('Overall');
-  const [minScoreFilter, setMinScoreFilter] = useState<number>(40);
+  const [minScoreFilter, setMinScoreFilter] = useState<number>(30);
 
   // Active records
   const records = RANKINGS.filter(
@@ -42,8 +42,9 @@ export const ScoreDistribution: React.FC = () => {
   const scores = records.map((r) => r.overall_score);
   const stats = calculateStatsSummary(scores);
 
-  // Q1: Score Histogram Bins
+  // Q1: Score Histogram Bins (including 30–40)
   const bins = [
+    { range: '30–40', min: 30, max: 40, count: 0 },
     { range: '40–50', min: 40, max: 50, count: 0 },
     { range: '50–60', min: 50, max: 60, count: 0 },
     { range: '60–70', min: 60, max: 70, count: 0 },
@@ -53,7 +54,7 @@ export const ScoreDistribution: React.FC = () => {
   ];
 
   scores.forEach((s) => {
-    const bin = bins.find((b) => s >= b.min && s < b.max) || (s >= 90 ? bins[5] : bins[0]);
+    const bin = bins.find((b) => s >= b.min && s < b.max) || (s >= 90 ? bins[bins.length - 1] : bins[0]);
     if (bin) bin.count += 1;
   });
 
@@ -322,14 +323,14 @@ export const ScoreDistribution: React.FC = () => {
                       <div
                         className="absolute h-full bg-blue-500/80 rounded-full"
                         style={{
-                          left: `${Math.max(0, (cs.q1 - 40) * 1.6)}%`,
-                          width: `${Math.max(5, (cs.q3 - cs.q1) * 1.6)}%`,
+                          left: `${Math.max(0, Math.min(100, ((cs.q1 - 30) / 70) * 100))}%`,
+                          width: `${Math.max(5, Math.min(100, ((cs.q3 - cs.q1) / 70) * 100))}%`,
                         }}
                         title={`IQR: ${cs.q1} to ${cs.q3}`}
                       />
                       <div
                         className="absolute top-0 bottom-0 w-1 bg-blue-900 rounded-full"
-                        style={{ left: `${Math.max(0, (cs.median - 40) * 1.6)}%` }}
+                        style={{ left: `${Math.max(0, Math.min(100, ((cs.median - 30) / 70) * 100))}%` }}
                         title={`Median: ${cs.median}`}
                       />
                     </div>

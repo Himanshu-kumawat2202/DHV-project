@@ -26,6 +26,7 @@ import { MultivariateAnalysis } from './pages/MultivariateAnalysis';
 import { RankingTransitions } from './pages/RankingTransitions';
 import { OutlierDetection } from './pages/OutlierDetection';
 import { ExploreInstitutions } from './pages/ExploreInstitutions';
+import { DynamicFeatures } from './pages/DynamicFeatures';
 
 const MainLayout: React.FC = () => {
   const { currentPage } = useApp();
@@ -54,6 +55,8 @@ const MainLayout: React.FC = () => {
         return <OutlierDetection />;
       case 'explore':
         return <ExploreInstitutions />;
+      case 'dynamic-features':
+        return <DynamicFeatures />;
       default:
         return <OverviewDashboard />;
     }

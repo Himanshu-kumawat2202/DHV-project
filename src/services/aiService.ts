@@ -1,6 +1,23 @@
-import { AIQueryResponse, PageId, FilterState } from '../types';
-import { INSTITUTIONS, RANKINGS } from '../data/nirfData';
-import { calculatePearsonCorrelation } from '../utils/statistics';
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * Grounded NIRF AI Assistant Service
+ * 
+ * 1. Scope Classification:
+ *    Refuses non-NIRF questions with:
+ *    "I can only answer questions about the NIRF ranking data and the analysis in this dashboard."
+ * 2. LLM Question Understanding:
+ *    Calls the backend API (/api/ai-query) to convert question into structured JSON.
+ * 3. Fallback:
+ *    If the LLM call fails, displays a clear error message. Never silently uses keyword matching or defaults.
+ * 4. Deterministic Execution:
+ *    Computes all rankings, scores, correlations, and comparisons in code on real NIRF data (2017–2025).
+ */
+
+import { AIQueryResponse } from '../types';
+import { executeStructuredQuery } from './aiQueryExecutor';
+import { LLMQueryUnderstanding } from '../server/geminiParser';
 
 export interface ChatMessage {
   id: string;
@@ -11,216 +28,161 @@ export interface ChatMessage {
 }
 
 export const SUGGESTED_QUERIES = [
-  'Which institutions improved the most between 2017 and 2025?',
-  'Compare IIT Bombay and IIT Delhi',
-  'Which state has the highest number of top-100 institutions?',
-  'Show the correlation between RPC and Overall Score',
-  'Which institutions have the highest research scores?',
-  'Which institutions are outliers with high research but lower teaching?',
+  'Rank of AIIMS Bhopal in 2024',
+  'IIT Mandi score in 2023',
+  'Rank of MIT in 2024',
+  'Correlation of TLR and overall score',
+  'Compare IIT Dharwad and IIT Mandi',
+  'Trend of IIT Madras from 2017 to 2025',
 ];
 
-export async function processAIQuery(query: string): Promise<AIQueryResponse> {
-  // Simulate natural latency
-  await new Promise((r) => setTimeout(r, 450));
+/**
+ * Strict Scope Classifier:
+ * Classifies every question as IN_SCOPE or OUT_OF_SCOPE.
+ */
+export function classifyQueryScope(query: string): 'IN_SCOPE' | 'OUT_OF_SCOPE' {
+  const q = query.toLowerCase().trim();
+  if (!q) return 'OUT_OF_SCOPE';
 
-  const q = query.toLowerCase();
+  // Explicit Out-of-Scope triggers (sports, non-academic trivia, creative writing, recipes, weather, politics)
+  const explicitOutPatterns = [
+    /\bcapital of\b/i,
+    /\bweather\b/i,
+    /\brecipe\b/i,
+    /\bhow to cook\b/i,
+    /\bhow do i cook\b/i,
+    /\bhow to make\b/i,
+    /\bjoke\b/i,
+    /\bpoem\b/i,
+    /\bpoetry\b/i,
+    /\bstory\b/i,
+    /\bsong\b/i,
+    /\blyrics\b/i,
+    /\bmovie\b/i,
+    /\bcricket\b/i,
+    /\bipl\b/i,
+    /\bfootball\b/i,
+    /\bworld cup\b/i,
+    /\bindia vs pakistan\b/i,
+    /\bpakistan vs india\b/i,
+    /\bwho won\b/i,
+    /\bwho is elon\b/i,
+    /\bwho is trump\b/i,
+    /\bwho is narendra modi\b/i,
+    /\bpolitics\b/i,
+    /\bpresident of\b/i,
+    /\bprime minister of\b/i,
+    /\bwrite a (python|javascript|code|script|essay|email|letter)\b/i,
+    /\bstock price\b/i,
+    /\bcrypto\b/i,
+    /\bbitcoin\b/i,
+  ];
 
-  // 1. Greatest improvement
-  if (q.includes('improv') || q.includes('climbed') || q.includes('gained')) {
-    const improvers = [
-      { name: 'Jamia Millia Islamia', start: 83, end: 11, gain: 72 },
-      { name: 'KIIT Bhubaneswar', start: 78, end: 28, gain: 50 },
-      { name: 'Siksha O Anusandhan', start: 62, end: 26, gain: 36 },
-      { name: 'VIT Vellore', start: 44, end: 17, gain: 27 },
-      { name: 'Amrita Vishwa Vidyapeetham', start: 42, end: 16, gain: 26 },
-      { name: 'MAHE Manipal', start: 30, end: 14, gain: 16 },
-    ];
+  for (const pattern of explicitOutPatterns) {
+    if (pattern.test(q)) {
+      return 'OUT_OF_SCOPE';
+    }
+  }
 
+  // Positive in-scope signals:
+  // Must touch upon Indian higher education, NIRF rankings, evaluation parameters, or dashboard analytics
+  const inScopeKeywords = [
+    'nirf', 'rank', 'ranking', 'score', 'scores', 'cutoff', 'college', 'colleges', 'universit',
+    'institut', 'institution', 'iit', 'nit', 'iim', 'iisc', 'aiims', 'iiit', 'iiser', 'niper',
+    'bits', 'jnu', 'bhu', 'du', 'delhi university', 'jamia', 'amrita', 'vit', 'manipal', 'thapar',
+    'mit', 'tlr', 'rpc', 'go', 'oi', 'pr', 'perception', 'teaching', 'research', 'graduation', 'outreach',
+    'citation', 'citations', 'publication', 'publications', 'overall', 'engineering', 'management',
+    'pharmacy', 'medical', 'law', 'architecture', 'dental', 'agriculture', 'state public university',
+    'top', 'best', 'compare', 'comparison', 'versus', 'vs', 'improver', 'improvers', 'climber',
+    'climbers', 'decline', 'decliners', 'trend', 'trajectory', 'correlation', 'outlier', 'outliers',
+    'anomaly', 'distribution', 'histogram', 'average', 'mean', 'median', 'standard deviation',
+    'variance', 'pca', 'geospatial', 'states', 'state', 'dataset', 'dashboard', 'parameters'
+  ];
+
+  const hasSignal = inScopeKeywords.some((kw) => q.includes(kw));
+  if (!hasSignal) {
+    return 'OUT_OF_SCOPE';
+  }
+
+  return 'IN_SCOPE';
+}
+
+/**
+ * Main query processor:
+ * 1. Classifies query scope. If OUT_OF_SCOPE: returns standard refusal message.
+ * 2. Calls Gemini API backend for structured question understanding.
+ * 3. If LLM call fails, reports a clear error message (never silently falls back to keyword guessing).
+ * 4. Executes deterministic calculation on real NIRF data.
+ */
+export async function processAIQuery(
+  query: string,
+  history?: ChatMessage[]
+): Promise<AIQueryResponse> {
+  // 1. Mandatory Scope Classification Gate
+  if (classifyQueryScope(query) === 'OUT_OF_SCOPE') {
     return {
-      answer: 'Jamia Millia Islamia has registered the greatest improvement in NIRF Overall rankings from 2017 to 2025, climbing 72 positions from rank 83 to rank 11.',
-      explanation: 'Rapid gains in research citations (RPC), faculty qualification (TLR), and international outreach (OI) have driven this ascent. Other notable multi-year climbers include KIIT Bhubaneswar (+50 ranks) and SOA (+36 ranks).',
-      dataSummary: {
-        'Top Climber': 'Jamia Millia Islamia (+72 ranks)',
-        'Second Climber': 'KIIT Bhubaneswar (+50 ranks)',
-        'Third Climber': 'Siksha O Anusandhan (+36 ranks)',
-        'Observation Window': '2017 – 2025',
-      },
-      chartType: 'bar',
-      chartData: improvers.map((i) => ({ name: i.name, 'Rank Improvement': i.gain })),
-      chartConfig: {
-        xKey: 'name',
-        yKeys: ['Rank Improvement'],
-        title: 'Top 6 Ranking Improvers (2017–2025)',
-      },
-      targetPage: 'ranking-trends',
+      answer: 'I can only answer questions about the NIRF ranking data and the analysis in this dashboard.',
+      isOutOfScope: true,
     };
   }
 
-  // 2. Compare IIT Bombay and IIT Delhi
-  if (q.includes('bombay') && q.includes('delhi')) {
-    const bombay = RANKINGS.find((r) => r.institution_id === 'iit-bombay' && r.year === 2025);
-    const delhi = RANKINGS.find((r) => r.institution_id === 'iit-delhi' && r.year === 2025);
+  let structuredQuery: LLMQueryUnderstanding | null = null;
 
+  // 2. Call backend Gemini query parser
+  try {
+    const formattedHistory = history
+      ? history.slice(-6).map((m) => ({ sender: m.sender, text: m.text }))
+      : [];
+
+    const res = await fetch('/api/ai-query', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, history: formattedHistory }),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      return {
+        answer: `AI Language Model Error (${res.status}): ${errText || 'The server failed to parse the question.'}`,
+        isError: true,
+      };
+    }
+
+    const data = await res.json();
+
+    if (data.error) {
+      return {
+        answer: `AI Service Notice: ${data.error}`,
+        isError: true,
+      };
+    }
+
+    if (data.parsedQuery) {
+      structuredQuery = data.parsedQuery;
+    }
+  } catch (err) {
     return {
-      answer: `In the 2025 NIRF Overall rankings, IIT Bombay holds Rank #3 (Score: ${bombay?.overall_score}) while IIT Delhi holds Rank #4 (Score: ${delhi?.overall_score}).`,
-      explanation: 'Both institutions perform within 1 point of each other. IIT Bombay has a slight advantage in Research (RPC: 89.2 vs 87.4) and Graduation Outcomes, while IIT Delhi scores higher in Teaching Resources (TLR: 88.2 vs 86.4).',
-      dataSummary: {
-        'IIT Bombay (Rank)': '#3 (Score: 83.5)',
-        'IIT Delhi (Rank)': '#4 (Score: 82.9)',
-        'TLR Lead': 'IIT Delhi (+1.8)',
-        'RPC Lead': 'IIT Bombay (+1.8)',
-      },
-      chartType: 'radar',
-      chartData: [
-        { parameter: 'TLR', 'IIT Bombay': 86.4, 'IIT Delhi': 88.2 },
-        { parameter: 'RPC', 'IIT Bombay': 89.2, 'IIT Delhi': 87.4 },
-        { parameter: 'GO', 'IIT Bombay': 89.8, 'IIT Delhi': 88.1 },
-        { parameter: 'OI', 'IIT Bombay': 62.1, 'IIT Delhi': 67.2 },
-        { parameter: 'PR', 'IIT Bombay': 98.2, 'IIT Delhi': 97.4 },
-      ],
-      chartConfig: {
-        xKey: 'parameter',
-        yKeys: ['IIT Bombay', 'IIT Delhi'],
-        title: '5-Parameter Head-to-Head Comparison (2025)',
-      },
-      targetPage: 'comparison',
-      targetFilters: {
-        selectedInstitutionId: 'iit-bombay',
-      },
+      answer: `Unable to connect to the AI Query Service: ${err instanceof Error ? err.message : String(err)}. Please check your backend connection and ensure GEMINI_API_KEY is configured in .env.`,
+      isError: true,
     };
   }
 
-  // 3. States with highest number of top-100 institutions
-  if (q.includes('state') || q.includes('geograph') || q.includes('karnataka') || q.includes('tamil nadu')) {
-    const stateCounts = [
-      { state: 'Tamil Nadu', count: 18, topInst: 'IIT Madras (#1)' },
-      { state: 'Karnataka', count: 12, topInst: 'IISc Bengaluru (#2)' },
-      { state: 'Delhi', count: 11, topInst: 'IIT Delhi (#4)' },
-      { state: 'Maharashtra', count: 9, topInst: 'IIT Bombay (#3)' },
-      { state: 'Uttar Pradesh', count: 8, topInst: 'IIT Kanpur (#5)' },
-      { state: 'West Bengal', count: 7, topInst: 'IIT Kharagpur (#6)' },
-    ];
-
+  if (!structuredQuery) {
     return {
-      answer: 'Tamil Nadu leads India with the highest representation in the NIRF Top 100, accounting for 18 ranked institutions in 2025, followed by Karnataka (12) and Delhi (11).',
-      explanation: 'Southern states (Tamil Nadu, Karnataka, Kerala, Telangana) together host over 42% of the premier institutions, driven by strong university clusters, technical colleges, and private research deemed universities.',
-      dataSummary: {
-        '#1 State': 'Tamil Nadu (18 institutions)',
-        '#2 State': 'Karnataka (12 institutions)',
-        '#3 State': 'Delhi (11 institutions)',
-        'Total States Covered': '28 States & UTs',
-      },
-      chartType: 'bar',
-      chartData: stateCounts.map((s) => ({ state: s.state, 'Top 100 Institutions': s.count })),
-      chartConfig: {
-        xKey: 'state',
-        yKeys: ['Top 100 Institutions'],
-        title: 'Leading States by Top-100 Representation (2025)',
-      },
-      targetPage: 'geographical',
+      answer:
+        'Could not obtain structured understanding from the AI language model. Please verify your GEMINI_API_KEY in .env and try again.',
+      isError: true,
     };
   }
 
-  // 4. Correlation between RPC and Overall Score
-  if (q.includes('correlat') || q.includes('rpc') || q.includes('relationship')) {
-    const r2025 = RANKINGS.filter((r) => r.year === 2025);
-    const corr = calculatePearsonCorrelation(
-      r2025.map((r) => r.RPC),
-      r2025.map((r) => r.overall_score)
-    );
-
+  // 3. Double-check if parser identified question as out of scope
+  if (structuredQuery.intent === 'out_of_scope') {
     return {
-      answer: `Research and Professional Practice (RPC) exhibits a very strong positive correlation with Overall NIRF Score, with Pearson r = +${corr.r} (R² = ${corr.rSquared}).`,
-      explanation: 'RPC carries a direct 30% weight in the NIRF methodology, but its indirect impact on peer perception (PR) and faculty recruitment creates a compounding effect on total rank.',
-      dataSummary: {
-        'Pearson Correlation (r)': `+${corr.r}`,
-        'Coefficient of Determination (R²)': `${corr.rSquared}`,
-        'Interpretation': corr.interpretation,
-        'Regression Equation': `Overall = ${corr.slope} * RPC + ${corr.intercept}`,
-      },
-      chartType: 'scatter',
-      chartData: r2025.slice(0, 15).map((r) => {
-        const inst = INSTITUTIONS.find((i) => i.institution_id === r.institution_id);
-        return {
-          name: inst?.short_name || r.institution_id,
-          RPC: r.RPC,
-          'Overall Score': r.overall_score,
-        };
-      }),
-      chartConfig: {
-        xKey: 'RPC',
-        yKeys: ['Overall Score'],
-        title: 'RPC vs Overall Score Scatter',
-      },
-      targetPage: 'correlation',
+      answer: 'I can only answer questions about the NIRF ranking data and the analysis in this dashboard.',
+      isOutOfScope: true,
     };
   }
 
-  // 5. Highest research scores
-  if (q.includes('highest research') || q.includes('top research')) {
-    const topResearch = [
-      { name: 'IIT Madras', RPC: 96.4, rank: 1 },
-      { name: 'IISc Bengaluru', RPC: 92.8, rank: 2 },
-      { name: 'IIT Bombay', RPC: 89.2, rank: 3 },
-      { name: 'ISI Kolkata', RPC: 88.5, rank: 30 },
-      { name: 'IIT Delhi', RPC: 87.4, rank: 4 },
-      { name: 'HBNI Mumbai', RPC: 82.4, rank: 24 },
-    ];
-
-    return {
-      answer: 'IIT Madras (96.4), IISc Bengaluru (92.8), and IIT Bombay (89.2) lead India with the highest NIRF Research and Professional Practice (RPC) scores in 2025.',
-      explanation: 'Noticeably, specialized research institutes such as Indian Statistical Institute (88.5) and Homi Bhabha National Institute (82.4) achieve top-tier research scores despite having smaller undergraduate footprints.',
-      dataSummary: {
-        'Top RPC Score': 'IIT Madras (96.4)',
-        'Top University RPC': 'IISc Bengaluru (92.8)',
-        'High-Research Specialist': 'ISI Kolkata (88.5, Rank #30)',
-      },
-      chartType: 'bar',
-      chartData: topResearch.map((r) => ({ name: r.name, 'Research Score (RPC)': r.RPC })),
-      chartConfig: {
-        xKey: 'name',
-        yKeys: ['Research Score (RPC)'],
-        title: 'Highest Research (RPC) Scores in NIRF 2025',
-      },
-      targetPage: 'multivariate',
-    };
-  }
-
-  // 6. Outliers
-  if (q.includes('outlier') || q.includes('unusual') || q.includes('anomaly')) {
-    return {
-      answer: 'Notable outliers identified in 2025 include Indian Statistical Institute (ISI Kolkata) and Homi Bhabha National Institute (HBNI), displaying extraordinary research metrics relative to their teaching cohorts.',
-      explanation: 'ISI Kolkata achieves an RPC score of 88.5 with a TLR of 46.2 (+42.3 points disparity). Similarly, Jamia Millia Islamia exhibited rapid non-linear rank acceleration from #83 to #11.',
-      dataSummary: {
-        'Research Disparity Outliers': 'ISI Kolkata, HBNI Mumbai',
-        'Velocity / Slope Outlier': 'Jamia Millia Islamia',
-        'Detection Method': 'Z-Score Residuals & IQR bounds',
-      },
-      chartType: 'bar',
-      chartData: [
-        { name: 'ISI Kolkata', 'RPC Score': 88.5, 'TLR Score': 46.2 },
-        { name: 'HBNI Mumbai', 'RPC Score': 82.4, 'TLR Score': 52.1 },
-        { name: 'IISc Bengaluru', 'RPC Score': 92.8, 'TLR Score': 81.2 },
-      ],
-      chartConfig: {
-        xKey: 'name',
-        yKeys: ['RPC Score', 'TLR Score'],
-        title: 'Research vs Teaching Disparity in Outlier Institutions',
-      },
-      targetPage: 'outliers',
-    };
-  }
-
-  // Default generic response
-  return {
-    answer: `Analysis for "${query}": The NIRF dataset spans 2017 to 2025 across 5 parameters (TLR, RPC, GO, OI, PR) and 5 distinct categories.`,
-    explanation: 'You can explore time-series trajectories in Ranking Trends, state-level choropleths in Geographical Analysis, two-variable regressions in Correlation Analysis, or drill into specific institutional profiles.',
-    dataSummary: {
-      'Years Available': '2017 – 2025',
-      'Categories': 'Overall, Engineering, Management, University, College',
-      'Parameters': 'TLR, RPC, GO, OI, PR',
-      'Status': 'Analytical dataset active',
-    },
-    targetPage: 'overview',
-  };
+  // 4. Execute deterministic calculation on verified real NIRF dataset
+  return executeStructuredQuery(structuredQuery, query);
 }

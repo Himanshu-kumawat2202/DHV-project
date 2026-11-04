@@ -10,6 +10,7 @@ import {
   Shuffle,
   AlertTriangle,
   Building2,
+  Sliders,
   Sparkles,
   GraduationCap,
   ChevronLeft,
@@ -47,6 +48,7 @@ const MAIN_MENU: NavItem[] = [
 
 const EXPLORE_MENU: NavItem[] = [
   { id: 'explore', label: 'Explore Institutions', icon: Building2 },
+  { id: 'dynamic-features', label: 'Dynamic Features', icon: Sliders, badge: 'New' },
   { id: 'ai-assistant', label: 'AI Assistant', icon: Sparkles, badge: 'AI' },
 ];
 

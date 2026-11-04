@@ -1,0 +1,51 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0575,Jadavpur University,77.17,70.10,92.99,53.76,79.22,Kolkata,West Bengal,76.08,1,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0439,Anna University,75.40,79.59,71.94,51.66,100.00,Chennai,Tamil Nadu,76.06,2,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0078,Panjab University,66.79,62.14,85.71,74.17,66.75,Chandigarh,Chandigarh,69.92,3,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0006,"Andhra University, Visakhapatnam",78.85,44.73,91.57,82.19,53.05,Visakhapatnam,Andhra Pradesh,68.91,4,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0260,Kerala University,74.88,47.75,100.00,69.12,42.37,Thiruvananthapuram,Kerala,67.93,5,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0253,Cochin University of Science and Technology,75.30,59.32,79.62,61.76,37.47,Cochin,Kerala,66.24,6,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0027,Osmania University,78.29,42.88,91.92,61.57,47.50,Hyderabad,Telangana,65.64,7,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0196,University of Kashmir,81.55,48.77,84.30,50.90,41.23,Srinagar,Jammu and Kashmir,65.17,8,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0052,Gauhati University,75.68,39.32,94.60,67.08,41.03,Guwahati,Assam,64.24,9,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0447,Bharathiar University,65.39,56.96,81.03,53.66,58.04,Coimbatore,Tamil Nadu,64.09,10,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0323,Savitribai Phule Pune University,64.94,54.64,84.27,52.24,56.35,Pune,Maharashtra,63.58,11,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0318,Mumbai University,78.15,35.16,93.32,60.60,48.43,Mumbai,Maharashtra,63.55,12,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0098,Delhi Technological University,66.83,56.96,74.51,63.74,50.86,New Delhi,Delhi,63.50,13,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0435,Alagappa University,68.41,48.13,76.85,56.26,68.64,Karaikudi,Tamil Nadu,62.82,14,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0570,Calcutta University,68.04,49.59,93.25,52.07,36.02,Kolkata,West Bengal,62.75,15,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0448,Bharathidasan University,64.73,52.11,88.75,51.91,44.62,Tiruchirappalli,Tamil Nadu,62.45,16,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0262,"Mahatma Gandhi University, Kottayam",74.01,51.68,75.04,55.06,37.51,Kottayam,Kerala,61.97,17,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-I-1357,University of Madras,71.91,43.60,75.45,54.32,62.58,Chennai,Tamil Nadu,61.43,18,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0105,Indraprastha Institute of Information Technology,73.72,43.32,66.01,60.43,37.65,New Delhi,Delhi,58.12,19,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0235,Mysore University,80.90,29.74,80.78,60.99,25.51,Mysuru,Karnataka,58.00,20,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0195,University of Jammu,73.51,33.70,83.15,52.83,36.84,Jammu,Jammu and Kashmir,57.75,21,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0099,Guru Gobind Singh Indraprastha University,67.75,39.41,71.26,58.97,51.86,New Delhi,Delhi,57.49,22,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0739,Madan Mohan Malaviya University of Technology,69.83,31.15,73.44,78.34,46.69,Gorakhpur,Uttar Pradesh,57.48,23,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0003,Acharya Nagarjuna University,73.14,26.55,88.49,69.00,29.45,Guntur,Andhra Pradesh,57.45,24,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0136,Gujarat University,72.58,28.17,87.62,60.69,33.43,Ahmedabad,Gujarat,57.16,25,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0215,Bangalore University,71.38,27.85,82.62,59.10,48.43,Bengaluru,Karnataka,57.04,26,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0524,University of Lucknow,59.44,25.27,93.89,71.69,46.05,Lucknow,Uttar Pradesh,55.97,27,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0381,Punjab Agricultural University,70.30,51.84,64.56,51.48,11.81,Ludhiana,Punjab,55.88,28,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0523,King George`s Medical University,65.04,42.57,63.43,64.24,36.93,Lucknow,Uttar Pradesh,55.08,29,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0051,Dibrugarh University,76.13,31.50,76.36,51.45,20.16,Dibrugarh,Assam,54.73,30,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0463,Madurai Kamaraj University,67.64,32.41,74.06,49.94,45.56,Madurai,Tamil Nadu,54.37,31,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0162,"Guru Jambheshwar University of Science and Technology, Hissar",64.52,31.14,74.50,54.13,53.63,Hisar,Haryana,54.36,32,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0464,"Manonmaniam Sundaranar University, Tirunelveli",67.50,33.37,89.22,54.88,5.45,Tirunelveli,Tamil Nadu,54.14,33,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0443,Annamalai University,58.95,42.99,72.88,43.45,43.76,Annamalainagar,Tamil Nadu,53.89,34,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0164,Kurukshetra University,59.02,31.18,82.33,62.07,38.16,Kurukshetra,Haryana,53.56,35,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0200,Sher-e-Kashmir University of Agricultural Science and Technology of Kashmir,66.32,39.64,76.88,59.93,3.24,Srinagar,Jammu and Kashmir,53.48,36,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0248,"University of Agricultural Sciences, Bangalore",73.86,22.18,79.47,57.14,27.99,Bengaluru,Karnataka,53.21,37,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0251,"Calicut University, Thenhipalem, Malapuram",76.06,22.74,73.98,57.97,29.45,Malappuram,Kerala,53.19,38,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-C-6379,Netaji Subhas University of Technology (NSUT),69.17,33.74,70.57,56.61,25.29,Delhi,Delhi,53.17,39,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0470,Periyar University,61.35,36.47,68.74,54.60,44.01,Salem,Tamil Nadu,52.96,40,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0506,Chaudhary Charan Singh University Meerut,58.05,27.95,78.06,54.10,52.66,MEERUT,Uttar Pradesh,52.09,41,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0485,Tamil Nadu Agricultural University,64.23,29.86,82.37,60.34,13.47,Coimbatore,Tamil Nadu,52.08,42,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-1257,COEP Technological University,57.75,38.31,63.74,52.29,52.36,Pune,Maharashtra,52.04,43,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0554,"G.B. Pant Universtiy of Agriculture and Technology, Pantnagar",62.02,40.33,74.25,53.82,10.04,Pantnagar,Uttarakhand,51.94,44,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0325,Shivaji University,59.59,36.93,69.70,51.49,37.51,Kolhapur,Maharashtra,51.80,45,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-I-1280,Maharshi Dayanand University,51.09,38.32,82.22,56.13,27.24,Rohtak,Haryana,51.60,46,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0037,Sri Venkateswara University,70.22,19.49,78.02,60.66,28.73,Tirupati,Andhra Pradesh,51.46,47,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0366,Utkal University,62.05,22.73,81.37,55.39,32.80,Bhubaneswar,Odisha,50.53,48,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0270,Devi Ahilya Vishwavidyalaya,56.85,15.21,97.34,58.73,34.64,Indore,Madhya Pradesh,50.41,49,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html
+2025,STATEPUBLICUNIVERSITY,IR-O-U-0249,Visvesvaraya Technological University,57.22,46.96,61.41,51.39,15.99,Belgaum,Karnataka,50.28,50,https://www.nirfindia.org/Rankings/2025/STATEPUBLICUNIVERSITYRanking.html

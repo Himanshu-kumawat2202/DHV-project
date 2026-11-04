@@ -36,6 +36,7 @@ import {
   AccessibleChartTooltip,
 } from '../components/charts/InteractiveChartCard';
 import { useChartTheme } from '../context/ChartThemeContext';
+import { getShortInstitutionName, TruncatedYAxisTick } from '../utils/institutionFormatters';
 
 export const OverviewDashboard: React.FC = () => {
   const {
@@ -74,9 +75,12 @@ export const OverviewDashboard: React.FC = () => {
     .slice(0, 10)
     .map((r) => {
       const inst = INSTITUTIONS.find((i) => i.institution_id === r.institution_id);
+      const fullName = inst?.institution_name || r.institution_id;
+      const shortName = getShortInstitutionName(fullName);
       return {
         id: r.institution_id,
-        name: inst?.short_name || r.institution_id,
+        name: shortName,
+        fullName,
         score: r.overall_score,
         rank: r.rank,
         state: inst?.state,
@@ -338,7 +342,7 @@ export const OverviewDashboard: React.FC = () => {
           {({ theme, hiddenSeries, isAnimationActive, startIndex, endIndex }) => {
             const visibleData = yearlyTrendData.slice(startIndex, endIndex + 1);
             return (
-              <div className="h-64 w-full">
+              <div className="h-[420px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={visibleData}>
                     <XAxis dataKey="year" tick={{ fontSize: 11, fill: theme.textMuted }} />
@@ -404,15 +408,27 @@ export const OverviewDashboard: React.FC = () => {
           enableZoom={false}
         >
           {({ theme, isAnimationActive }) => (
-            <div className="h-64 w-full">
+            <div className="h-[420px] w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart layout="vertical" data={top10} margin={{ left: 10, right: 15, top: 5, bottom: 5 }}>
+                <BarChart
+                  layout="vertical"
+                  data={top10}
+                  margin={{ left: 20, right: 25, top: 10, bottom: 10 }}
+                  barCategoryGap="22%"
+                  barSize={20}
+                >
                   <XAxis type="number" domain={[50, 100]} tick={{ fontSize: 10, fill: theme.textMuted }} />
-                  <YAxis type="category" dataKey="name" width={95} tick={{ fontSize: 10, fill: theme.textColor }} />
+                  <YAxis
+                    type="category"
+                    dataKey="name"
+                    width={135}
+                    interval={0}
+                    tick={<TruncatedYAxisTick maxChars={18} fill={theme.textColor} />}
+                  />
                   <Tooltip
                     content={
                       <AccessibleChartTooltip
-                        titlePrefix="Institution"
+                        titlePrefix="Institution:"
                         unit="points"
                       />
                     }

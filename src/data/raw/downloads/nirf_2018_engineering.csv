@@ -1,0 +1,101 @@
+year,category,institute_id,name,tlr,rpc,go,oi,perception,city,state,score,rank,source_url
+2018,Engineering,IR-2-E-OE-U-0456,Indian Institute of Technology Madras,93.83,91.44,84.91,63.88,100.00,Chennai,Tamil Nadu,88.95,1,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-U-0306,Indian Institute of Technology Bombay,89.61,96.04,76.53,44.71,93.48,Mumbai,Maharashtra,84.82,2,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-I-1074,Indian Institute of Technology Delhi,80.83,89.35,81.47,59.72,88.60,New Delhi,Delhi,82.18,3,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-5-E-OEMAL-U-0573,Indian Institute of Technology Kharagpur,73.73,84.26,85.65,53.99,78.51,Kharagpur,West Bengal,77.78,4,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-I-1075,Indian Institute of Technology Kanpur,78.51,77.15,78.99,41.46,85.89,Kanpur,Uttar Pradesh,75.24,5,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-4-E-OEMA-U-0560,Indian Institute of Technology Roorkee,72.80,72.08,88.90,56.66,56.63,Roorkee,Uttarakhand,72.57,6,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0053,Indian Institute of Technology Guwahati,86.29,61.54,76.51,50.46,45.49,Guwahati,Assam,69.25,7,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-4-E-OEMA-U-0439,Anna University,64.60,72.08,68.55,52.30,71.04,Chennai,Tamil Nadu,67.04,8,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0013,Indian Institute of Technology Hyderabad,80.63,44.22,71.03,55.11,36.94,Hyderabad,Telangana,60.87,9,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEP-U-0308,Institute of Chemical Technology,70.22,58.51,73.21,53.43,20.35,Mumbai,Maharashtra,60.63,10,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0467,National Institute of Technology Tiruchirappalli,66.49,46.44,72.02,60.96,59.69,Tiruchirappalli,Tamil Nadu,60.35,11,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0575,Jadavpur University,58.26,68.50,77.63,29.09,33.49,Kolkata,West Bengal,59.82,12,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0205,Indian Institute of Technology (Indian School of Mines) Dhanbad,64.70,53.04,74.73,59.99,29.73,Dhanbad,Jharkhand,59.24,13,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0273,Indian Institute of Technology Indore,81.42,40.80,69.67,56.16,17.28,Indore,Madhya Pradesh,57.95,14,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0357,National Institute of Technology Rourkela,61.82,52.36,78.74,45.76,24.71,Rourkela,Odisha,57.05,15,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-U-0490,Vellore Institute of Technology,54.64,55.40,65.51,59.22,49.93,Vellore,Tamil Nadu,57.02,16,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEP-U-0391,Birla Institute of Technology & Science,68.55,38.31,69.71,60.21,49.60,Pilani,Rajasthan,56.98,17,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0355,Indian Institute of Technology Bhubaneswar,81.45,39.77,64.08,59.02,17.99,Bhubaneswar,Odisha,56.89,18,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0701,Indian Institute of Technology (Banaras Hindu University) Varanasi,64.43,42.55,77.62,41.66,48.44,Varanasi,Uttar Pradesh,56.62,19,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-EM-I-1480,Thapar Institute of Engineering and Technology,69.77,45.75,73.11,56.55,12.01,Patiala,Punjab,56.14,20,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0237,National Institute of Technology Surathkal,60.34,38.36,71.27,51.10,41.93,Surathkal,Karnataka,53.16,21,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0584,"Indian Institute of Engineering Science and Technology, Shibpur",67.15,45.47,61.09,40.27,32.03,Howrah,West Bengal,53.24,21A,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0378,Indian Institute of Technology Ropar,77.84,29.53,65.29,60.61,14.73,Rupnagar,Punjab,52.80,22,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0255,Indian Institute of Space Science and Technology,78.87,20.76,62.12,60.82,43.47,Thiruvananthapuram,Kerala,52.74,23,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0064,Indian Institute of Technology Patna,74.43,35.03,65.64,49.30,14.73,Patna,Bihar,52.37,24,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0025,National Institute of Technology Warangal,67.25,31.43,72.38,54.79,22.59,Warangal,Telangana,51.82,25,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-5-E-OEMAP-U-0202,Birla Institute of Technology,71.22,36.61,59.88,51.69,16.21,Ranchi,Jharkhand,51.12,26,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0184,Indian Institute of Technology Mandi,76.90,30.48,63.07,54.64,9.96,Mandi,Himachal Pradesh,51.28,26A,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0139,Indian Institute of Technology Gandhinagar,74.18,26.31,59.24,52.64,32.03,Gandhinagar,Gujarat,50.45,27,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-C-37013,PSG College of Technology,69.82,23.64,55.96,49.87,60.95,Coimbatore,Tamil Nadu,50.31,29,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0334,Visvesvaraya National Institute of Technology,63.78,35.85,64.68,56.13,11.20,Nagpur,Maharashtra,49.55,31,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-5-E-OEMAL-U-0108,Jamia Millia Islamia,57.41,39.27,72.13,48.49,8.67,New Delhi,Delhi,49.15,32,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-4-E-OEML-U-0476,Shanmugha Arts Science Technology & Research Academy,61.27,33.34,64.59,58.93,15.48,Thanjavur,Tamil Nadu,48.74,33,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-6-E-OEMALP-U-0497,Amity University,67.99,42.64,47.12,57.87,2.60,Gautam Budh Nagar,Uttar Pradesh,48.66,34,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-7-E-OEMALDC-U-0496,Aligarh Muslim University,70.21,38.92,53.95,36.54,10.79,Aligarh,Uttar Pradesh,48.26,35,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-16604,Sri Sivasubramaniya Nadar College of Engineering,69.98,27.18,58.89,52.41,19.35,Kancheepuram,Tamil Nadu,48.10,36,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-4-E-OEMA-U-0474,Sathyabama Institute of Science and Technology,56.33,34.48,66.57,62.08,5.04,Chennai,Tamil Nadu,47.26,37,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0014,International Institute of Information Technology,49.08,31.56,77.96,54.24,16.57,Hyderabad,Telangana,46.87,38,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-7252,Manipal Institute of Technology,68.57,18.47,56.93,63.21,28.40,Manipal,Karnataka,46.66,39,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEA-C-26794,Thiagarajar College of Engineering,62.34,26.64,59.11,46.60,34.91,Madurai,Tamil Nadu,46.66,39,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0098,Delhi Technological University,54.83,29.75,70.78,48.70,21.65,New Delhi,Delhi,46.57,41,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0017,Jawaharlal Nehru Technological University,72.70,27.91,55.73,43.77,6.89,Hyderabad,Telangana,46.40,42,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0172,National Institute of Technology Kurukshetra,59.20,37.89,60.94,42.36,7.35,Kurukshetra,Haryana,46.29,43,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-S-8931,National Institute of Industrial Engineering,79.15,2.63,73.55,59.67,6.89,Mumbai,Maharashtra,45.91,44,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-41593,College of Engineering,60.44,23.96,66.29,46.51,26.74,Pune,Maharashtra,45.90,45,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-5-E-OEMDP-U-0473,SRM Institute of Science and Technology,58.66,31.97,54.06,61.87,13.20,Chennai,Tamil Nadu,45.51,46,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0577,National Institute of Technology Durgapur,52.84,36.28,64.90,43.94,12.41,Durgapur,West Bengal,45.34,47,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0530,Motilal Nehru National Institute of Technology,52.93,29.68,64.99,46.75,18.67,Allahabad,Uttar Pradesh,44.33,48,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-EM-U-0020,Koneru Lakshmaiah Education Foundation University,70.42,17.39,60.09,58.32,1.06,Vaddeswaram,Andhra Pradesh,44.31,49,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0263,National Institute of Technology Calicut,55.17,26.58,60.60,41.85,34.67,Calicut,Kerala,44.30,50,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-5-E-OEMLD-U-0356,Kalinga Institute of Industrial Technology,58.23,21.63,66.81,63.99,5.51,Bhubaneswar,Odisha,44.27,51,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0410,Malaviya National Institute of Technology,55.37,33.17,58.95,46.61,8.67,Jaipur,Rajasthan,43.88,52,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-6581,Pondicherry Engineering College,62.07,19.84,65.32,42.72,17.99,Puducherry,Pondicherry,43.70,53,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0395,Indian Institute of Technology Jodhpur,67.83,18.13,56.92,55.85,6.44,Jodhpur,Rajasthan,43.40,54,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0284,Maulana Azad National Institute of Technology,56.88,23.54,69.57,46.73,6.44,Bhopal,Madhya Pradesh,43.34,55,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0221,International Institute of Information Technology Bangalore,58.67,15.71,69.25,61.28,9.10,Bengluru,Karnataka,43.20,56,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0055,National Institute of Technology Silchar,61.32,26.01,62.32,35.65,8.67,Silchar,Assam,43.09,57,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-1269,R. V. College of Engineering,66.43,13.67,63.12,52.94,10.37,Bengaluru,Karnataka,42.98,58,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-6-E-OEMLDP-U-0078,Panjab University,43.70,45.56,53.84,43.14,8.23,Chandigarh,Chandigarh,42.68,59,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-1331,M. S. Ramaiah Institute of Technology,64.56,13.01,61.42,57.03,9.96,Bengaluru,Karnataka,42.25,60,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0149,Sardar Vallabhbhai National Institute of Technology,52.57,29.06,60.17,45.52,10.37,Surat,Gujarat,42.11,61,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-C-36969,Coimbatore Institute of Technology,62.94,14.26,50.86,50.64,32.03,Coimbatore,Tamil Nadu,41.59,62,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0297,Defence Institute of Advanced Technology,70.99,27.72,35.53,43.79,2.60,Pune,Maharashtra,41.37,63,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEA-U-0189,National Institute of Technology Hamirpur,54.67,22.43,61.63,52.50,4.56,Hamirpur,Himachal Pradesh,41.17,64,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-24004,AU College of Engineering,64.07,6.90,68.03,55.18,4.56,Visakhapatnam,Andhra Pradesh,40.88,65,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0105,Indraprastha Institute of Information Technology Delhi,47.47,24.85,70.00,39.95,9.96,New Delhi,Delhi,40.69,66,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-1262,B. M. S. College of Engineering,64.05,7.95,62.67,51.06,10.79,Bengaluru,Karnataka,40.32,67,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-37065,Kongu Engineering College,59.46,13.12,52.77,45.32,34.20,Perundurai,Tamil Nadu,40.28,68,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0507,Dayalbagh Educational Institute,63.33,9.78,57.10,51.51,14.73,Agra,Uttar Pradesh,39.98,69,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0522,Jaypee Institute of Information Technology,48.00,21.07,58.39,53.21,21.65,Noida,Uttar Pradesh,39.88,70,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0037,Sri Venkateswara University,48.87,31.55,51.45,50.27,1.06,Tirupati,Andhra Pradesh,39.55,71,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-U-0460,Karunya Institute of Technology and Sciences,53.24,20.03,48.51,55.91,20.02,Coimbatore,Tamil Nadu,39.27,72,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0080,PEC University of Technology,50.81,11.57,66.01,64.18,9.10,Chandigarh,Chandigarh,39.24,73,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0374,Dr. B. R. Ambedkar National Institute of Technology,55.33,18.26,59.32,42.06,5.04,Jalandhar,Punjab,38.65,74,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-EMA-C-43708,College of Engineering Trivandrum,54.94,11.61,60.08,46.18,16.93,Thiruvananthapuram,Kerala,38.29,75,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-C-36984,Bannari Amman Institute of Technology,58.36,9.31,53.78,49.52,17.99,Sathyamangalam,Tamil Nadu,37.81,76,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0489,Vel Tech Rangarajan Dr. Sagunthala R & D Institute of Science and Technology,52.36,28.75,38.77,53.83,2.60,Chennai,Tamil Nadu,37.73,77,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-1297,Siddaganga Institute of Technology,64.23,9.26,52.89,48.79,2.09,Tumkur,Karnataka,37.72,78,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-4-E-OEMA-U-0445,B. S. Abdur Rahman Institute of Science and Technology,63.79,11.75,46.73,44.42,11.20,Chennai,Tamil Nadu,37.57,79,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-27616,University College of Engineering,58.19,4.41,68.69,48.43,1.58,Hyderabad,Telangana,37.52,80,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0092,National Institute of Technology Raipur,53.28,16.68,55.99,50.27,1.58,Raipur,Chhattisgarh,37.38,81,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-C-36926,Kumaraguru College of Technology,57.39,7.31,57.61,49.40,13.20,Coimbatore,Tamil Nadu,37.19,82,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-41309,Bharati Vidyapeeth Deemed University College of Engineering,52.34,7.37,59.50,65.63,6.44,Pune,Maharashtra,37.01,83,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0186,Jaypee University of Information Technology,45.26,16.66,53.23,55.70,21.96,Solan,Himachal Pradesh,37.00,84,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-C-24163,Sagi Ramakrishnam Raju Engineering College,61.09,1.68,58.20,62.10,2.09,Bhimavaram,Andhra Pradesh,36.89,85,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-5-E-OEMAL-U-0099,Guru Gobind Singh Indraprastha University,42.73,26.82,54.91,49.28,1.06,New Delhi,Delhi,36.89,85,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-3-E-OEM-U-0733,PES University,51.56,12.16,54.62,60.91,7.35,Bengaluru,Karnataka,36.86,87,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-42054,Army Institute of Technology,54.67,2.33,64.84,60.38,5.97,Pune,Maharashtra,36.71,88,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-30045,C. V. Raman College of Engineering,54.87,6.82,60.98,56.29,3.59,Bhubaneswar,Odisha,36.70,89,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0516,Indian Institute of Information Technology Allahabad,39.58,17.27,67.60,44.05,16.21,Allahabad,Uttar Pradesh,36.59,90,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0286,"Pandit Dwarka Prasad Mishra Indian Institute of Information Technology, Design and Manufacturing (IIITDM) Jabalpur",41.04,24.86,59.84,43.74,3.09,Jabalpur,Madhya Pradesh,36.42,91,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-U-0493,National Institute of Technology Agartala,54.42,20.09,46.76,42.46,4.08,Agratala,Tripura,36.36,92,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-36975,Government College of Technology,50.86,8.46,50.37,55.90,28.93,Coimbatore,Tamil Nadu,36.35,93,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-4-E-OEMA-U-0201,Shri Mata Vaishno Devi University,65.02,12.58,47.97,34.12,0.00,Katra,Jammu and Kashmir,36.28,94,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-33641,Veermata Jijabai Technological Institute,49.39,11.82,67.69,37.26,5.97,Mumbai,Maharashtra,36.24,95,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-4-E-OEMA-U-0458,Kalasalingam Academy of Research and Higher Education,59.06,12.30,48.68,47.64,3.09,Srivilliputtur,Tamil Nadu,36.22,96,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-EP-C-18154,University College of Engingeering,56.04,5.70,61.37,53.06,0.00,Kakinada,Andhra Pradesh,36.10,97,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-2-E-OE-U-0619,National Institute of Technology Meghalaya,63.62,11.41,48.19,35.93,2.60,Shillong,Meghalaya,36.00,98,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-1371,New Horizon College of Engineering,57.00,2.23,62.40,56.96,0.00,Bengaluru,Karnataka,35.95,99,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
+2018,Engineering,IR-1-E-E-C-1352,NITTE Meenakshi Institute of Technology,57.24,2.53,57.97,57.19,5.97,Bengaluru,Karnataka,35.84,100,https://www.nirfindia.org/Rankings/2018/EngineeringRanking.html
