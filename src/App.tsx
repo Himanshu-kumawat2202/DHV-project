@@ -22,6 +22,7 @@ import { ScoreDistribution } from './pages/ScoreDistribution';
 import { InstitutionComparison } from './pages/InstitutionComparison';
 import { CorrelationAnalysis } from './pages/CorrelationAnalysis';
 import { MultivariateAnalysis } from './pages/MultivariateAnalysis';
+import { DistributionStats } from './pages/DistributionStats';
 import { RankingTransitions } from './pages/RankingTransitions';
 import { OutlierDetection } from './pages/OutlierDetection';
 import { ExploreInstitutions } from './pages/ExploreInstitutions';
@@ -49,6 +50,8 @@ const MainLayout: React.FC = () => {
         return <CorrelationAnalysis />;
       case 'multivariate':
         return <MultivariateAnalysis />;
+      case 'dist-stats':
+        return <DistributionStats />;
       case 'transitions':
         return <RankingTransitions />;
       case 'outliers':
@@ -90,8 +93,8 @@ const MainLayout: React.FC = () => {
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        {/* Global Filter Bar */}
-        <GlobalFilterBar />
+        {/* Global Filter Bar - exclusively on Overview Dashboard */}
+        {currentPage === 'overview' && <GlobalFilterBar />}
 
         {/* Main Routed Page Content */}
         <main

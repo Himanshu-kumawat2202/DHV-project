@@ -16,6 +16,7 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  BoxSelect,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { PageId } from '../../types';
@@ -42,6 +43,7 @@ const MAIN_MENU: NavItem[] = [
   { id: 'comparison', label: 'Institution Comparison', icon: GitCompare },
   { id: 'correlation', label: 'Correlation Analysis', icon: ScatterChart },
   { id: 'multivariate', label: 'Multivariate Analysis', icon: Layers },
+  { id: 'dist-stats', label: 'Distribution & Stats', icon: BoxSelect },
   { id: 'transitions', label: 'Ranking Transitions', icon: Shuffle },
   { id: 'outliers', label: 'Outlier Detection', icon: AlertTriangle },
 ];
