@@ -271,26 +271,30 @@ export const OutlierDetection: React.FC = () => {
           </div>
 
           {/* Outlier cards list */}
-          <div className="lg:col-span-5 space-y-2.5">
-            <span className="text-xs font-bold text-slate-700 block">Flagged Statistical Anomalies:</span>
-            {q1Outliers.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setInspectInstitutionId(item.id)}
-                className="p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 cursor-pointer transition-all space-y-1"
-              >
-                <div className="flex items-center justify-between">
-                  <strong className="text-xs text-slate-900">{item.name}</strong>
-                  <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
-                    Z = {item.zScore > 0 ? `+${item.zScore}` : item.zScore}
-                  </span>
+          <div className="lg:col-span-5 flex flex-col h-72 max-h-72">
+            <div className="flex-shrink-0 pb-2">
+              <span className="text-xs font-bold text-slate-700 block">Flagged Statistical Anomalies:</span>
+            </div>
+            <div className="flex-1 min-h-0 overflow-y-auto space-y-2.5 pr-2.5 scrollbar-thin">
+              {q1Outliers.map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => setInspectInstitutionId(item.id)}
+                  className="p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 cursor-pointer transition-all space-y-1"
+                >
+                  <div className="flex items-center justify-between">
+                    <strong className="text-xs text-slate-900">{item.name}</strong>
+                    <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                      Z = {item.zScore > 0 ? `+${item.zScore}` : item.zScore}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] text-slate-600">
+                    <span>Actual RPC: <strong>{item.RPC}</strong> (Exp: {item.expectedRPC})</span>
+                    <span className="font-bold text-amber-700">+{item.residual} pts residual</span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between text-[11px] text-slate-600">
-                  <span>Actual RPC: <strong>{item.RPC}</strong> (Exp: {item.expectedRPC})</span>
-                  <span className="font-bold text-amber-700">+{item.residual} pts residual</span>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
