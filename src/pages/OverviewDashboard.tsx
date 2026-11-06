@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  GraduationCap,
   TrendingUp,
   MapPin,
   Award,
@@ -8,11 +7,13 @@ import {
   Sparkles,
   ArrowUpRight,
   ArrowDownRight,
-  Search,
   ChevronRight,
   BarChart3,
-  GitCompare,
   Lightbulb,
+  Database,
+  Building2,
+  Calendar,
+  SlidersHorizontal,
 } from 'lucide-react';
 import {
   LineChart,
@@ -29,7 +30,7 @@ import {
   Legend,
 } from 'recharts';
 import { useApp } from '../context/AppContext';
-import { INSTITUTIONS, RANKINGS, CATEGORIES } from '../data/nirfData';
+import { INSTITUTIONS, RANKINGS, CATEGORIES, YEARS, STATES } from '../data/nirfData';
 import { InteractiveIndiaMap } from '../components/charts/InteractiveIndiaMap';
 import {
   InteractiveChartCard,
@@ -41,11 +42,8 @@ import { getShortInstitutionName, TruncatedYAxisTick } from '../utils/institutio
 export const OverviewDashboard: React.FC = () => {
   const {
     filters,
-    updateFilter,
     setCurrentPage,
     setInspectInstitutionId,
-    setIsAIPanelOpen,
-    sendMessageToAI,
   } = useApp();
 
   const { activeTheme } = useChartTheme();
@@ -139,12 +137,15 @@ export const OverviewDashboard: React.FC = () => {
     { name: 'BITS Pilani', state: 'Rajasthan', start: 17, end: 25, change: '-8 ranks', id: 'bits-pilani' },
   ];
 
-  // Dynamic KPI counts
-  const totalRankedCount = yearRankings.length;
-  const avgOverallScore = yearRankings.length
-    ? (yearRankings.reduce((a, b) => a + b.overall_score, 0) / yearRankings.length).toFixed(1)
-    : '64.8';
-  const topInstitution = top10[0]?.name || 'IIT Madras';
+  // Dynamic dataset statistics & coverage KPIs
+  const totalRecords = RANKINGS.length;
+  const uniqueInstitutionsCount = new Set(RANKINGS.map((r) => r.institution_id).filter(Boolean)).size;
+  const categoriesCount = CATEGORIES.length;
+  const statesCount = STATES.length;
+  const yearsCount = YEARS.length;
+  const minYear = Math.min(...YEARS);
+  const maxYear = Math.max(...YEARS);
+  const parametersCount = 6;
 
   const animateNum = (val: number) => {
     return Math.round((val * counterAnimation) / 20);
@@ -152,177 +153,81 @@ export const OverviewDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Welcome Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-6 sm:p-8 relative overflow-hidden shadow-lg shadow-blue-900/10">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 pointer-events-none flex items-center justify-center">
-          <GraduationCap className="w-96 h-96 -rotate-12 translate-x-20" />
-        </div>
-
-        <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30 text-xs font-semibold backdrop-blur-xs">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>NIRF Framework Official Dataset • 2017–2025</span>
-          </div>
-
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
-            Explore India's Institutional Rankings
-          </h1>
-
-          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            Discover, compare and analyze institutional performance through NIRF data from 2017 to 2025.
-            Gain multi-parametric insights across teaching resources, research impact, graduation outcomes, and peer perception.
-          </p>
-
-          {/* Prominent Search & Ask Bar */}
-          <div className="pt-2 flex flex-col sm:flex-row gap-2 max-w-xl">
-            <div className="relative flex-1">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={filters.searchQuery}
-                onChange={(e) => updateFilter('searchQuery', e.target.value)}
-                placeholder="Search an institution, state or ask an analytical question..."
-                className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl bg-white/10 hover:bg-white/15 focus:bg-white text-white focus:text-slate-900 placeholder-slate-300 focus:placeholder-slate-400 border border-white/20 focus:border-blue-400 outline-none backdrop-blur-md transition-all"
-              />
-            </div>
-            <button
-              onClick={() => {
-                if (filters.searchQuery.trim()) {
-                  sendMessageToAI(filters.searchQuery);
-                  setIsAIPanelOpen(true);
-                } else {
-                  setCurrentPage('explore');
-                }
-              }}
-              className="px-5 py-2.5 bg-blue-500 hover:bg-blue-400 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-md flex items-center justify-center gap-1.5"
-            >
-              <span>Explore Analytics</span>
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* KPI Cards */}
+      {/* KPI Cards: Dataset Coverage Statistics */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-        {/* KPI 1 */}
+        {/* KPI 1: Total Records */}
         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs transition-shadow">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-[11px] font-semibold text-slate-500">Ranked Cohort</span>
-            <Award className="w-4 h-4 text-blue-600" />
+            <span className="text-[11px] font-semibold text-slate-500">Total Records</span>
+            <Database className="w-4 h-4 text-blue-600" />
           </div>
           <div className="text-2xl font-black text-slate-900">
-            {animateNum(totalRankedCount)}
+            {animateNum(totalRecords).toLocaleString()}
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5 block">Active in {activeYear}</span>
+          <span className="text-[10px] text-slate-400 mt-0.5 block">Valid ranking records</span>
         </div>
 
-        {/* KPI 2 */}
+        {/* KPI 2: Total Institutions */}
         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs transition-shadow">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-[11px] font-semibold text-slate-500">Categories</span>
-            <Layers className="w-4 h-4 text-indigo-600" />
+            <span className="text-[11px] font-semibold text-slate-500">Total Institutions</span>
+            <Building2 className="w-4 h-4 text-indigo-600" />
           </div>
           <div className="text-2xl font-black text-slate-900">
-            {animateNum(CATEGORIES.length)}
+            {animateNum(uniqueInstitutionsCount).toLocaleString()}
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5 block">Official streams</span>
+          <span className="text-[10px] text-slate-400 mt-0.5 block">Unique ranked entities</span>
         </div>
 
-        {/* KPI 3 */}
+        {/* KPI 3: Categories Covered */}
+        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs transition-shadow">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-[11px] font-semibold text-slate-500">Categories Covered</span>
+            <Layers className="w-4 h-4 text-emerald-600" />
+          </div>
+          <div className="text-2xl font-black text-slate-900">
+            {animateNum(categoriesCount)}
+          </div>
+          <span className="text-[10px] text-slate-400 mt-0.5 block">Overall, Engg, Univ & more</span>
+        </div>
+
+        {/* KPI 4: States & UTs */}
         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs transition-shadow">
           <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-[11px] font-semibold text-slate-500">States & UTs</span>
-            <MapPin className="w-4 h-4 text-emerald-600" />
+            <MapPin className="w-4 h-4 text-purple-600" />
           </div>
           <div className="text-2xl font-black text-slate-900">
-            {animateNum(28)}
+            {animateNum(statesCount)}
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5 block">Pan-India footprint</span>
+          <span className="text-[10px] text-slate-400 mt-0.5 block">Pan-India coverage</span>
         </div>
 
-        {/* KPI 4 */}
+        {/* KPI 5: Years Covered */}
         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs transition-shadow">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-[11px] font-semibold text-slate-500">Years Tracked</span>
-            <TrendingUp className="w-4 h-4 text-purple-600" />
+            <span className="text-[11px] font-semibold text-slate-500">Years Covered</span>
+            <Calendar className="w-4 h-4 text-amber-600" />
           </div>
           <div className="text-2xl font-black text-slate-900">
-            9 <span className="text-xs font-semibold text-slate-400">(2017–25)</span>
+            {animateNum(yearsCount)} <span className="text-xs font-semibold text-slate-400">Years</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5 block">Continuous series</span>
+          <span className="text-[10px] text-slate-400 mt-0.5 block">{minYear}–{maxYear} continuous</span>
         </div>
 
-        {/* KPI 5 */}
+        {/* KPI 6: Scoring Parameters */}
         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs transition-shadow">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-[11px] font-semibold text-slate-500">Average Score</span>
-            <BarChart3 className="w-4 h-4 text-amber-600" />
+            <span className="text-[11px] font-semibold text-slate-500">Scoring Parameters</span>
+            <SlidersHorizontal className="w-4 h-4 text-rose-500" />
           </div>
           <div className="text-2xl font-black text-slate-900">
-            {avgOverallScore}
+            {parametersCount}
           </div>
-          <span className="text-[10px] text-emerald-600 font-medium mt-0.5 block">+4.8% since 2017</span>
+          <span className="text-[10px] text-slate-400 mt-0.5 block truncate" title="TLR, RPC, GO, OI, PR & Overall Score">
+            TLR, RPC, GO, OI, PR & Score
+          </span>
         </div>
-
-        {/* KPI 6 */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs transition-shadow">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-[11px] font-semibold text-slate-500">Top Institution</span>
-            <Sparkles className="w-4 h-4 text-rose-500" />
-          </div>
-          <div className="text-sm font-extrabold text-blue-700 truncate">
-            {topInstitution}
-          </div>
-          <span className="text-[10px] text-slate-400 mt-0.5 block">Rank #1 Overall</span>
-        </div>
-      </div>
-
-      {/* Quick Access Action Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <button
-          onClick={() => setCurrentPage('comparison')}
-          className="p-3.5 rounded-2xl bg-white hover:bg-blue-50/50 border border-slate-200 hover:border-blue-300 text-left transition-all shadow-2xs group"
-        >
-          <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-            <GitCompare className="w-4 h-4" />
-          </div>
-          <h4 className="text-xs font-bold text-slate-800 group-hover:text-blue-700">Compare Institutions</h4>
-          <p className="text-[11px] text-slate-500 mt-0.5">Benchmarking radar & parameter metrics</p>
-        </button>
-
-        <button
-          onClick={() => setCurrentPage('ranking-trends')}
-          className="p-3.5 rounded-2xl bg-white hover:bg-indigo-50/50 border border-slate-200 hover:border-indigo-300 text-left transition-all shadow-2xs group"
-        >
-          <div className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-            <TrendingUp className="w-4 h-4" />
-          </div>
-          <h4 className="text-xs font-bold text-slate-800 group-hover:text-indigo-700">Analyze Trends</h4>
-          <p className="text-[11px] text-slate-500 mt-0.5">Nine-year trajectories & consistent leaders</p>
-        </button>
-
-        <button
-          onClick={() => setCurrentPage('geographical')}
-          className="p-3.5 rounded-2xl bg-white hover:bg-emerald-50/50 border border-slate-200 hover:border-emerald-300 text-left transition-all shadow-2xs group"
-        >
-          <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-            <MapPin className="w-4 h-4" />
-          </div>
-          <h4 className="text-xs font-bold text-slate-800 group-hover:text-emerald-700">Explore States</h4>
-          <p className="text-[11px] text-slate-500 mt-0.5">Interactive choropleth & regional clusters</p>
-        </button>
-
-        <button
-          onClick={() => setIsAIPanelOpen(true)}
-          className="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-200 text-left transition-all shadow-2xs group"
-        >
-          <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center mb-2 group-hover:scale-105 transition-transform shadow-xs">
-            <Sparkles className="w-4 h-4" />
-          </div>
-          <h4 className="text-xs font-bold text-blue-900">Ask NIRF AI</h4>
-          <p className="text-[11px] text-blue-700/80 mt-0.5">Natural language query assistant</p>
-        </button>
       </div>
 
       {/* Visualizations Grid Row 1: Line Trend & Horizontal Bar Top 10 */}
