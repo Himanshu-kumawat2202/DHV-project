@@ -80,6 +80,7 @@ export type PageId =
   | 'comparison'
   | 'correlation'
   | 'multivariate'
+  | 'dist-stats'
   | 'transitions'
   | 'outliers'
   | 'explore'

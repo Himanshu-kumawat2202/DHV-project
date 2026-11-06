@@ -19,6 +19,7 @@ import {
   Cell,
   Legend,
   CartesianGrid,
+  LabelList,
 } from 'recharts';
 import { useApp } from '../context/AppContext';
 import { RANKINGS, CATEGORIES, YEARS } from '../data/nirfData';
@@ -91,6 +92,46 @@ export const ScoreDistribution: React.FC = () => {
       count: catScores.length,
     };
   });
+
+  // Q2: Rank Distribution Histogram (separate year + category filters)
+  const [q2Year, setQ2Year] = useState<number>(filters.year || 2025);
+  const [q2Category, setQ2Category] = useState<string>('Overall');
+
+  const q2Records = RANKINGS.filter(
+    (r) =>
+      r.year === q2Year &&
+      (q2Category === 'All' || r.category === q2Category) &&
+      r.rank != null &&
+      r.rank > 0
+  );
+  const q2Total = q2Records.length || 1;
+
+  const RANK_BINS = [
+    { range: '1–10',    min: 1,   max: 10  },
+    { range: '11–50',   min: 11,  max: 50  },
+    { range: '51–100',  min: 51,  max: 100 },
+    { range: '101–200', min: 101, max: 200 },
+    { range: '201–300', min: 201, max: 300 },
+    { range: '301–500', min: 301, max: 500 },
+    { range: '501+',    min: 501, max: Infinity },
+  ];
+
+  const q2ChartData = RANK_BINS.map((bin) => {
+    const count = q2Records.filter((r) => r.rank >= bin.min && r.rank <= bin.max).length;
+    const pct = ((count / q2Total) * 100).toFixed(1);
+    return { range: bin.range, count, pct };
+  });
+
+  // Dynamic interpretation
+  const q2DenseBin = [...q2ChartData].sort((a, b) => b.count - a.count)[0];
+  const q2TopBin = q2ChartData.find((b) => b.range === '1–10');
+  const q2Interpretation =
+    q2DenseBin && q2DenseBin.count > 0
+      ? `In ${q2Year}${q2Category !== 'All' ? ` (${q2Category})` : ''}, the largest concentration of institutions falls in the \
+<strong>${q2DenseBin.range}</strong> rank band (${q2DenseBin.count} institutions, ${q2DenseBin.pct}%). \
+${q2TopBin && q2TopBin.count > 0 ? `Only ${q2TopBin.count} institution${q2TopBin.count > 1 ? 's' : ''} rank in the elite top-10.` : ''} \
+The distribution reveals how competition intensifies as ranks approach the top.`
+      : `No ranked institution data found for the selected filters.`;
 
   return (
     <div className="space-y-6">
@@ -277,6 +318,121 @@ export const ScoreDistribution: React.FC = () => {
             </ResponsiveContainer>
           </div>
         </div>
+      </div>
+
+      {/* QUESTION 2: Rank Distribution Histogram */}
+      <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-4">
+        {/* Header row */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 text-[10px] font-bold">
+                Question 2
+              </span>
+              <h3 className="text-sm font-bold text-slate-900">
+                Distribution of Overall NIRF Ranks Across Institutions ({q2Year})
+              </h3>
+            </div>
+            <p className="text-xs text-slate-500">
+              Frequency of institutions per rank-range interval — using actual overall rank, not score
+            </p>
+          </div>
+
+          {/* Q2 own filters */}
+          <div className="flex flex-wrap items-center gap-2 text-xs shrink-0">
+            <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5">
+              <label htmlFor="q2-rank-year" className="text-slate-500 font-semibold text-[11px]">Year:</label>
+              <select
+                id="q2-rank-year"
+                value={q2Year}
+                onChange={(e) => setQ2Year(Number(e.target.value))}
+                className="font-bold text-blue-700 outline-none cursor-pointer bg-transparent"
+              >
+                {YEARS.map((y) => (
+                  <option key={y} value={y}>{y}</option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5">
+              <label htmlFor="q2-rank-cat" className="text-slate-500 font-semibold text-[11px]">Category:</label>
+              <select
+                id="q2-rank-cat"
+                value={q2Category}
+                onChange={(e) => setQ2Category(e.target.value)}
+                className="font-bold text-slate-800 outline-none cursor-pointer bg-transparent"
+              >
+                <option value="All">All Categories</option>
+                {CATEGORIES.map((c) => (
+                  <option key={c.value} value={c.value}>{c.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Histogram */}
+        <div className="h-72 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={q2ChartData}
+              margin={{ top: 28, right: 20, left: 10, bottom: 0 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
+              <XAxis
+                dataKey="range"
+                tick={{ fontSize: 11, fill: '#64748B' }}
+                axisLine={false}
+                tickLine={false}
+                label={{
+                  value: 'Overall Rank Range',
+                  position: 'insideBottom',
+                  offset: -2,
+                  style: { fontSize: 10, fill: '#94A3B8' },
+                }}
+              />
+              <YAxis
+                tick={{ fontSize: 11, fill: '#94A3B8' }}
+                axisLine={false}
+                tickLine={false}
+                allowDecimals={false}
+                label={{
+                  value: 'No. of Institutions',
+                  angle: -90,
+                  position: 'insideLeft',
+                  offset: 5,
+                  style: { fontSize: 10, fill: '#94A3B8' },
+                }}
+              />
+              <Tooltip
+                cursor={{ fill: '#EFF6FF' }}
+                contentStyle={{ fontSize: 11, borderRadius: 10, border: '1px solid #E2E8F0' }}
+                formatter={(val: any, _name: any, item: any) => [
+                  `${val} institutions (${item.payload.pct}% of total)`,
+                  'Count',
+                ]}
+                labelFormatter={(label) => `Rank Range: ${label}`}
+              />
+              <Bar dataKey="count" radius={[6, 6, 0, 0]}>
+                {q2ChartData.map((_entry, index) => {
+                  const blues = ['#BFDBFE', '#93C5FD', '#60A5FA', '#3B82F6', '#2563EB', '#1D4ED8', '#1E3A8A'];
+                  return <Cell key={`rbin-${index}`} fill={blues[Math.min(index, blues.length - 1)]} />;
+                })}
+                <LabelList
+                  dataKey="count"
+                  position="top"
+                  style={{ fontSize: 10, fontWeight: 700, fill: '#1E40AF' }}
+                  formatter={(v: any) => (v > 0 ? String(v) : '')}
+                />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Dynamic interpretation */}
+        <p
+          className="text-[11px] text-slate-500 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: q2Interpretation }}
+        />
       </div>
 
       {/* QUESTION 5: Category-Wise Score Spread (Box-Plot Representation) */}
