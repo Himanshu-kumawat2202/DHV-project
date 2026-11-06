@@ -19,9 +19,10 @@ import { calculateCovarianceAndCorrelation } from '../utils/dynamicStats';
 import {
   resolveInstitutionName,
   checkDataAvailability,
+  getInstitutionRankings,
   InstitutionResolution,
 } from './institutionResolver';
-import { LLMQueryUnderstanding } from '../server/geminiParser';
+import type { LLMQueryUnderstanding } from '../server/geminiParser';
 
 export type StructuredQuery = LLMQueryUnderstanding;
 
@@ -173,8 +174,8 @@ export function executeStructuredQuery(sq: StructuredQuery, originalQuery: strin
       const inst2 = exactInstitutions[1];
 
       // Find shared categories
-      const recs1 = RANKINGS.filter((r) => r.institution_id === inst1.institution_id);
-      const recs2 = RANKINGS.filter((r) => r.institution_id === inst2.institution_id);
+      const recs1 = getInstitutionRankings(inst1.institution_id);
+      const recs2 = getInstitutionRankings(inst2.institution_id);
 
       const cats1 = new Set(recs1.map((r) => r.category));
       const cats2 = new Set(recs2.map((r) => r.category));
@@ -206,10 +207,10 @@ export function executeStructuredQuery(sq: StructuredQuery, originalQuery: strin
       const r2 = recs2.find((r) => r.category === compCategory && r.year === compYear);
 
       if (!r1 || !r2) {
-        const avail1 = checkDataAvailability(inst1.institution_id, activeYear, activeCategory);
-        const avail2 = checkDataAvailability(inst2.institution_id, activeYear, activeCategory);
+        const avail1 = checkDataAvailability(inst1.institution_id, compYear, compCategory);
+        const avail2 = checkDataAvailability(inst2.institution_id, compYear, compCategory);
         return {
-          answer: `Cannot directly compare ${inst1.short_name} and ${inst2.short_name} in ${activeCategory || 'Overall'} for ${activeYear}. ${avail1.summaryMessage} ${avail2.summaryMessage}`,
+          answer: `Cannot directly compare ${inst1.short_name} and ${inst2.short_name} in ${compCategory || 'Overall'} for ${compYear}. ${avail1.summaryMessage} ${avail2.summaryMessage}`,
         };
       }
 

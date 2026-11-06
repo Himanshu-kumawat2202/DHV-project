@@ -39,14 +39,13 @@ const ID_MAP = new Map<string, Institution>(INSTITUTIONS.map((i) => [i.instituti
 const PREMIER_ALIASES: Record<string, string> = {
   // AIIMS
   'aiims bhopal': 'all-india-institute-of-medical-sciences-bhopa',
-  'aiims new delhi': 'all-india-institute-of-medical-sciences-new-delhi',
-  'aiims delhi': 'all-india-institute-of-medical-sciences-new-delhi',
-  'aiims jodhpur': 'all-india-institute-of-medical-sciences-jodhpur',
-  'aiims rishikesh': 'all-india-institute-of-medical-sciences-rishikesh',
-  'aiims bhubaneswar': 'all-india-institute-of-medical-sciences-bhubaneswar',
+  'aiims new delhi': 'aiims-delhi',
+  'aiims delhi': 'aiims-delhi',
+  'aiims jodhpur': 'all-india-institute-of-medical-sciences-jodhp',
+  'aiims rishikesh': 'all-india-institute-of-medical-sciences-rishi',
+  'aiims bhubaneswar': 'all-india-institute-of-medical-sciences-bhuba',
   'aiims patna': 'all-india-institute-of-medical-sciences-patna',
-  'aiims nagpur': 'all-india-institute-of-medical-sciences-nagpur',
-  'aiims raipur': 'all-india-institute-of-medical-sciences-raipur',
+  'aiims raipur': 'all-india-institute-of-medical-sciences-raipu',
 
   // IITs
   'iit mandi': 'iit-mandi',
@@ -59,42 +58,157 @@ const PREMIER_ALIASES: Record<string, string> = {
   'iit roorkee': 'iit-roorkee',
   'iit guwahati': 'iit-guwahati',
   'iit hyderabad': 'iit-hyderabad',
-  'iit bhu': 'indian-institute-of-technology-banaras-hindu-u',
-  'iit varanasi': 'indian-institute-of-technology-banaras-hindu-u',
+  'iit bhu': 'indian-institute-of-technology-bhu-varanasi',
+  'iit varanasi': 'indian-institute-of-technology-bhu-varanasi',
   'iit tirupati': 'indian-institute-of-technology-tirupati',
   'iit palakkad': 'indian-institute-of-technology-palakkad',
-  'iit goa': 'indian-institute-of-technology-goa',
-  'iit jammu': 'indian-institute-of-technology-jammu',
+  'iit jammu': 'iit-jammu',
   'iit bhilai': 'indian-institute-of-technology-bhilai',
   'iit patna': 'indian-institute-of-technology-patna',
   'iit gandhinagar': 'indian-institute-of-technology-gandhinagar',
-  'iit ropar': 'indian-institute-of-technology-ropar',
-  'iit indore': 'indian-institute-of-technology-indore',
-  'iit ism dhanbad': 'indian-institute-of-technology-indian-school-of-m',
-  'iit dhanbad': 'indian-institute-of-technology-indian-school-of-m',
+  'iit ropar': 'iit-ropar',
+  'iit indore': 'iit-indore',
+  'iit ism dhanbad': 'indian-institute-of-technology-indian-school--jharkhand',
+  'iit dhanbad': 'indian-institute-of-technology-indian-school--jharkhand',
 
   // IISc & Central Universities
   'iisc': 'iisc-bangalore',
   'iisc bangalore': 'iisc-bangalore',
   'iisc bengaluru': 'iisc-bangalore',
   'indian institute of science': 'iisc-bangalore',
-  'jnu': 'jawaharlal-nehru-university',
-  'bhu': 'banaras-hindu-university',
+  'jnu': 'jnu-delhi',
+  'bhu': 'bhu-varanasi',
   'du': 'university-of-delhi',
   'delhi university': 'university-of-delhi',
   'university of delhi': 'university-of-delhi',
-  'jamia': 'jamia-millia-islamia',
-  'jamia millia': 'jamia-millia-islamia',
-  'jamia millia islamia': 'jamia-millia-islamia',
-  'amrita': 'amrita-vishwa-vidyapeetham',
-  'amrita vishwa vidyapeetham': 'amrita-vishwa-vidyapeetham',
-  'bits': 'birla-institute-of-technology-science-pilani',
-  'bits pilani': 'birla-institute-of-technology-science-pilani',
-  'vit': 'vellore-institute-of-technology',
-  'vit vellore': 'vellore-institute-of-technology',
-  'thapar': 'thapar-institute-of-engineering-technology',
-  'manipal': 'manipal-academy-of-higher-education',
+  'jamia': 'jamia-millia',
+  'jamia millia': 'jamia-millia',
+  'jamia millia islamia': 'jamia-millia',
+  'amrita': 'amrita-vishwa',
+  'amrita vishwa vidyapeetham': 'amrita-vishwa',
+  'bits': 'bits-pilani',
+  'bits pilani': 'bits-pilani',
+  'vit': 'vit-vellore',
+  'vit vellore': 'vit-vellore',
+  'thapar': 'thapar-inst',
+  'manipal': 'manipal-he',
 };
+
+// Canonical institution ID cluster mapping for institutions across years and NIRF editions
+const EQUIVALENT_IDS_MAP = new Map<string, string[]>();
+
+function normalizeClusterKey(str: string): string {
+  return str
+    .toLowerCase()
+    .replace(/\b(bengaluru|bangalore)\b/g, 'bangalore')
+    .replace(/\b(delhi|new delhi)\b/g, 'delhi')
+    .replace(/\b(calicut|kozhikode)\b/g, 'calicut')
+    .replace(/\b(trichy|tiruchirappalli)\b/g, 'trichy')
+    .replace(/\b(puducherry|pondicherry)\b/g, 'puducherry')
+    .replace(/\b(varanasi|banaras)\b/g, 'varanasi')
+    .replace(/\b(bombay|mumbai)\b/g, 'mumbai')
+    .replace(/\b(madras|chennai)\b/g, 'chennai')
+    .replace(/[^a-z0-9]/g, '');
+}
+
+const clusterGroups = new Map<string, Set<string>>();
+
+for (const inst of INSTITUTIONS) {
+  const k1 = normalizeClusterKey(inst.institution_name);
+  if (k1) {
+    if (!clusterGroups.has(k1)) clusterGroups.set(k1, new Set());
+    clusterGroups.get(k1)!.add(inst.institution_id);
+  }
+  if (inst.short_name) {
+    const k2 = normalizeClusterKey(inst.short_name);
+    if (k2) {
+      if (!clusterGroups.has(k2)) clusterGroups.set(k2, new Set());
+      clusterGroups.get(k2)!.add(inst.institution_id);
+    }
+  }
+}
+
+// Explicit ID bridges across NIRF editions
+const EXPLICIT_BRIDGES: Array<[string, string]> = [
+  ['iisc-bangalore', 'indian-institute-of-science-bengaluru'],
+  ['iisc-bangalore', 'iisc-bangalore-karnataka'],
+  ['aiims-delhi', 'aiims-delhi-delhi'],
+  ['aiims-delhi', 'all-india-institute-of-medical-sciences-delhi'],
+  ['bits-pilani', 'birla-institute-of-technology-and-science-pil'],
+  ['bits-pilani', 'birla-institute-of-technology-and-science-pil-rajasthan'],
+  ['iit-bombay', 'indian-institute-of-technology-bombay'],
+  ['iit-delhi', 'indian-institute-of-technology-delhi'],
+  ['iit-mandi', 'indian-institute-of-technology-mandi'],
+  ['iit-kanpur', 'indian-institute-of-technology-kanpur'],
+  ['iit-kharagpur', 'indian-institute-of-technology-kharagpur'],
+  ['iit-roorkee', 'indian-institute-of-technology-roorkee'],
+  ['iit-guwahati', 'indian-institute-of-technology-guwahati'],
+  ['iit-hyderabad', 'indian-institute-of-technology-hyderabad'],
+  ['nit-calicut', 'national-institute-of-technology-calicut'],
+  ['nit-trichy', 'national-institute-of-technology-tiruchirappa'],
+  ['indian-institute-of-technology-indian-school--jharkhand', 'indian-institute-of-technology-indian-school-'],
+];
+
+for (const [id1, id2] of EXPLICIT_BRIDGES) {
+  const k = `bridge_${id1}_${id2}`;
+  if (!clusterGroups.has(k)) clusterGroups.set(k, new Set());
+  clusterGroups.get(k)!.add(id1);
+  clusterGroups.get(k)!.add(id2);
+}
+
+/**
+ * Returns all equivalent institution IDs across NIRF ranking editions for a given institution ID.
+ */
+export function getEquivalentInstitutionIds(institutionId: string): string[] {
+  if (EQUIVALENT_IDS_MAP.has(institutionId)) {
+    return EQUIVALENT_IDS_MAP.get(institutionId)!;
+  }
+  const result = new Set<string>([institutionId]);
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const group of clusterGroups.values()) {
+      let overlaps = false;
+      for (const id of group) {
+        if (result.has(id)) {
+          overlaps = true;
+          break;
+        }
+      }
+      if (overlaps) {
+        for (const id of group) {
+          if (!result.has(id)) {
+            result.add(id);
+            changed = true;
+          }
+        }
+      }
+    }
+  }
+  const arr = Array.from(result);
+  EQUIVALENT_IDS_MAP.set(institutionId, arr);
+  return arr;
+}
+
+/**
+ * Returns all ranking records for an institution across all years and categories,
+ * properly aggregating across multiple historical IDs.
+ */
+export function getInstitutionRankings(institutionId: string): RankingRecord[] {
+  const eqIds = new Set(getEquivalentInstitutionIds(institutionId));
+  const seen = new Set<string>();
+  const list: RankingRecord[] = [];
+  for (const r of RANKINGS) {
+    if (eqIds.has(r.institution_id)) {
+      const key = `${r.year}_${r.category}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        list.push(r);
+      }
+    }
+  }
+  return list;
+}
 
 function normalizeString(str: string): string {
   return str
@@ -266,7 +380,7 @@ export function checkDataAvailability(
   allAppearances: RankingRecord[];
   summaryMessage: string;
 } {
-  const allAppearances = RANKINGS.filter((r) => r.institution_id === institutionId);
+  const allAppearances = getInstitutionRankings(institutionId);
   const targetYear = requestedYear || 2024;
   const targetCategory = requestedCategory || 'Overall';
 

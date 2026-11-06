@@ -8,11 +8,6 @@
  */
 
 import { GoogleGenAI } from '@google/genai';
-import dotenv from 'dotenv';
-import path from 'path';
-
-// Ensure .env is loaded on the server
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
 export type LLMIntent =
   | 'rank_lookup'

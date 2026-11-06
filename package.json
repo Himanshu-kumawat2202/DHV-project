@@ -7,8 +7,10 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
+    "start": "tsx server.ts",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "tsx src/server/nlp/__tests__/nlp.test.ts && tsx src/server/nlp/__tests__/e2e-validate.ts && tsx src/server/nlp/__tests__/llm-hybrid.test.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

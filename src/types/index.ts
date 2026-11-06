@@ -1,4 +1,17 @@
-export type CategoryType = 'Overall' | 'Engineering' | 'Management' | 'University' | 'College';
+export type CategoryType =
+  | 'Overall'
+  | 'Engineering'
+  | 'Management'
+  | 'University'
+  | 'College'
+  | 'Medical'
+  | 'Pharmacy'
+  | 'Law'
+  | 'Architecture'
+  | 'Dental'
+  | 'Agriculture'
+  | 'Research'
+  | 'State Public University';
 
 export type ParameterKey = 'TLR' | 'RPC' | 'GO' | 'OI' | 'PR';
 
@@ -129,17 +142,46 @@ export interface CalculationDetails {
   sourceDataset: string;
 }
 
+export type ChartType =
+  | 'bar'
+  | 'horizontal_bar'
+  | 'grouped_bar'
+  | 'ranking_bar'
+  | 'line'
+  | 'scatter'
+  | 'radar'
+  | 'heatmap'
+  | 'distribution';
+
+export interface ChartConfig {
+  xKey: string;
+  yKeys: string[];
+  title: string;
+  orientation?: 'horizontal' | 'vertical';
+  alternateChartType?: 'radar' | 'bar' | 'scatter';
+  alternateData?: any[];
+  meta?: Record<string, any>;
+}
+
+export interface StructuredSections {
+  quickSummary?: string;
+  comparisonTable?: {
+    headers: string[];
+    rows: Array<Array<string | number>>;
+  };
+  detailedAnalysis?: string;
+  keyInsights?: string[];
+  visualDescription?: string;
+}
+
 export interface AIQueryResponse {
   answer: string;
+  structuredSections?: StructuredSections;
   explanation?: string;
   dataSummary?: Record<string, any>;
-  chartType?: 'bar' | 'line' | 'scatter' | 'radar';
+  chartType?: ChartType;
   chartData?: any[];
-  chartConfig?: {
-    xKey: string;
-    yKeys: string[];
-    title: string;
-  };
+  chartConfig?: ChartConfig;
   calculationDetails?: CalculationDetails;
   isOutOfScope?: boolean;
   isDatasetQuery?: boolean;
