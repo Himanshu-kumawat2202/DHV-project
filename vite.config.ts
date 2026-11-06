@@ -21,16 +21,23 @@ function aiQueryPlugin(): Plugin {
 
         req.on('end', async () => {
           try {
-            const { query, history } = JSON.parse(body || '{}');
-            const { parseQueryWithGemini } = await import('./src/server/geminiParser.ts');
-            const result = await parseQueryWithGemini(query, history);
+            const { query, history, sessionId, skipLLM } = JSON.parse(body || '{}');
+            if (!query || typeof query !== 'string') {
+              res.setHeader('Content-Type', 'application/json');
+              res.statusCode = 400;
+              res.end(JSON.stringify({ error: 'Query parameter is required', success: false }));
+              return;
+            }
+            const { processNaturalLanguageQuery } = await import('./src/server/nlp/index.ts');
+            const result = await processNaturalLanguageQuery(query, history, { sessionId, skipLLM });
             res.setHeader('Content-Type', 'application/json');
             res.statusCode = 200;
             res.end(JSON.stringify(result));
           } catch (err: unknown) {
+            const errMsg = err instanceof Error ? err.message : String(err);
             res.setHeader('Content-Type', 'application/json');
             res.statusCode = 500;
-            res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err), parsedQuery: null }));
+            res.end(JSON.stringify({ error: errMsg.replace(/[A-Za-z0-9_-]{30,}/g, '[REDACTED]'), success: false }));
           }
         });
       });
@@ -40,6 +47,9 @@ function aiQueryPlugin(): Plugin {
 
 export default defineConfig(() => {
   return {
+    define: {
+      'process.env': {},
+    },
     plugins: [react(), tailwindcss(), aiQueryPlugin()],
     resolve: {
       alias: {

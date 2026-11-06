@@ -60,14 +60,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isMobileOpen,
   setIsMobileOpen,
 }) => {
-  const { currentPage, setCurrentPage, setIsAIPanelOpen } = useApp();
+  const { currentPage, setCurrentPage } = useApp();
 
   const handleNavClick = (id: PageId) => {
-    if (id === 'ai-assistant') {
-      setIsAIPanelOpen(true);
-      setIsMobileOpen(false);
-      return;
-    }
     setCurrentPage(id);
     setIsMobileOpen(false);
   };

@@ -8,7 +8,6 @@ import {
   Bookmark,
   SlidersHorizontal,
   LogOut,
-  Sparkles,
   ExternalLink,
   Palette,
 } from 'lucide-react';
@@ -36,7 +35,6 @@ export const Header: React.FC<HeaderProps> = ({
     filters,
     updateFilter,
     setInspectInstitutionId,
-    setIsAIPanelOpen,
     notifications,
     markNotificationsAsRead,
     isNotificationsOpen,
@@ -181,16 +179,6 @@ export const Header: React.FC<HeaderProps> = ({
             className="w-2 h-2 rounded-full border border-black/20"
             style={{ backgroundColor: activeTheme.colors[0] }}
           />
-        </button>
-
-        {/* Quick AI Trigger button */}
-        <button
-          onClick={() => setIsAIPanelOpen(true)}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold transition-all border border-indigo-200/60 shadow-2xs"
-          title="Open NIRF AI Assistant"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-          <span className="hidden sm:inline">Ask AI</span>
         </button>
 
         {/* Notifications Icon & Popover */}

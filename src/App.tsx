@@ -9,7 +9,6 @@ import { ChartThemeProvider } from './context/ChartThemeContext';
 import { Sidebar } from './components/layout/Sidebar';
 import { Header } from './components/layout/Header';
 import { GlobalFilterBar } from './components/layout/GlobalFilterBar';
-import { AIAssistantPanel } from './components/ai/AIAssistantPanel';
 import { InstitutionProfileModal } from './components/common/InstitutionProfileModal';
 import { AuthModal } from './components/auth/AuthModal';
 import { ProfileDrawer } from './components/auth/ProfileDrawer';
@@ -28,6 +27,7 @@ import { RankingTransitions } from './pages/RankingTransitions';
 import { OutlierDetection } from './pages/OutlierDetection';
 import { ExploreInstitutions } from './pages/ExploreInstitutions';
 import { DynamicFeatures } from './pages/DynamicFeatures';
+import { AIAssistantPage } from './pages/AIAssistantPage';
 
 const MainLayout: React.FC = () => {
   const { currentPage } = useApp();
@@ -60,13 +60,19 @@ const MainLayout: React.FC = () => {
         return <ExploreInstitutions />;
       case 'dynamic-features':
         return <DynamicFeatures />;
+      case 'ai-assistant':
+        return <AIAssistantPage />;
       default:
         return <OverviewDashboard />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F8FC] text-[#17233B] flex">
+    <div
+      className={`min-h-screen bg-[#F7F8FC] text-[#17233B] flex ${
+        currentPage === 'ai-assistant' ? 'h-screen overflow-hidden' : ''
+      }`}
+    >
       {/* Sidebar Navigation */}
       <Sidebar
         isCollapsed={isSidebarCollapsed}
@@ -77,8 +83,9 @@ const MainLayout: React.FC = () => {
 
       {/* Main Content Area */}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out ${isSidebarCollapsed ? 'md:pl-20' : 'md:pl-64'
-          }`}
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out ${
+          isSidebarCollapsed ? 'md:pl-20' : 'md:pl-64'
+        } ${currentPage === 'ai-assistant' ? 'h-full overflow-hidden' : ''}`}
       >
         {/* Top Header */}
         <Header
@@ -90,25 +97,32 @@ const MainLayout: React.FC = () => {
         {currentPage === 'overview' && <GlobalFilterBar />}
 
         {/* Main Routed Page Content */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full">
+        <main
+          className={
+            currentPage === 'ai-assistant'
+              ? 'flex-1 flex flex-col min-h-0 w-full overflow-hidden p-0 max-w-none'
+              : 'flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full'
+          }
+        >
           {renderActivePage()}
         </main>
 
         {/* Platform Footer */}
-        <footer className="px-6 py-4 border-t border-slate-200/80 bg-white/60 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p>
-            NIRF Insights • Academic Institutional Analytics Platform (2017–2025 Data Series)
-          </p>
-          <div className="flex items-center gap-4 text-[11px] text-slate-400">
-            <span>MHRD / MoE NIRF Methodology</span>
-            <span>•</span>
-            <span className="text-emerald-600 font-semibold">Active Prototype</span>
-          </div>
-        </footer>
+        {currentPage !== 'ai-assistant' && (
+          <footer className="px-6 py-4 border-t border-slate-200/80 bg-white/60 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p>
+              NIRF Insights • Academic Institutional Analytics Platform (2017–2025 Data Series)
+            </p>
+            <div className="flex items-center gap-4 text-[11px] text-slate-400">
+              <span>MHRD / MoE NIRF Methodology</span>
+              <span>•</span>
+              <span className="text-emerald-600 font-semibold">Active Prototype</span>
+            </div>
+          </footer>
+        )}
       </div>
 
       {/* Modals & Overlays */}
-      <AIAssistantPanel />
       <InstitutionProfileModal />
       <AuthModal />
       <ProfileDrawer />
