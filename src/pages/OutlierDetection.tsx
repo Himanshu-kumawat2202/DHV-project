@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import {
   AlertTriangle,
-  Sliders,
   Sparkles,
   HelpCircle,
   TrendingUp,
@@ -35,7 +34,6 @@ export const OutlierDetection: React.FC = () => {
   const { filters, setInspectInstitutionId } = useApp();
 
   const [activeYear, setActiveYear] = useState<number>(filters.year || 2025);
-  const [zThreshold, setZThreshold] = useState<number>(1.8); // 1.5, 1.8, 2.0, 2.5
 
   const records = RANKINGS.filter((r) => r.year === activeYear);
 
@@ -68,7 +66,7 @@ export const OutlierDetection: React.FC = () => {
       const z = calculateZScore(d.residual, resStats.mean, resStats.stdDev);
       return { ...d, zScore: z };
     })
-    .filter((d) => Math.abs(d.zScore) >= zThreshold)
+    .filter((d) => Math.abs(d.zScore) >= 1.8)
     .sort((a, b) => b.residual - a.residual);
 
   // Q2: Substantially better in research than in teaching (RPC - TLR disparity)
@@ -92,7 +90,7 @@ export const OutlierDetection: React.FC = () => {
       ...d,
       zScore: calculateZScore(d.diff, diffStats.mean, diffStats.stdDev),
     }))
-    .filter((d) => d.zScore >= zThreshold || d.diff > 20)
+    .filter((d) => d.diff > 20)
     .sort((a, b) => b.diff - a.diff);
 
   // Q3: Unusually large year-to-year score change (Score Delta Transitions)
@@ -201,36 +199,15 @@ export const OutlierDetection: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header & Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200">
-        <div>
-          <h2 className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-amber-500" />
-            Statistical Outlier Detection & Anomaly Inspection
-          </h2>
-          <p className="text-xs text-slate-500 mt-0.5">
-            Identify statistical irregularities, parameter imbalances, and anomalous ranking swings using Z-score and IQR deviation models.
-          </p>
-        </div>
-
-        {/* Sensitivity Slider / Threshold Selector */}
-        <div className="flex items-center gap-2 text-xs">
-          <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-1.5 shadow-2xs">
-            <Sliders className="w-3.5 h-3.5 text-slate-400" />
-            <label htmlFor="outlier-threshold-select" className="text-slate-500 font-semibold text-[11px]">Z-Score Threshold (σ):</label>
-            <select
-              id="outlier-threshold-select"
-              value={zThreshold}
-              onChange={(e) => setZThreshold(Number(e.target.value))}
-              className="font-bold text-amber-600 outline-none cursor-pointer"
-            >
-              <option value={1.5}>1.5σ (Sensitive)</option>
-              <option value={1.8}>1.8σ (Balanced)</option>
-              <option value={2.0}>2.0σ (Standard)</option>
-              <option value={2.5}>2.5σ (Extreme)</option>
-            </select>
-          </div>
-        </div>
+      {/* Header */}
+      <div className="pb-2 border-b border-slate-200">
+        <h2 className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+          <AlertTriangle className="w-5 h-5 text-amber-500" />
+          Statistical Outlier Detection & Anomaly Inspection
+        </h2>
+        <p className="text-xs text-slate-500 mt-0.5">
+          Identify statistical irregularities, parameter imbalances, and anomalous ranking swings using Z-score and IQR deviation models.
+        </p>
       </div>
 
       {/* Analytical disclaimer notice */}
@@ -252,7 +229,7 @@ export const OutlierDetection: React.FC = () => {
           </h3>
         </div>
         <p className="text-xs text-slate-500">
-          Institutions whose research productivity deviates significantly from the expected national regression line (Z &ge; {zThreshold})
+          Institutions whose research productivity deviates significantly from the expected national regression line (|Z| &ge; 1.8&sigma;)
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
