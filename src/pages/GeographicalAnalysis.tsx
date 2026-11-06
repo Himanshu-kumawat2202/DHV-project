@@ -28,36 +28,31 @@ import {
 import { useApp } from '../context/AppContext';
 import { INSTITUTIONS, RANKINGS, YEARS } from '../data/nirfData';
 import { InteractiveIndiaMap } from '../components/charts/InteractiveIndiaMap';
+import { HorizontalBarChart } from '../components/charts/HorizontalBarChart';
 import { TruncatedYAxisTick } from '../utils/institutionFormatters';
 
-// Custom Tooltip for Question 5: Newly Appearing Institutions
-const NewEntrantTooltip = ({ active, payload }: any) => {
+// Custom Tooltip for Question 5: State-wise Newly Appearing Institutions
+const Q5Tooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-white p-3 rounded-xl shadow-lg border border-slate-200 text-xs space-y-1.5 min-w-[210px]">
+      <div className="bg-white p-3 rounded-xl shadow-lg border border-slate-200 text-xs space-y-1.5 min-w-[200px] z-50">
         <div className="font-bold text-slate-900 border-b border-slate-100 pb-1 flex items-center justify-between gap-2">
-          <span>{data.name}</span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold border border-blue-200">
-            {data.category}
-          </span>
+          <span>{data.state}</span>
+          {data.isTop && (
+            <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-blue-100 text-blue-800 font-bold">
+              Top State
+            </span>
+          )}
         </div>
         <div className="space-y-1 text-[11px] text-slate-600 pt-0.5">
           <div className="flex justify-between items-center">
-            <span className="text-slate-400">State:</span>
-            <span className="font-semibold text-slate-800">{data.state}</span>
+            <span className="text-slate-400">New Institutions:</span>
+            <span className="font-bold text-blue-700">{data.count}</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-slate-400">First NIRF Appearance:</span>
-            <span className="font-bold text-blue-600">{data.firstYear}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-slate-400">Current 2025 Rank:</span>
-            <span className="font-extrabold text-slate-900">#{data.rank2025}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-slate-400">Category:</span>
-            <span className="font-semibold text-slate-700">{data.category}</span>
+            <span className="text-slate-400">Percentage of Total:</span>
+            <span className="font-semibold text-slate-800">{data.percentageFormatted}</span>
           </div>
         </div>
       </div>
@@ -210,21 +205,78 @@ export const GeographicalAnalysis: React.FC = () => {
     },
   ];
 
-  // Q5: Newly Appearing Institutions in NIRF Rankings
-  const newEntrants = [
-    { name: 'IIT Gandhinagar', state: 'Gujarat', firstYear: 2017, rank2025: 35, category: 'Overall' },
-    { name: 'IIT Mandi', state: 'Himachal Pradesh', firstYear: 2018, rank2025: 45, category: 'Overall' },
-    { name: 'NIT Calicut', state: 'Kerala', firstYear: 2018, rank2025: 23, category: 'Engineering' },
-    { name: 'HBNI Mumbai', state: 'Maharashtra', firstYear: 2019, rank2025: 24, category: 'Overall' },
-    { name: 'IIT Jammu', state: 'Jammu and Kashmir', firstYear: 2020, rank2025: 62, category: 'Engineering' },
-  ];
+  // Q5: State-wise Newly Appearing Institutions (first appearing 2018–2025)
+  const { q5StateData, q5TotalNewInsts, q5StatesCount, q5TopState, q5ChartData } = React.useMemo(() => {
+    // 1. Identify unique institutions across all available ranking years and determine their earliest appearance year
+    const firstAppearanceMap = new Map<string, number>();
+    for (const r of RANKINGS) {
+      const existing = firstAppearanceMap.get(r.institution_id);
+      if (existing === undefined || r.year < existing) {
+        firstAppearanceMap.set(r.institution_id, r.year);
+      }
+    }
 
-  // Sorted chronologically by first appearance year
-  const sortedEntrants = [...newEntrants].sort(
-    (a, b) => a.firstYear - b.firstYear || a.name.localeCompare(b.name)
-  );
+    // Lookup table for institutions to get actual state
+    const instMap = new Map<string, (typeof INSTITUTIONS)[0]>();
+    for (const inst of INSTITUTIONS) {
+      instMap.set(inst.institution_id, inst);
+    }
 
-  const NEW_ENTRANTS_BLUE_PALETTE = ['#60A5FA', '#3B82F6', '#2563EB', '#1D4ED8', '#1E40AF'];
+    // 2. Filter for newly appearing (first year > 2017) and group by state
+    const stateCountMap = new Map<string, number>();
+    let totalNew = 0;
+
+    for (const [instId, firstYear] of firstAppearanceMap.entries()) {
+      if (firstYear <= 2017) continue; // Exclude baseline institutions already present in 2017
+      const inst = instMap.get(instId);
+      const state = inst?.state?.trim() || 'Missing / Unknown';
+      stateCountMap.set(state, (stateCountMap.get(state) || 0) + 1);
+      totalNew++;
+    }
+
+    // 3. Sort descending by count
+    const sortedStates = Array.from(stateCountMap.entries())
+      .map(([state, count]) => {
+        const pct = totalNew > 0 ? (count / totalNew) * 100 : 0;
+        return {
+          state,
+          count,
+          percentage: pct,
+          percentageFormatted: `${pct.toFixed(1)}%`,
+        };
+      })
+      .sort((a, b) => b.count - a.count);
+
+    const topState = sortedStates[0] || null;
+
+    // 4. Chart data with professional blue gradient and top state highlight
+    const chartData = sortedStates.map((item, idx) => ({
+      ...item,
+      label: item.state,
+      value: item.count,
+      isTop: idx === 0,
+      color:
+        idx === 0
+          ? '#1E3A8A' // Deep Navy highlight for #1 state (Tamil Nadu)
+          : idx < 3
+          ? '#1D4ED8'
+          : idx < 7
+          ? '#2563EB'
+          : idx < 14
+          ? '#3B82F6'
+          : idx < 22
+          ? '#60A5FA'
+          : '#93C5FD',
+    }));
+
+    return {
+      q5StateData: sortedStates,
+      q5TotalNewInsts: totalNew,
+      q5StatesCount: sortedStates.length,
+      q5TopState: topState,
+      q5ChartData: chartData,
+    };
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -865,110 +917,143 @@ export const GeographicalAnalysis: React.FC = () => {
         </div>
       </div>
 
-      {/* QUESTION 5: Newly Appearing Institutions */}
-      <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-3">
-        <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold">
-            Question 5
-          </span>
-          <h3 className="text-sm font-bold text-slate-900">
-            States Producing Newly Appearing Institutions in NIRF
-          </h3>
-        </div>
-        <p className="text-xs text-slate-500">
-          Institutions that were not present in early cycles (2017) but broke into subsequent national rankings
-        </p>
-
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-1 text-xs">
-          <span className="font-bold text-slate-800 flex items-center gap-1.5">
-            <Award className="w-4 h-4 text-blue-600" />
-            First Appearance Timeline in National NIRF Rankings
-          </span>
-          <span className="text-[11px] text-slate-400 font-medium">
-            Chronological debut (2017 → 2020)
-          </span>
-        </div>
-
-        <div className="h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              layout="vertical"
-              data={sortedEntrants}
-              margin={{ left: 15, right: 45, top: 10, bottom: 20 }}
-              barCategoryGap="22%"
-              barSize={20}
-            >
-              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#F1F5F9" />
-              <XAxis
-                type="number"
-                domain={[2015, 2021]}
-                ticks={[2016, 2017, 2018, 2019, 2020, 2021]}
-                tick={{ fontSize: 11, fill: '#64748B' }}
-                tickLine={false}
-                axisLine={{ stroke: '#CBD5E1' }}
-              >
-                <Label
-                  value="Year of First Appearance in NIRF Rankings"
-                  offset={-12}
-                  position="insideBottom"
-                  style={{ textAnchor: 'middle', fontSize: 11, fill: '#64748B', fontWeight: 600 }}
-                />
-              </XAxis>
-              <YAxis
-                type="category"
-                dataKey="name"
-                width={130}
-                tick={{ fontSize: 11, fontWeight: 600, fill: '#1E293B' }}
-                tickLine={false}
-                axisLine={{ stroke: '#CBD5E1' }}
-              />
-              <Tooltip content={<NewEntrantTooltip />} cursor={{ fill: '#F8FAFC' }} />
-              <Bar
-                dataKey="firstYear"
-                radius={[0, 6, 6, 0]}
-                isAnimationActive={true}
-                animationDuration={900}
-                animationEasing="ease-out"
-              >
-                <LabelList
-                  dataKey="firstYear"
-                  position="right"
-                  offset={8}
-                  style={{ fontSize: 11, fontWeight: 700, fill: '#1E40AF' }}
-                />
-                {sortedEntrants.map((_, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={NEW_ENTRANTS_BLUE_PALETTE[index % NEW_ENTRANTS_BLUE_PALETTE.length]}
-                  />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-[11px] text-slate-600">
-          <div className="flex items-center gap-1.5">
-            <span className="font-semibold text-slate-700">Chronological Evolution:</span>
-            <span>Institutions established or accredited after 2008 made rapid entries into national rankings, reaching Top 65 by 2025.</span>
+      {/* QUESTION 5: State-wise Newly Appearing Institutions */}
+      <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-6">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold">
+              Question 5
+            </span>
+            <h3 className="text-sm font-bold text-slate-900">
+              Which States Have Produced the Largest Number of Newly Appearing Institutions in NIRF?
+            </h3>
           </div>
-          <div className="flex items-center gap-2.5">
-            <span className="inline-flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-xs bg-[#60A5FA]" />
-              <span className="text-[10px] text-slate-500 font-medium">2017</span>
+          <p className="text-xs text-slate-500">
+            Analysis of unique institutions that debuted in national NIRF rankings between 2018 and 2025. Baseline institutions already present in 2017 are excluded.
+          </p>
+        </div>
+
+        {/* 3 Summary Statistics KPI Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-4 rounded-2xl bg-blue-50/80 border border-blue-200 space-y-1">
+            <span className="text-[10px] text-blue-700 font-bold uppercase tracking-wider block">
+              Total Newly Appearing Institutions
             </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-xs bg-[#3B82F6]" />
-              <span className="text-[10px] text-slate-500 font-medium">2018</span>
+            <div className="text-2xl font-black text-blue-900">{q5TotalNewInsts}</div>
+            <span className="text-[11px] text-blue-600 font-medium">Unique institutions debuting 2018–2025</span>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-indigo-50/80 border border-indigo-200 space-y-1">
+            <span className="text-[10px] text-indigo-700 font-bold uppercase tracking-wider block">
+              States Represented
             </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-xs bg-[#1D4ED8]" />
-              <span className="text-[10px] text-slate-500 font-medium">2019</span>
+            <div className="text-2xl font-black text-indigo-900">{q5StatesCount}</div>
+            <span className="text-[11px] text-indigo-600 font-medium">Distinct states & UTs with new entrants</span>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200 space-y-1">
+            <span className="text-[10px] text-emerald-700 font-bold uppercase tracking-wider block">
+              Highest Producing State
             </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-xs bg-[#1E40AF]" />
-              <span className="text-[10px] text-slate-500 font-medium">2020</span>
+            <div className="text-2xl font-black text-emerald-900">
+              {q5TopState?.state || 'N/A'}
+            </div>
+            <span className="text-[11px] text-emerald-700 font-medium">
+              {q5TopState ? `${q5TopState.count} new institutions (${q5TopState.percentageFormatted} of national total)` : ''}
             </span>
+          </div>
+        </div>
+
+        {/* Primary Visualization: State-wise Horizontal Bar Chart */}
+        <div className="p-4 rounded-2xl bg-slate-50/60 border border-slate-200 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-1 border-b border-slate-200/70">
+            <div>
+              <h4 className="text-xs font-bold text-slate-800">
+                State-wise Count of Newly Appearing Institutions (2018–2025)
+              </h4>
+              <p className="text-[11px] text-slate-500">
+                Ranked in descending order · Top state highlighted in deep navy with blue gradient spectrum
+              </p>
+            </div>
+            <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200">
+              {q5StatesCount} States & UTs
+            </span>
+          </div>
+
+          <HorizontalBarChart
+            data={q5ChartData}
+            dataKey="value"
+            labelKey="label"
+            height={Math.max(650, q5ChartData.length * 24 + 60)}
+            barSize={14}
+            yAxisWidth={140}
+            xAxisLabel="Number of Newly Appearing Institutions (2018–2025)"
+            valueFormatter={(v: any) => `${v}`}
+            showValueLabel={true}
+            valueLabelPosition="right"
+            customTooltip={Q5Tooltip}
+            margin={{ top: 10, right: 45, left: 10, bottom: 25 }}
+          />
+        </div>
+
+        {/* State-wise Data Table */}
+        <div className="space-y-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-1 border-b border-slate-100">
+            <span className="text-xs font-bold text-slate-800">
+              State-wise Detailed Breakdown Table
+            </span>
+            <span className="text-[11px] text-slate-400 font-medium">
+              {q5StatesCount} states · {q5TotalNewInsts} total new institutions
+            </span>
+          </div>
+
+          <div className="max-h-96 overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-2xs">
+            <table className="w-full text-xs text-left">
+              <thead className="bg-slate-50 sticky top-0 z-10 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                <tr>
+                  <th className="py-2.5 px-3 w-16 text-center">Rank</th>
+                  <th className="py-2.5 px-3">State</th>
+                  <th className="py-2.5 px-3 text-center">Number of New Institutions</th>
+                  <th className="py-2.5 px-3 text-right">Percentage of Total</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {q5StateData.map((row, idx) => (
+                  <tr
+                    key={row.state}
+                    className={`hover:bg-slate-50 transition-colors ${
+                      idx === 0 ? 'bg-blue-50/40 font-semibold' : ''
+                    }`}
+                  >
+                    <td className="py-2.5 px-3 text-center text-slate-400 font-bold">
+                      {idx === 0 ? (
+                        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-[10px]">
+                          1
+                        </span>
+                      ) : (
+                        idx + 1
+                      )}
+                    </td>
+                    <td className="py-2.5 px-3 font-bold text-slate-800">
+                      <div className="flex items-center gap-1.5">
+                        <span>{row.state}</span>
+                        {idx === 0 && (
+                          <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-blue-100 text-blue-800">
+                            Leading State
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="py-2.5 px-3 text-center font-black text-blue-700">
+                      {row.count}
+                    </td>
+                    <td className="py-2.5 px-3 text-right text-slate-600 font-semibold">
+                      {row.percentageFormatted}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
